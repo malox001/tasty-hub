@@ -53,28 +53,70 @@ img{
     gap:24px
 }
 
-/* Desktop Search Bar */
-.desktop-search,
-.search-container,
-[data-search-bar] {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(-12px) scale(0.97);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    visibility 0.3s ease;
+/* Desktop Search Container */
+.desktop-search {
+    width: 100%;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    background: #fff;
 }
 
-.desktop-search.search-open,
-.search-container.search-open,
-[data-search-bar].search-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0) scale(1);
+/* Search Input */
+.desktop-search input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+    background: #fafafa;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.desktop-search input::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+.desktop-search input:focus {
+    border-color: #e8755b;
+    box-shadow: 0 0 0 3px rgba(232, 117, 91, 0.12);
+    background: #fff;
+}
+
+/* Search Button */
+.desktop-search button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #e8755b;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.desktop-search button:hover {
+    background: #d96148;
+    transform: translateY(-2px);
+}
+
+.desktop-search button:active {
+    transform: translateY(0);
+}
+
+
+
 
 .brand img{
     width:118px;height:auto
@@ -591,6 +633,10 @@ footer{
     width:130px;
     height:auto;
     margin-bottom:17px
+}
+
+.footer-brand a img:hover {
+    color:var(--orange)
 }
 footer h4{
     font-size:14px;

@@ -17,44 +17,45 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    // Desktop Search Toggle
+    // ===============================
+// DESKTOP SEARCH TOGGLE
+// ===============================
+
 const searchToggle = document.querySelector(
-  '.search-toggle, [data-search-toggle], #search-icon'
+    '.search-toggle, [data-search-toggle], [data-focus-search], #search-icon'
 );
 
 const searchBar = document.querySelector(
-  '.desktop-search, .search-container, [data-search-bar]'
+    '.desktop-search, .search-container, [data-search-bar]'
 );
 
 if (searchToggle && searchBar) {
-  searchToggle.addEventListener('click', (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+    searchToggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
 
-    searchBar.classList.toggle('search-open');
+        searchBar.classList.toggle("search-open");
 
-    if (searchBar.classList.contains('search-open')) {
-      const input = searchBar.querySelector(
-        'input[type="search"], input[type="text"], input'
-      );
+        if (searchBar.classList.contains("search-open")) {
+            const input = searchBar.querySelector("input");
 
-      if (input) {
-        setTimeout(() => input.focus(), 250);
-      }
-    }
-  });
+            if (input) {
+                setTimeout(() => {
+                    input.focus();
+                }, 100);
+            }
+        }
+    });
 
-  document.addEventListener('click', (event) => {
-    if (
-      !searchBar.contains(event.target) &&
-      !searchToggle.contains(event.target)
-    ) {
-      searchBar.classList.remove('search-open');
-    }
-  });
+    document.addEventListener("click", (event) => {
+        if (
+            !searchBar.contains(event.target) &&
+            !searchToggle.contains(event.target)
+        ) {
+            searchBar.classList.remove("search-open");
+        }
+    });
 }
-
-
 
 
 // Scroll Reveal Animation
@@ -282,58 +283,50 @@ if ('IntersectionObserver' in window) {
     });
 
 
-    // ========================================
-    // 5. SEARCH FUNCTIONALITY
-    // ========================================
 
-    const searchInput = document.getElementById("meal-search");
 
-    function runSearch() {
-        const query = searchInput?.value.trim();
 
-        if (!query) {
-            searchInput?.focus();
 
-            showToast("Enter a meal or dish to search for.");
+// ===============================
+// SEARCH FUNCTIONALITY
+// ===============================
 
-            return;
-        }
+const searchInputs = document.querySelectorAll(
+    '#meal-search, #desktop-meal-search'
+);
 
-        window.location.href =
-            `/menu?search=${encodeURIComponent(query)}`;
+function runSearch(input) {
+    const query = input?.value.trim();
+
+    if (!query) {
+        input?.focus();
+        showToast("Enter a meal or dish to search for.");
+        return;
     }
 
-    // Search button
-    /*document.getElementById(
-        "search-submit"
-    )?.addEventListener("click", runSearch);
+    window.location.href =
+        `/menu?search=${encodeURIComponent(query)}`;
+}
 
-    // Search when Enter is pressed
-    searchInput?.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            runSearch();
+searchInputs.forEach((input) => {
+    const form = input.closest("form");
+
+    if (form) {
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            runSearch(input);
+        });
+    }
+
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && !form) {
+            event.preventDefault();
+            runSearch(input);
         }
     });
+});
 
 
-    // Focus the search bar when the search icon is clicked
-    document.querySelector(
-        "[data-focus-search]"
-    )?.addEventListener("click", () => {
-
-        searchInput?.focus();
-
-        document.querySelector(
-            ".mobile-search"
-        )?.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-    });*/
-
-
-    // ========================================
     // 6. DELIVERY LOCATION
     // ========================================
 
