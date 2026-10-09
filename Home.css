@@ -53,38 +53,86 @@ img{
     gap:24px
 }
 
-/* Desktop Search Container */
+/* ========================================
+   DESKTOP SEARCH BAR
+   ======================================== */
+
 .desktop-search {
     width: 100%;
-    padding: 15px 20px;
-    box-sizing: border-box;
+    padding: 18px 30px;
     background: #fff;
+    border-bottom: 1px solid var(--line);
+    box-sizing: border-box;
+
+    /* Hidden until the search icon is clicked */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+/* Display the search bar when activated */
+.desktop-search.search-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Search Form */
+.desktop-search form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    margin: 0;
 }
 
 /* Search Input */
 .desktop-search input {
+    display: block;
     width: 100%;
+    min-width: 0;
     padding: 14px 18px;
-    border: 1px solid #e5e5e5;
+
+    border: 1px solid var(--line);
     border-radius: 10px;
-    outline: none;
-    font-size: 15px;
+
+    background: #fffaf7;
+    color: var(--ink);
+
     font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+
+    outline: none;
     box-sizing: border-box;
-    background: #fafafa;
-    color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
+/* Placeholder Spacing and Appearance */
 .desktop-search input::placeholder {
-    color: #999;
+    color: #928780;
     opacity: 1;
 }
 
+/* Input Focus Effect */
 .desktop-search input:focus {
-    border-color: #e8755b;
-    box-shadow: 0 0 0 3px rgba(232, 117, 91, 0.12);
+    border-color: var(--orange);
     background: #fff;
+
+    box-shadow: 0 0 0 4px rgba(255, 68, 0, 0.10);
 }
 
 /* Search Button */
@@ -92,27 +140,48 @@ img{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    margin-top: 12px;
-    padding: 12px 24px;
+
+    min-width: 120px;
+    padding: 12px 25px;
+
     border: none;
-    border-radius: 8px;
-    background: #e8755b;
+    border-radius: 9px;
+
+    background: var(--orange);
     color: #fff;
+
     font-family: inherit;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
+    line-height: 1.5;
+
+    box-shadow: 0 5px 14px rgba(255, 68, 0, 0.16);
+
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
 }
 
+/* Button Hover */
 .desktop-search button:hover {
-    background: #d96148;
+    background: var(--orange-dark);
+    box-shadow: 0 8px 18px rgba(255, 68, 0, 0.22);
     transform: translateY(-2px);
 }
 
+/* Button Click */
 .desktop-search button:active {
     transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Keyboard Accessibility */
+.desktop-search button:focus-visible {
+    outline: 3px solid rgba(255, 68, 0, 0.3);
+    outline-offset: 3px;
 }
 
 
@@ -717,6 +786,10 @@ footer p{
     .nav-bar{min-height:70px;padding:10px 20px}
     .brand img{width:105px}
     .mobile-cart,
+    /* Keep desktop search separate from mobile search */
+    .desktop-search {
+    display: none !important;
+    }
     .menu-toggle{display:inline-flex}
     .mobile-cart{margin-left:auto}
     .menu-toggle{font-size:20px}
@@ -838,6 +911,99 @@ body.menu-open .sidebar-backdrop{
 .hero-image-frame>img{
     height:330px
 }
+
+/* =========================================
+   TASTY HUB TEXT ANIMATIONS
+   ========================================= */
+
+/* 1. HERO HEADING: ENJOY DELICIOUS FOOD. LIVE WELL. */
+
+.hero-copy h1 {
+    transform-origin: center;
+    animation: heroDance 2.5s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes heroDance {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    15% {
+        transform: translateY(-5px) rotate(-1deg);
+    }
+
+    30% {
+        transform: translateY(0) rotate(1deg);
+    }
+
+    45% {
+        transform: translateY(-4px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translateY(0) rotate(1deg);
+    }
+
+    75% {
+        transform: translateY(-2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+
+/* 2. THE BEST FOOD SERVICE IN ONE PLACE */
+
+#popular .section-heading h2 {
+    animation: popularHeadingMove 3s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+@keyframes popularHeadingMove {
+    from {
+        transform: translateX(-15px);
+    }
+
+    to {
+        transform: translateX(15px);
+    }
+}
+
+
+/* 3. EXPLORE OUR SERVICES */
+
+#offers .section-heading h2 {
+    animation: servicesHeadingMove 3s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+@keyframes servicesHeadingMove {
+    from {
+        transform: translateX(-15px);
+    }
+
+    to {
+        transform: translateX(15px);
+    }
+}
+
+
+/* 4. ACCESSIBILITY: RESPECT REDUCED MOTION PREFERENCES */
+
+ @media (prefers-reduced-motion: reduce) {
+    .hero-copy h1,
+    #popular .section-heading h2,
+    #offers .section-heading h2 {
+        animation: none;
+        transform: none;
+        will-change: auto;
+    }
+}
+
+
 .cards{
     grid-template-columns:repeat(2,minmax(0,1fr))
 }
