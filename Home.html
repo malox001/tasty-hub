@@ -1,197 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Home.css">
-    <title>Tasty Hub</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff4400">
+  <title>Tasty Hub | Fresh Meals, Delivered</title>
+  <link rel="stylesheet" href="Home.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 <body>
-    <!--Navbar-->
-  <header>
-    <nav class="nav-bar">
-        <h4><img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub Logo"></h4>
+  <header class="site-header" id="home">
+    <nav class="nav-bar" aria-label="Main navigation">
+      <a class="brand" href="/" aria-label="Tasty Hub home">
+        <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub logo">
+      </a>
 
-        <ul class="nav-links">
-            <li><a href="#">About</a></li>
-            <!--<li>Products</li>-->
-            <li><a href="#">Career</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Feedbacks</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Order Now</a></li>
-        </ul>
-        <div class="auth-buttons">
-            <button id="sign-in">Sign In</button>
-            <button id="sign-out">Sign Up</button>
-        </div>
-    </nav>
-  </header>
+      <button class="mobile-cart icon-button" type="button" aria-label="Open cart" data-open-cart>
+        <i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span>
+      </button>
+      <button class="menu-toggle icon-button" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-sidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-  <!--Caption Content-->
-    <section class="caption-cont">
-        <h1 class="wave-title">
-            <span>Enjoy</span>
-            <span>Delicious</span>
-            <span>Food</span>
-            <br><span>Live</span>
-            <span>Well</span>
-        </h1>
-        <p>Freshly Prepared Meals at the Click of a Button</p>
-    </section>
+      <ul class="nav-links">
+        <li><a class="nav-link active" href="/" aria-current="page">Home</a></li>
+        <li><a class="nav-link" href="/menu">Menu</a></li>
+        <li class="category-nav">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">Categories <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="category-dropdown">
+            <a href="/menu?category=rice">Rice dishes</a>
+            <a href="/menu?category=fast-food">Fast food</a>
+            <a href="/menu?category=soups">Soups & swallows</a>
+            <a href="/menu?category=snacks">Snacks</a>
+            <a href="/menu?category=drinks">Drinks</a>
+          </div>
+        </li>
+        <li><a class="nav-link" href="/offers">Offers</a></li>
+        <li><a class="nav-link" href="/about">About Us</a></li>
+        <li><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
 
-    <section class="caption-cont-img">
-        <img src="images/Jollof Rice.jpg" alt="Food">
-    </section>
-
-    <!--Service-->
-    <section class="service">
-      <div class="service-caption">
-        <h1>The Best Food Service <br> In One Place</h1>
-        <p>Order everything you want in one place</p>
-      </div>
-      <div class="cards">
-        <div class = "card">
-            <img src="images/Fried Rice and Chicken.jpg" alt="Fried Rice and Chicken">
-            <p>Fried Rice and Chicken</p>
-        </div>
-        <div class = "card">
-            <img src="images/Jollof Rice without Watermark.jpg" alt="Jollof Rice and Chicken">
-            <p>Jollof Rice and Chicken</p>
-        </div>
-        <div class = "card">
-            <img src="images/Eba and Egusi.jpg" alt="Eba and Egusi Soup">
-            <p>Eba and Egusi Soup</p>
-        </div>
-        <div class = "card">
-            <img src="images/Eba and Ogbono.jpg" alt="Eba and Ogbono Soup">
-            <p>Eba and Ogbono Soup</p>
-        </div>
-        <div class = "card">
-            <img src="images/Local Rice Dish.jpg" alt="Local Rice Dish">
-            <p>Local White Rice Dish</p>
-        </div>
-        <div class = "card">
-            <img src="images/Okro Soup.jpg" alt="Okro Soup">
-            <p>Okro Soup</p>
-        </div>
-        <div class = "card">
-            <img src="images/Semo and Egusi.jpg" alt="Semo and Egusi Soup">
-            <p>Semo and Egusi Soup</p>
-        </div>
-        <div class = "card">
-            <img src="images/Pepper Soup.jpg" alt="Semo and Egusi Soup">
-            <p>Pepper Soup</p>
-        </div>
-        <div class = "card">
-            <img src="images/Soup.jpg" alt="Locally Made Soup">
-            <p>Locally Made Soup</p>
-        </div>
-      </div>
-    </section>
-
-    <!--Products-->
-    <section class="products">
-        <h2>Products</h2>
-
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="images/Jollof Rice with Watermark.jpg" alt="Tasty Hub Foods">
-                <h3>Tasty Hub Foods</h3>
-                <p>Enjoy Freshly Prepared Food in one place. </p>
-                <button id="product-card-btn1">View</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-card-brand-img">
-                <img id="tasty-hub-pic" src="images/Tasty Hub Brand Identity copy.jpg", alt="Tasty Hub Services">
-                </div>
-                <h3>Tasty Hub Services</h3>
-                <p>We offer services that gives consumer maximum satisfaction. </p>
-                <div class="product-card-brand-btn2">
-                <button id="product-card-brand-btn2">Contact Us</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="images/The_Orange_logo_from_the_202606290243.jpeg" alt="Event Catering">
-                <h3>Event Catering</h3>
-                <p>Contact us and let's handle your catering today!</p>
-                <button id="product-card-btn3">Contact Us</button>
-            </div>
-
-            <div class="product-card">
-                <img src="images/This_Image_should_have_condensation_202606290217.jpeg" alt="Freshly Made Drinks">
-                <h3>Freshly Made Drinks</h3>
-                <p>Our Refreshing Drink made from 100% natural flavours and quality ingredients.</p>
-                <button>Get Now</button>
-            </div>
-        </div>
-    </section>
-
-    <!--Chef Spotlight-->
-    <section class="chef">
-        <h2>Chef Spotlight</h2>
-        <div class="chef-container">
-          <img src="images/This_orange_logo_(Tasty_Hub)_202606290109.jpeg" alt="Chef Spotlight">
-          <div class="chef-text">
-          <h3>Chef Adesuwa </h3>
-          <p>Our Passionate Chef creating delicious meals with fresh ingredients.
-            Bringing quality food and excellent dining experiences to everyone.
-          </p>
+      <div class="nav-actions">
+        <button class="icon-button" type="button" aria-label="Search meals" data-focus-search><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="location-button" type="button" data-location><i class="fa-solid fa-location-dot"></i><span>Delivery location</span></button>
+        <a class="icon-button" href="/favorites" aria-label="Favorites"><i class="fa-regular fa-heart"></i></a>
+        <button class="icon-button cart-button" type="button" aria-label="Open cart" data-open-cart><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
+        <div class="account-nav">
+          <button class="icon-button account-toggle" type="button" aria-label="Account menu" aria-expanded="false"><i class="fa-regular fa-user"></i></button>
+          <div class="account-dropdown">
+            <a href="/login">Sign in</a>
+            <a href="/register">Create account</a>
+            <hr>
+            <a href="/profile">My Profile</a>
+            <a href="/orders">My Orders</a>
+            <a href="/tracking">Order Tracking</a>
+            <a href="/addresses">Saved Addresses</a>
+            <a href="/favorites">Favorites</a>
+            <a href="/settings">Settings</a>
+            <a href="/logout">Logout</a>
           </div>
         </div>
+      </div>
+    </nav>
+
+    <div class="mobile-search">
+      <label class="search-box">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="meal-search" type="search" placeholder="Search meals and dishes..." aria-label="Search meals">
+        <button type="button" id="search-submit">Search</button>
+      </label>
+    </div>
+
+    <div class="mobile-category-shortcuts" aria-label="Popular categories">
+      <a href="/menu?category=rice">Rice</a>
+      <a href="/menu?category=fast-food">Fast Food</a>
+      <a href="/menu?category=soups">Soups</a>
+      <a href="/menu?category=snacks">Snacks</a>
+      <a href="/menu?category=drinks">Drinks</a>
+      <a href="/offers">Deals</a>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop" data-close-menu></div>
+  <aside class="mobile-sidebar" id="mobile-sidebar" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="sidebar-heading">
+      <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub logo">
+      <button class="icon-button" type="button" aria-label="Close navigation menu" data-close-menu><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <a class="sidebar-link active" href="/" aria-current="page">Home</a>
+    <a class="sidebar-link" href="/menu">Menu / Shop</a>
+    <details>
+      <summary>Categories</summary>
+      <a href="/menu?category=rice">Rice dishes</a>
+      <a href="/menu?category=fast-food">Fast food</a>
+      <a href="/menu?category=soups">Soups & swallows</a>
+      <a href="/menu?category=snacks">Snacks</a>
+      <a href="/menu?category=drinks">Drinks</a>
+    </details>
+    <a class="sidebar-link" href="/offers">Offers / Deals</a>
+    <a class="sidebar-link" href="/orders">My Orders</a>
+    <a class="sidebar-link" href="/about">About Us</a>
+    <a class="sidebar-link" href="/contact">Contact Us</a>
+    <a class="sidebar-link" href="/login">Login / Profile</a>
+    <a class="sidebar-link" href="/favorites">Favorites</a>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><i class="fa-solid fa-utensils"></i> Freshly prepared, just for you</span>
+        <h1>Enjoy Delicious Food.<br><span>Live Well.</span></h1>
+        <p>Freshly prepared meals at the click of a button.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="/menu">Explore the menu <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="secondary-button" href="/offers">View today's deals</a>
+        </div>
+        <div class="hero-note"><i class="fa-solid fa-circle-check"></i> Great taste. Quality ingredients. Easy ordering.</div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-frame">
+          <img id="hero-food-image" src="images/Jollof Rice.jpg" alt="A delicious plate of jollof rice">
+          <div class="hero-image-caption"><span>Made with care</span><strong>Good food, good mood.</strong></div>
+        </div>
+        <div class="hero-slide-dots" aria-label="Choose featured food image">
+          <button class="slide-dot active" type="button" data-slide="0" aria-label="Show jollof rice" aria-pressed="true"></button>
+          <button class="slide-dot" type="button" data-slide="1" aria-label="Show fried rice" aria-pressed="false"></button>
+          <button class="slide-dot" type="button" data-slide="2" aria-label="Show eba and egusi" aria-pressed="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="service section-wrap" id="popular">
+      <div class="section-heading">
+        <span class="eyebrow">Something delicious for everyone</span>
+        <h2>The Best Food Service <span>In One Place</span></h2>
+        <p>Explore some of our favourite meals and find your next delicious order.</p>
+      </div>
+      <div class="cards">
+        <article class="food-card">
+          <img src="images/Fried Rice and Chicken.jpg" alt="Fried rice and chicken" loading="lazy">
+          <div class="food-card-content"><h3>Fried Rice and Chicken</h3><p>Colourful fried rice served with tasty chicken.</p><div class="food-card-bottom"><strong class="price">₦3,500</strong><button class="add-cart" type="button" data-name="Fried Rice and Chicken" data-price="3500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+        <article class="food-card">
+          <img src="images/Jollof Rice without Watermark.jpg" alt="Jollof rice and chicken" loading="lazy">
+          <div class="food-card-content"><h3>Jollof Rice and Chicken</h3><p>Smoky Nigerian jollof rice with juicy chicken.</p><div class="food-card-bottom"><strong class="price">₦3,000</strong><button class="add-cart" type="button" data-name="Jollof Rice and Chicken" data-price="3000"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+        <article class="food-card">
+          <img src="images/Eba and Egusi.jpg" alt="Eba and egusi soup" loading="lazy">
+          <div class="food-card-content"><h3>Eba and Egusi Soup</h3><p>A satisfying Nigerian classic with rich egusi soup.</p><div class="food-card-bottom"><strong class="price">₦2,800</strong><button class="add-cart" type="button" data-name="Eba and Egusi Soup" data-price="2800"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+        <article class="food-card">
+          <img src="images/Eba and Ogbono.jpg" alt="Eba and ogbono soup" loading="lazy">
+          <div class="food-card-content"><h3>Eba and Ogbono Soup</h3><p>Soft eba paired with flavourful ogbono soup.</p><div class="food-card-bottom"><strong class="price">₦2,800</strong><button class="add-cart" type="button" data-name="Eba and Ogbono Soup" data-price="2800"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+        <article class="food-card">
+          <img src="images/Local Rice Dish.jpg" alt="Local white rice dish" loading="lazy">
+          <div class="food-card-content"><h3>Local White Rice Dish</h3><p>Comforting rice prepared for a hearty meal.</p><div class="food-card-bottom"><strong class="price">₦2,500</strong><button class="add-cart" type="button" data-name="Local White Rice Dish" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+        <article class="food-card">
+          <img src="images/Okro Soup.jpg" alt="Okro soup" loading="lazy">
+          <div class="food-card-content"><h3>Okro Soup</h3><p>Fresh, delicious okro soup full of flavour.</p><div class="food-card-bottom"><strong class="price">₦2,500</strong><button class="add-cart" type="button" data-name="Okro Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+        <article class="food-card">
+          <img src="images/Semo and Egusi.jpg" alt="Semo and egusi soup" loading="lazy">
+          <div class="food-card-content"><h3>Semo and Egusi Soup</h3><p>Smooth semo with a rich serving of egusi soup.</p><div class="food-card-bottom"><strong class="price">₦2,800</strong><button class="add-cart" type="button" data-name="Semo and Egusi Soup" data-price="2800"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+        <article class="food-card">
+          <img src="images/Pepper Soup.jpg" alt="Pepper soup" loading="lazy">
+          <div class="food-card-content"><h3>Pepper Soup</h3><p>A warming, peppery soup for a satisfying treat.</p><div class="food-card-bottom"><strong class="price">₦2,500</strong><button class="add-cart" type="button" data-name="Pepper Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+        <article class="food-card">
+          <img src="images/Soup.jpg" alt="Locally made soup" loading="lazy">
+          <div class="food-card-content"><h3>Locally Made Soup</h3><p>Traditional flavours made for a comforting meal.</p><div class="food-card-bottom"><strong class="price">₦2,500</strong><button class="add-cart" type="button" data-name="Locally Made Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+        </article>
+      </div>
+      <div class="center-action"><a href="/menu" class="secondary-button">View full menu <i class="fa-solid fa-arrow-right"></i></a></div>
+    </section>
+
+    <section class="products section-wrap" id="offers">
+      <div class="section-heading"><span class="eyebrow">More from Tasty Hub</span><h2>Explore Our <span>Services</span></h2><p>From everyday meals to special occasions, we've got you covered.</p></div>
+      <div class="product-grid">
+        <article class="product-card"><img src="images/Jollof Rice with Watermark.jpg" alt="Tasty Hub food selection" loading="lazy"><div class="product-card-content"><h3>Tasty Hub Foods</h3><p>Enjoy freshly prepared food in one place.</p><a class="card-link" href="/menu">Explore menu <i class="fa-solid fa-arrow-right"></i></a></div></article>
+        <article class="product-card"><img src="images/Tasty Hub Brand Identity copy.jpg" alt="Tasty Hub services" loading="lazy"><div class="product-card-content"><h3>Tasty Hub Services</h3><p>We provide services designed around customer satisfaction.</p><a class="card-link" href="/contact">Contact us <i class="fa-solid fa-arrow-right"></i></a></div></article>
+        <article class="product-card"><img src="images/The_Orange_logo_from_the_202606290243.jpeg" alt="Event catering service" loading="lazy"><div class="product-card-content"><h3>Event Catering</h3><p>Let us help make your next event delicious and memorable.</p><a class="card-link" href="/contact">Request catering <i class="fa-solid fa-arrow-right"></i></a></div></article>
+        <article class="product-card"><img src="images/This_Image_should_have_condensation_202606290217.jpeg" alt="Freshly made drinks" loading="lazy"><div class="product-card-content"><h3>Freshly Made Drinks</h3><p>Refreshing drinks made with quality ingredients.</p><a class="card-link" href="/menu?category=drinks">Explore drinks <i class="fa-solid fa-arrow-right"></i></a></div></article>
+      </div>
+    </section>
+
+    <section class="chef section-wrap" id="about">
+      <div class="chef-container">
+        <img src="images/This_orange_logo_(Tasty_Hub)_202606290109.jpeg" alt="Tasty Hub chef spotlight" loading="lazy">
+        <div class="chef-text"><span class="eyebrow">Meet the talent behind the taste</span><h2>Chef Adesuwa</h2><p>Our passionate chef creates delicious meals with fresh ingredients, bringing quality food and excellent dining experiences to everyone.</p><a href="/about" class="secondary-button">Our story <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
     </section>
 
     <section class="video-banner">
-        <img src="images/Four_youths_in_modern_house_202607031120.jpeg" alt="Enjoying Tasty Meals">
-        <div class="overlay">
-            <h2>Enjoy good food in a few clicks</h2>
-        </div>
+      <img src="images/Four_youths_in_modern_house_202607031120.jpeg" alt="Friends enjoying tasty meals" loading="lazy">
+      <div class="overlay"><span class="eyebrow">Your next favourite meal is waiting</span><h2>Enjoy good food in a few clicks.</h2><a class="primary-button" href="/menu">Order now <i class="fa-solid fa-arrow-right"></i></a></div>
     </section>
+  </main>
 
-    <footer>
-        <div class="footer-container">
-            <div>
-                <img src="images/Tasty Hub Brand Identity Design White.png" alt="Tasty Hub Logo">
-                <p>tastymeals@tastyhub.com</p>
-                <p>+234 8000 0000</p>
-            </div>
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="/" aria-label="Tasty Hub home"><img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub logo"></a>
+        <p><a href="mailto:tastymeals@tastyhub.com">tastymeals@tastyhub.com</a></p>
+        <p><a href="tel:+234800000000">+234 8000 0000</a></p>
+      </div>
+      <div><h4>Company</h4><ul><li><a href="/">Home</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact</a></li><li><a href="/careers">Careers</a></li><li><a href="/faqs">FAQs</a></li></ul></div>
+      <div><h4>Locations</h4><ul><li>Lekki</li><li>Victoria Island</li><li>Banana Island</li><li>Ikeja</li></ul></div>
+      <div><h4>Departments</h4><ul><li>Administration</li><li>Logistics</li><li>Finance</li><li>Food Operations</li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© <span id="current-year"></span> Tasty Hub. All rights reserved.</p><a href="/privacy">Privacy Policy</a></div>
+  </footer>
 
-            <div>
-                <h4>Company</h4>
-
-                <ul>
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Careers</li>
-                    <li>FAQs</li>
-                </ul>
-            </div>
-
-            <div>
-                <h4>Locations</h4>
-
-                <ul>
-                    <li>Lekki</li>
-                    <li>Victoria Island</li>
-                    <li>Banana Island</li>
-                    <li>Ikeja</li>
-                </ul>
-            </div>
-
-            <div>
-                <h4>Departments</h4>
-
-                <ul>
-                    <li>Administration</li>
-                    <li>Logistics</li>
-                    <li>Finance</li>
-                    <li>Food Operations</li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="Home.js" defer></script>
 </body>
 </html>
