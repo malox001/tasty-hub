@@ -912,257 +912,6 @@ body.menu-open .sidebar-backdrop{
     height:330px
 }
 
-/* =========================================
-   TASTY HUB TEXT ANIMATIONS
-   ========================================= */
-
-/* 1. HERO HEADING: ENJOY DELICIOUS FOOD. LIVE WELL. */
-
-.hero-copy h1 {
-    transform-origin: center;
-    animation: heroDance 2.5s ease-in-out infinite;
-    will-change: transform;
-}
-
-@keyframes heroDance {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    15% {
-        transform: translateY(-5px) rotate(-1deg);
-    }
-
-    30% {
-        transform: translateY(0) rotate(1deg);
-    }
-
-    45% {
-        transform: translateY(-4px) rotate(-1deg);
-    }
-
-    60% {
-        transform: translateY(0) rotate(1deg);
-    }
-
-    75% {
-        transform: translateY(-2px) rotate(0deg);
-    }
-
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
-}
-
-
-/* 2. THE BEST FOOD SERVICE IN ONE PLACE */
-
-#popular .section-heading h2 {
-    animation: popularHeadingMove 3s ease-in-out infinite alternate;
-    will-change: transform;
-}
-
-@keyframes popularHeadingMove {
-    from {
-        transform: translateX(-15px);
-    }
-
-    to {
-        transform: translateX(15px);
-    }
-}
-
-
-/* 3. EXPLORE OUR SERVICES */
-
-#offers .section-heading h2 {
-    animation: servicesHeadingMove 3s ease-in-out infinite alternate;
-    will-change: transform;
-}
-
-@keyframes servicesHeadingMove {
-    from {
-        transform: translateX(-15px);
-    }
-
-    to {
-        transform: translateX(15px);
-    }
-}
-
-
-/* 4. ACCESSIBILITY: RESPECT REDUCED MOTION PREFERENCES */
-
- @media (prefers-reduced-motion: reduce) {
-    .hero-copy h1,
-    #popular .section-heading h2,
-    #offers .section-heading h2 {
-        animation: none;
-        transform: none;
-        will-change: auto;
-    }
-}
-
-
-.cards{
-    grid-template-columns:repeat(2,minmax(0,1fr))
-}
-.footer-container{
-    grid-template-columns:repeat(2,minmax(0,1fr))
-}
-}
-@media(max-width:600px){
-    .hero{
-        grid-template-columns:1fr;
-        padding:42px 22px 50px;
-        gap:34px
-    }
-    .hero-copy{
-        text-align:center
-    }
-    .hero-copy>p{
-        margin:auto
-    }
-    .hero-actions{
-        justify-content:center
-    }
-    .hero-note{
-        font-size:10px
-    }
-    .hero-visual{
-        max-width:430px
-    }
-    .hero-image-frame>img{
-        height:300px
-    }
-    .section-wrap{
-        padding:55px 18px
-    }
-    .section-heading{
-        margin-bottom:27px
-    }
-    .cards,.product-grid{
-        grid-template-columns:1fr;
-        gap:17px
-    }
-    .food-card{
-        display:grid;
-        grid-template-columns:38% 1fr;
-        min-height:180px
-    }
-    .food-card>img{
-        height:100%;
-        min-height:180px;
-        max-height:230px;
-        border-radius:0;
-        object-fit:cover
-    }
-    .food-card-content{
-        padding:13px;min-width:0
-    }
-    .food-card h3{
-        font-size:13px;
-        min-height:0
-    }
-    .food-card p{
-        font-size:11px;
-        margin-bottom:13px
-    }
-    .food-card-bottom{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:9px
-    }
-    .price{
-        font-size:15px
-    }
-    .add-cart{
-        width:100%;
-        padding:9px 7px;
-        font-size:10px
-    }
-    .product-card{
-        display:grid;
-        grid-template-columns:38% 1fr
-    }
-    .product-card>img{
-        height:100%;
-        min-height:190px;
-        object-fit:cover
-    }
-    .product-card-content{
-        padding:14px
-    }
-    .product-card h3{
-        font-size:14px
-    }
-    .product-card p{
-        font-size:11px;
-        margin-bottom:12px
-    }
-    .chef-container{
-        grid-template-columns:1fr;
-        padding:15px;
-        gap:20px
-    }
-    .chef-container>img{
-        height:260px
-    }
-    .chef-text{
-        padding:4px 3px 10px
-    }
-    .video-banner>img{
-        height:330px
-    }
-    .overlay{
-        left:22px;
-        right:22px
-    }
-    .footer-container{
-        grid-template-columns:1fr 1fr;
-        gap:28px 18px
-    }
-    .footer-brand{grid-column:1/-1}.footer-brand img{
-        margin:0 auto 15px
-    }
-    .footer-brand{
-        text-align:center
-    }
-    .footer-bottom{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:6px
-    }
-}
-@media(max-width:360px){
-    .food-card{
-        grid-template-columns:1fr
-    }
-    .food-card>img{
-        height:175px;min-height:0
-    }
-    .food-card-bottom{
-        flex-direction:row;
-        align-items:center
-    }
-    .add-cart{width:auto}.footer-container{
-        grid-template-columns:1fr
-    }
-    .footer-brand{
-        grid-column:auto
-    }
-}
-@media(prefers-reduced-motion:reduce){
-    *,*::before,*::after{
-        scroll-behavior:auto!important;
-        animation-duration:.01ms!important;
-        animation-iteration-count:1!important;
-        transition-duration:.01ms!important
-    }
-}
-
-
-
 
 /* =================================
    TASTY HUB — HOMEPAGE ANIMATIONS
@@ -1336,4 +1085,91 @@ nav a.active::after,
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+}
+
+/* ==========================================
+   TASTY HUB TEXT ANIMATIONS
+   Desktop, Tablet and Mobile
+========================================== */
+
+/* 1. Dancing hero heading */
+
+ .hero-copy h1 {
+    display: inline-block;
+    max-width: 100%;
+    transform-origin: center;
+    animation: heroDance 2.5s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes heroDance {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    20% {
+        transform: translateY(-6px) rotate(-1deg);
+    }
+
+    40% {
+        transform: translateY(0) rotate(1deg);
+    }
+
+    60% {
+        transform: translateY(-4px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translateY(0) rotate(1deg);
+    }
+}
+
+
+/* 2. The Best Food Service In One Place */
+
+ #popular .section-heading h2 {
+    animation: popularHeadingMove 4s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+@keyframes popularHeadingMove {
+    from {
+        transform: translateX(-25px);
+    }
+
+    to {
+        transform: translateX(25px);
+    }
+}
+
+
+/* 3. Explore Our Services */
+
+ #offers .section-heading h2 {
+    animation: servicesHeadingMove 4s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+@keyframes servicesHeadingMove {
+    from {
+        transform: translateX(-25px);
+    }
+
+    to {
+        transform: translateX(25px);
+    }
+}
+
+
+/* 4. Respect reduced-motion preferences */
+
+ @media (prefers-reduced-motion: reduce) {
+    .hero-copy h1,
+    #popular .section-heading h2,
+    #offers .section-heading h2 {
+        animation: none !important;
+        transform: none !important;
+        will-change: auto;
+    }
 }
