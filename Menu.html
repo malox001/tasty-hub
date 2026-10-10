@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore delicious meals on Tasty Hub.">
+    <title>Menu | Tasty Hub</title>
+
+    <!-- Keep your existing Home.css for shared header/footer styling. -->
+    <link rel="stylesheet" href="Home.css">
+    <link rel="stylesheet" href="Menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <!-- Header: keep this consistent with the header on your other pages. -->
+    <header class="site-header">
+        <div class="header-container">
+            <a class="logo" href="/" aria-label="Tasty Hub home">
+                <img src="images/logo.png" alt="Tasty Hub logo">
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="/Home.html">Home</a>
+                <a class="active" href="/Menu.html" aria-current="page">Menu</a>
+                <a href="/categories">Categories</a>
+                <a href="/offers">Offers</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="desktop-search-toggle" type="button" aria-label="Open search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <form class="desktop-search" role="search">
+                    <input type="search" id="menuSearch" placeholder="Search meals..." aria-label="Search meals">
+                    <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <a class="cart-link" href="/cart" aria-label="Shopping cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <a class="account-link" href="/signin">Sign In</a>
+            </div>
+
+            <button class="mobile-menu-toggle" type="button" aria-label="Open navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="menu-hero">
+            <div class="menu-hero-content">
+                <p class="eyebrow">FRESH • TASTY • MADE FOR YOU</p>
+                <h1>Explore Our <span>Menu</span></h1>
+                <p>Discover your favourites, find something new, and get delicious food delivered to you.</p>
+                <a href="#menu-items" class="primary-button">Explore Meals <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="menu-hero-image">
+                <img src="images/menu-hero.png" alt="A delicious selection of food" onerror="this.style.display='none'">
+            </div>
+            <span class="hero-decoration decoration-one"></span>
+            <span class="hero-decoration decoration-two"></span>
+        </section>
+
+        <section class="menu-section" id="menu-items">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">WHAT ARE YOU CRAVING?</p>
+                    <h2>Our Delicious <span>Meals</span></h2>
+                    <p class="section-description">Choose from our popular dishes and enjoy every bite.</p>
+                </div>
+            </div>
+
+            <div class="menu-toolbar">
+                <div class="category-filters" role="group" aria-label="Filter meals by category">
+                    <button class="filter-button active" type="button" data-category="all">All Meals</button>
+                    <button class="filter-button" type="button" data-category="rice">Rice</button>
+                    <button class="filter-button" type="button" data-category="swallow">Swallow</button>
+                    <button class="filter-button" type="button" data-category="snacks">Snacks</button>
+                    <button class="filter-button" type="button" data-category="drinks">Drinks</button>
+                </div>
+                <label class="mobile-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" id="mobileMenuSearch" placeholder="Search meals..." aria-label="Search meals">
+                </label>
+            </div>
+
+            <div class="meal-grid">
+                <article class="meal-card" data-category="rice" data-name="jollof rice chicken">
+                    <div class="meal-image">
+                        <img src="images/jollof-rice.jpg" alt="Jollof rice with chicken" loading="lazy">
+                        <span class="meal-badge">Popular</span>
+                    </div>
+                    <div class="meal-info">
+                        <div class="meal-title-row"><h3>Jollof Rice & Chicken</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.9</span></div>
+                        <p>Smoky party jollof served with juicy chicken.</p>
+                        <div class="meal-bottom"><strong>₦3,500</strong><button class="add-to-cart" type="button" data-name="Jollof Rice & Chicken" data-price="3500" aria-label="Add Jollof Rice and Chicken to cart"><i class="fa-solid fa-plus"></i></button></div>
+                    </div>
+                </article>
+
+                <article class="meal-card" data-category="rice" data-name="fried rice chicken">
+                    <div class="meal-image"><img src="images/fried-rice.jpg" alt="Fried rice with chicken" loading="lazy"></div>
+                    <div class="meal-info">
+                        <div class="meal-title-row"><h3>Fried Rice & Chicken</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.8</span></div>
+                        <p>Colourful vegetable fried rice with tasty chicken.</p>
+                        <div class="meal-bottom"><strong>₦3,800</strong><button class="add-to-cart" type="button" data-name="Fried Rice & Chicken" data-price="3800" aria-label="Add Fried Rice and Chicken to cart"><i class="fa-solid fa-plus"></i></button></div>
+                    </div>
+                </article>
+
+                <article class="meal-card" data-category="swallow" data-name="eba egusi soup">
+                    <div class="meal-image"><img src="images/eba-egusi.jpg" alt="Eba with egusi soup" loading="lazy"></div>
+                    <div class="meal-info">
+                        <div class="meal-title-row"><h3>Eba & Egusi Soup</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.7</span></div>
+                        <p>Classic Nigerian swallow with rich, savoury egusi.</p>
+                        <div class="meal-bottom"><strong>₦3,000</strong><button class="add-to-cart" type="button" data-name="Eba & Egusi Soup" data-price="3000" aria-label="Add Eba and Egusi Soup to cart"><i class="fa-solid fa-plus"></i></button></div>
+                    </div>
+                </article>
+
+                <article class="meal-card" data-category="rice" data-name="white rice stew beef">
+                    <div class="meal-image"><img src="images/white-rice-stew.jpg" alt="White rice with stew and beef" loading="lazy"></div>
+                    <div class="meal-info">
+                        <div class="meal-title-row"><h3>White Rice & Stew</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.6</span></div>
+                        <p>Fluffy rice paired with rich tomato stew and beef.</p>
+                        <div class="meal-bottom"><strong>₦3,200</strong><button class="add-to-cart" type="button" data-name="White Rice & Stew" data-price="3200" aria-label="Add White Rice and Stew to cart"><i class="fa-solid fa-plus"></i></button></div>
+                    </div>
+                </article>
+
+                <article class="meal-card" data-category="snacks" data-name="meat pie">
+                    <div class="meal-image"><img src="images/meat-pie.jpg" alt="Golden meat pie" loading="lazy"></div>
+                    <div class="meal-info">
+                        <div class="meal-title-row"><h3>Meat Pie</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.8</span></div>
+                        <p>A golden, flaky pastry with a savoury filling.</p>
+                        <div class="meal-bottom"><strong>₦800</strong><button class="add-to-cart" type="button" data-name="Meat Pie" data-price="800" aria-label="Add Meat Pie to cart"><i class="fa-solid fa-plus"></i></button></div>
+                    </div>
+                </article>
+
+                <article class="meal-card" data-category="drinks" data-name="fresh orange juice">
+                    <div class="meal-image"><img src="images/orange-juice.jpg" alt="Fresh orange juice" loading="lazy"></div>
+                    <div class="meal-info">
+                        <div class="meal-title-row"><h3>Fresh Orange Juice</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.7</span></div>
+                        <p>A refreshing drink to complete your meal.</p>
+                        <div class="meal-bottom"><strong>₦1,000</strong><button class="add-to-cart" type="button" data-name="Fresh Orange Juice" data-price="1000" aria-label="Add Fresh Orange Juice to cart"><i class="fa-solid fa-plus"></i></button></div>
+                    </div>
+                </article>
+            </div>
+            <p class="no-meals-message" hidden>No meals match your search. Try another name or category.</p>
+        </section>
+
+        <section class="menu-cta">
+            <div>
+                <p class="eyebrow">GOOD FOOD IS JUST A FEW CLICKS AWAY</p>
+                <h2>Hungry? Let's fix that.</h2>
+                <p>Pick your favourite meal and let Tasty Hub take care of the rest.</p>
+            </div>
+            <a href="#menu-items" class="primary-button">Order Now <i class="fa-solid fa-arrow-right"></i></a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a class="logo" href="/" aria-label="Tasty Hub home"><img src="images/logo.png" alt="Tasty Hub logo"></a>
+                <p>Delicious meals, happy moments. Good food made easy with Tasty Hub.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="/">Home</a><a href="/menu">Menu</a><a href="/offers">Offers</a><a href="/about">About Us</a>
+            </div>
+            <div class="footer-links">
+                <h3>Get in Touch</h3>
+                <a href="/contact">Contact Us</a><a href="/signin">My Account</a><a href="/cart">My Cart</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Tasty Hub. All rights reserved.</p></div>
+    </footer>
+
+    <!-- If you already have a shared site-wide script, keep using it as well. -->
+    <script src="Menu.js"></script>
+</body>
+</html>

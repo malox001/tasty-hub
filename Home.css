@@ -1173,3 +1173,316 @@ nav a.active::after,
         will-change: auto;
     }
 }
+
+
+
+
+/* =========================================
+   TASTY HUB — MOBILE RESPONSIVENESS FIX
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    /* Prevent horizontal scrolling */
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Keep sections within the phone width */
+    .section-wrap {
+        width: 100%;
+        max-width: 100%;
+        padding: 45px 16px;
+    }
+
+    /* Section headings */
+    .section-heading {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 28px;
+        text-align: center;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+        line-height: 1.3;
+        overflow-wrap: break-word;
+    }
+
+    .section-heading p {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* FOOD CARDS — ONE COLUMN ON PHONES */
+    .cards {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        gap: 22px;
+        align-items: stretch;
+    }
+
+    .food-card {
+        width: 100%;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    .food-card > img {
+        display: block;
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+    }
+
+    .food-card-content {
+        width: 100%;
+        min-width: 0;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .food-card h3 {
+        min-height: 0;
+        margin: 0 0 10px;
+        font-size: 18px;
+        line-height: 1.45;
+        overflow-wrap: break-word;
+    }
+
+    .food-card p {
+        margin: 0 0 20px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Align prices and cart buttons */
+    .food-card-bottom {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: auto;
+    }
+
+    .price {
+        font-size: 17px;
+        white-space: nowrap;
+    }
+
+    .add-cart {
+        max-width: 100%;
+        padding: 11px 13px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* PRODUCT CARDS */
+    .product-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        gap: 22px;
+    }
+
+    .product-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .product-card > img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+    }
+
+    .product-card-content {
+        width: 100%;
+        min-width: 0;
+        padding: 18px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+        padding: 35px 18px;
+    }
+
+    .hero-copy {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(32px, 9vw, 42px);
+        line-height: 1.15;
+        overflow-wrap: break-word;
+    }
+
+    .hero-visual {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .hero-image-frame {
+        width: 100%;
+        max-width: 100%;
+        transform: none;
+    }
+
+    .hero-image-frame > img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+    }
+
+    /* CHEF SECTION */
+    .chef-container {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+        padding: 16px;
+    }
+
+    .chef-container > img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .chef-text {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* HERO IMAGE BANNER */
+    .video-banner {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .video-banner > img {
+        display: block;
+        width: 100%;
+        height: 340px;
+        object-fit: cover;
+    }
+
+    .overlay {
+        left: 20px;
+        right: 20px;
+        width: auto;
+        max-width: none;
+    }
+
+    .overlay h2 {
+        font-size: clamp(27px, 7.5vw, 36px);
+        line-height: 1.25;
+        overflow-wrap: break-word;
+    }
+
+    /* FOOTER — STACK COLUMNS VERTICALLY */
+    footer {
+        width: 100%;
+        max-width: 100%;
+        padding: 38px 20px 20px;
+        overflow: hidden;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        gap: 28px;
+        padding-bottom: 28px;
+    }
+
+    .footer-brand,
+    .footer-container > div {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .footer-brand img {
+        width: 130px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    footer h4 {
+        margin: 0 0 14px;
+        font-size: 15px;
+    }
+
+    footer p,
+    footer li {
+        font-size: 13px;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    footer ul {
+        padding-left: 0;
+        margin: 0;
+    }
+
+    footer li {
+        margin: 9px 0;
+    }
+
+    /* Footer copyright area */
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        gap: 10px;
+        padding-top: 18px;
+    }
+
+    .footer-bottom p,
+    .footer-bottom a {
+        max-width: 100%;
+        font-size: 11px;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    /* Keep animations from causing horizontal overflow */
+    .hero img {
+        max-width: 100%;
+    }
+
+    .food-card:hover,
+    .product-card:hover {
+        transform: translateY(-3px);
+    }
+}
