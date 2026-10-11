@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Special Offers | Tasty Hub</title>
+
+    <meta name="description" content="Discover delicious food deals and special offers at Tasty Hub. Enjoy your favourite meals at exciting prices.">
+
+    <link rel="stylesheet" href="Offers.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="Offers.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==============================
+         HEADER / NAVIGATION
+    =============================== -->
+
+    <header class="site-header" id="home">
+
+        <nav class="nav-bar">
+
+            <a href="/Home.html" class="brand" aria-label="Tasty Hub Home">
+                <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub Logo">
+            </a>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="/Home.html" class="nav-link">Home</a>
+                </li>
+
+                <li>
+                    <a href="/Menu.html" class="nav-link">Menu</a>
+                </li>
+
+                <li class="category-nav">
+
+                    <button
+                        type="button"
+                        class="nav-link dropdown-toggle"
+                        aria-expanded="false"
+                    >
+                        Categories
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+
+                    <div class="category-dropdown">
+
+                        <a href="/Menu.html?category=rice">Rice Dishes</a>
+                        <a href="/Menu.html">Fast Food</a>
+                        <a href="/Menu.html">Soups</a>
+                        <a href="/Menu.html">Snacks</a>
+                        <a href="/Menu.html">Drinks</a>
+
+                    </div>
+
+                </li>
+
+                <li>
+                    <a href="/Offers.html" class="nav-link active" aria-current="page">
+                        Offers
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/About.html" class="nav-link">About</a>
+                </li>
+
+                <li>
+                    <a href="/Contact.html" class="nav-link">Contact</a>
+                </li>
+
+            </ul>
+
+
+            <div class="nav-actions">
+
+                <button
+                    type="button"
+                    class="icon-button search-toggle"
+                    data-focus-search
+                    aria-label="Open search"
+                    title="Search meals"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button
+                    type="button"
+                    class="location-button"
+                    data-location
+                    aria-label="Set delivery location"
+                >
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Delivery Area</span>
+                </button>
+
+                <a
+                    href="/Favourites.html"
+                    class="icon-button"
+                    aria-label="Favourites"
+                    title="Favourites"
+                >
+                    <i class="fa-regular fa-heart"></i>
+                </a>
+
+                <button
+                    type="button"
+                    class="icon-button"
+                    data-open-cart
+                    aria-label="Open shopping cart"
+                    title="Shopping cart"
+                >
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <div class="account-nav">
+
+                    <button
+                        type="button"
+                        class="icon-button account-toggle"
+                        aria-label="Account menu"
+                        aria-expanded="false"
+                    >
+                        <i class="fa-regular fa-user"></i>
+                    </button>
+
+                    <div class="account-dropdown">
+
+                        <a href="/Login.html">Sign In</a>
+                        <a href="/Register.html">Create Account</a>
+
+                        <hr>
+
+                        <a href="/Profile.html">My Profile</a>
+                        <a href="/Orders.html">My Orders</a>
+                        <a href="/Tracking.html">Track Order</a>
+                        <a href="/Addresses.html">Delivery Addresses</a>
+                        <a href="/Favourites.html">Favourites</a>
+                        <a href="/Settings.html">Settings</a>
+
+                        <hr>
+
+                        <a href="/Logout.html">Log Out</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mobile cart -->
+
+            <button
+                type="button"
+                class="icon-button mobile-cart"
+                data-open-cart
+                aria-label="Open shopping cart"
+            >
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count">0</span>
+            </button>
+
+
+            <!-- Mobile menu toggle -->
+
+            <button
+                type="button"
+                class="icon-button menu-toggle"
+                aria-label="Open navigation menu"
+                aria-controls="mobile-sidebar"
+                aria-expanded="false"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </nav>
+
+
+        <!-- Desktop search -->
+
+        <div class="desktop-search">
+
+            <form id="desktop-search-form">
+
+                <input
+                    type="search"
+                    id="desktop-meal-search"
+                    placeholder="Search for your favourite meals..."
+                    aria-label="Search meals"
+                >
+
+                <button type="submit">
+                    Search Meals
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Mobile search -->
+
+        <div class="mobile-search">
+
+            <form class="search-box" id="mobile-search-form">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="search"
+                    id="meal-search"
+                    placeholder="Search delicious meals..."
+                    aria-label="Search meals"
+                >
+
+                <button type="submit" id="search-submit">
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Mobile category shortcuts -->
+
+        <div class="mobile-category-shortcuts">
+
+            <a href="/Menu.html">All Meals</a>
+            <a href="/Menu.html">Rice</a>
+            <a href="/Menu.html">Fast Food</a>
+            <a href="/Menu.html">Soups</a>
+            <a href="/Menu.html">Drinks</a>
+            <a href="/Offers.html">Offers</a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         MOBILE SIDEBAR
+    =============================== -->
+
+    <div class="sidebar-backdrop" data-close-menu></div>
+
+    <aside
+        class="mobile-sidebar"
+        id="mobile-sidebar"
+        aria-hidden="true"
+    >
+
+        <div class="sidebar-heading">
+
+            <a href="/Home.html">
+                <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub Logo">
+            </a>
+
+            <button
+                type="button"
+                class="icon-button"
+                data-close-menu
+                aria-label="Close navigation menu"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <a href="/Home.html" class="sidebar-link">
+            <i class="fa-solid fa-house"></i> Home
+        </a>
+
+        <a href="/Menu.html" class="sidebar-link">
+            <i class="fa-solid fa-utensils"></i> Menu
+        </a>
+
+        <details>
+
+            <summary>
+                <i class="fa-solid fa-list"></i> Categories
+            </summary>
+
+            <a href="/Menu.html">Rice Dishes</a>
+            <a href="/Menu.html">Fast Food</a>
+            <a href="/Menu.html">Soups</a>
+            <a href="/Menu.html">Snacks</a>
+            <a href="/Menu.html">Drinks</a>
+
+        </details>
+
+        <a href="/Offers.html" class="sidebar-link active" aria-current="page">
+            <i class="fa-solid fa-tags"></i> Special Offers
+        </a>
+
+        <a href="/Orders.html" class="sidebar-link">
+            <i class="fa-solid fa-box"></i> My Orders
+        </a>
+
+        <a href="/About.html" class="sidebar-link">
+            <i class="fa-solid fa-circle-info"></i> About Us
+        </a>
+
+        <a href="/Contact.html" class="sidebar-link">
+            <i class="fa-solid fa-envelope"></i> Contact
+        </a>
+
+        <a href="/Login.html" class="sidebar-link">
+            <i class="fa-solid fa-user"></i> Sign In
+        </a>
+
+    </aside>
+
+
+
+    <!-- ==============================
+         OFFERS HERO
+    =============================== -->
+
+    <main>
+
+        <section class="offers-hero">
+
+            <div class="offers-hero-content">
+
+                <span class="eyebrow">
+                    <i class="fa-solid fa-fire"></i>
+                    TASTY DEALS, BETTER PRICES
+                </span>
+
+                <h1>
+                    Delicious Meals.
+                    <span>Special Prices.</span>
+                </h1>
+
+                <p>
+                    Good food tastes even better when you save.
+                    Explore our special deals and enjoy your favourite
+                    meals without stretching your budget.
+                </p>
+
+                <div class="offers-hero-actions">
+
+                    <a href="#available-offers" class="primary-button">
+                        Explore Offers
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="/Menu.html" class="secondary-button">
+                        View Full Menu
+                    </a>
+
+                </div>
+
+                <div class="offers-trust">
+
+                    <span>
+                        <i class="fa-solid fa-check-circle"></i>
+                        Delicious Meals
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-check-circle"></i>
+                        Special Deals
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-check-circle"></i>
+                        Great Value
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="offers-hero-visual">
+
+                <div class="offers-image-card">
+
+                    <img
+                        src="images/Jollof Rice.jpg"
+                        alt="Delicious Nigerian jollof rice"
+                    >
+
+                    <div class="offers-image-overlay">
+
+                        <span>GOOD FOOD, GREAT VALUE</span>
+
+                        <h3>
+                            Your cravings,
+                            <span>our special deals.</span>
+                        </h3>
+
+                    </div>
+
+                    <div class="floating-deal floating-deal-one">
+                        <i class="fa-solid fa-percent"></i>
+                        <span>Special Deals</span>
+                    </div>
+
+                    <div class="floating-deal floating-deal-two">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Made for Food Lovers</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             OFFER INTRODUCTION
+        =============================== -->
+
+        <section class="offer-intro section-wrap">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    <i class="fa-solid fa-star"></i>
+                    MADE FOR YOUR CRAVINGS
+                </span>
+
+                <h2>
+                    More Flavour.
+                    <span>More Value.</span>
+                </h2>
+
+                <p>
+                    Discover selected meals at special prices.
+                    Choose your favourite deal and add it to your cart.
+                </p>
+
+            </div>
+
+
+            <div class="offer-benefits">
+
+                <article class="benefit-card">
+
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+
+                    <h3>Special Prices</h3>
+
+                    <p>
+                        Enjoy selected meals at prices that give you
+                        more value for your money.
+                    </p>
+
+                </article>
+
+
+                <article class="benefit-card">
+
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+
+                    <h3>Favourite Meals</h3>
+
+                    <p>
+                        Explore familiar favourites and discover
+                        delicious meals for your next order.
+                    </p>
+
+                </article>
+
+
+                <article class="benefit-card">
+
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+
+                    <h3>Easy Ordering</h3>
+
+                    <p>
+                        Add your chosen deals to your shopping cart
+                        and continue when you're ready.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             AVAILABLE OFFERS
+        =============================== -->
+
+        <section class="available-offers section-wrap" id="available-offers">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    <i class="fa-solid fa-bolt"></i>
+                    DON'T MISS OUT
+                </span>
+
+                <h2>
+                    Today's <span>Special Offers</span>
+                </h2>
+
+                <p>
+                    Explore our featured meal deals and find something
+                    delicious for your next meal.
+                </p>
+
+            </div>
+
+
+            <div class="offer-grid">
+
+
+                <!-- OFFER 1 -->
+
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+
+                        <img
+                            src="images/Jollof Rice without Watermark.jpg"
+                            alt="Nigerian jollof rice"
+                            loading="lazy"
+                        >
+
+                        <span class="discount-badge">
+                            SAVE 20%
+                        </span>
+
+                        <span class="offer-label">
+                            SPECIAL DEAL
+                        </span>
+
+                    </div>
+
+
+                    <div class="offer-card-content">
+
+                        <div class="offer-category">
+                            <i class="fa-solid fa-bowl-food"></i>
+                            RICE DISHES
+                        </div>
+
+                        <h3>Jollof Rice & Chicken</h3>
+
+                        <p>
+                            Enjoy flavourful Nigerian jollof rice
+                            paired with delicious chicken.
+                        </p>
+
+                        <div class="offer-price-row">
+
+                            <div class="offer-prices">
+
+                                <span class="old-price">₦5,000</span>
+
+                                <strong class="new-price">₦4,000</strong>
+
+                            </div>
+
+                            <span class="saving-text">
+                                Save ₦1,000
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-cart"
+                            data-name="Jollof Rice & Chicken"
+                            data-price="4000"
+                        >
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- OFFER 2 -->
+
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+
+                        <img
+                            src="images/Fried Rice and Chicken.jpg"
+                            alt="Fried rice served with chicken"
+                            loading="lazy"
+                        >
+
+                        <span class="discount-badge">
+                            SAVE 20%
+                        </span>
+
+                        <span class="offer-label">
+                            MEAL DEAL
+                        </span>
+
+                    </div>
+
+
+                    <div class="offer-card-content">
+
+                        <div class="offer-category">
+                            <i class="fa-solid fa-utensils"></i>
+                            RICE DISHES
+                        </div>
+
+                        <h3>Fried Rice & Chicken</h3>
+
+                        <p>
+                            Enjoy delicious fried rice and chicken
+                            for a satisfying meal.
+                        </p>
+
+                        <div class="offer-price-row">
+
+                            <div class="offer-prices">
+
+                                <span class="old-price">₦4,500</span>
+
+                                <strong class="new-price">₦3,600</strong>
+
+                            </div>
+
+                            <span class="saving-text">
+                                Save ₦900
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-cart"
+                            data-name="Fried Rice & Chicken"
+                            data-price="3600"
+                        >
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- OFFER 3 -->
+
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+
+                        <img
+                            src="images/Eba and Egusi.jpg"
+                            alt="Eba served with egusi soup"
+                            loading="lazy"
+                        >
+
+                        <span class="discount-badge">
+                            SAVE 20%
+                        </span>
+
+                        <span class="offer-label">
+                            LOCAL FAVOURITE
+                        </span>
+
+                    </div>
+
+
+                    <div class="offer-card-content">
+
+                        <div class="offer-category">
+                            <i class="fa-solid fa-fire"></i>
+                            LOCAL DISHES
+                        </div>
+
+                        <h3>Eba & Egusi Soup</h3>
+
+                        <p>
+                            Enjoy a delicious Nigerian classic
+                            with rich and flavourful egusi soup.
+                        </p>
+
+                        <div class="offer-price-row">
+
+                            <div class="offer-prices">
+
+                                <span class="old-price">₦3,500</span>
+
+                                <strong class="new-price">₦2,800</strong>
+
+                            </div>
+
+                            <span class="saving-text">
+                                Save ₦700
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-cart"
+                            data-name="Eba & Egusi Soup"
+                            data-price="2800"
+                        >
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- OFFER 4 -->
+
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+
+                        <img
+                            src="images/Jollof Rice.jpg"
+                            alt="Jollof rice meal deal"
+                            loading="lazy"
+                        >
+
+                        <span class="discount-badge">
+                            SAVE 15%
+                        </span>
+
+                        <span class="offer-label">
+                            TASTY PICK
+                        </span>
+
+                    </div>
+
+
+                    <div class="offer-card-content">
+
+                        <div class="offer-category">
+                            <i class="fa-solid fa-heart"></i>
+                            CUSTOMER FAVOURITE
+                        </div>
+
+                        <h3>Classic Jollof Rice</h3>
+
+                        <p>
+                            A tasty jollof rice option for those
+                            who enjoy a classic Nigerian favourite.
+                        </p>
+
+                        <div class="offer-price-row">
+
+                            <div class="offer-prices">
+
+                                <span class="old-price">₦2,000</span>
+
+                                <strong class="new-price">₦1,700</strong>
+
+                            </div>
+
+                            <span class="saving-text">
+                                Save ₦300
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-cart"
+                            data-name="Classic Jollof Rice"
+                            data-price="1700"
+                        >
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- OFFER 5 -->
+
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+
+                        <img
+                            src="images/Fried Rice and Chicken.jpg"
+                            alt="Fried rice meal"
+                            loading="lazy"
+                        >
+
+                        <span class="discount-badge">
+                            SAVE 15%
+                        </span>
+
+                        <span class="offer-label">
+                            GREAT VALUE
+                        </span>
+
+                    </div>
+
+
+                    <div class="offer-card-content">
+
+                        <div class="offer-category">
+                            <i class="fa-solid fa-plate-wheat"></i>
+                            RICE DISHES
+                        </div>
+
+                        <h3>Classic Fried Rice</h3>
+
+                        <p>
+                            A delicious fried rice option for
+                            your next lunch or dinner.
+                        </p>
+
+                        <div class="offer-price-row">
+
+                            <div class="offer-prices">
+
+                                <span class="old-price">₦2,000</span>
+
+                                <strong class="new-price">₦1,700</strong>
+
+                            </div>
+
+                            <span class="saving-text">
+                                Save ₦300
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-cart"
+                            data-name="Classic Fried Rice"
+                            data-price="1700"
+                        >
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- OFFER 6 -->
+
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+
+                        <img
+                            src="images/Eba and Egusi.jpg"
+                            alt="Egusi soup and swallow"
+                            loading="lazy"
+                        >
+
+                        <span class="discount-badge">
+                            SAVE 15%
+                        </span>
+
+                        <span class="offer-label">
+                            LOCAL DEAL
+                        </span>
+
+                    </div>
+
+
+                    <div class="offer-card-content">
+
+                        <div class="offer-category">
+                            <i class="fa-solid fa-spoon"></i>
+                            LOCAL DISHES
+                        </div>
+
+                        <h3>Egusi Soup Special</h3>
+
+                        <p>
+                            Enjoy the rich taste of egusi soup
+                            as part of your next meal.
+                        </p>
+
+                        <div class="offer-price-row">
+
+                            <div class="offer-prices">
+
+                                <span class="old-price">₦2,500</span>
+
+                                <strong class="new-price">₦2,125</strong>
+
+                            </div>
+
+                            <span class="saving-text">
+                                Save ₦375
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-cart"
+                            data-name="Egusi Soup Special"
+                            data-price="2125"
+                        >
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <div class="offers-note">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <p>
+                    Prices shown are sample prices for the website layout.
+                    Confirm your actual menu prices and available promotions
+                    before publishing these offers.
+                </p>
+
+            </div>
+
+
+            <div class="offers-bottom-action">
+
+                <h3>Still exploring?</h3>
+
+                <p>
+                    Discover more meals on our full menu.
+                </p>
+
+                <a href="/Menu.html" class="primary-button">
+                    Explore Full Menu
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             FINAL CALL TO ACTION
+        =============================== -->
+
+        <section class="offer-cta">
+
+            <div class="offer-cta-content">
+
+                <span class="eyebrow">
+                    GOOD FOOD IS ALWAYS A GOOD IDEA
+                </span>
+
+                <h2>
+                    Your Next Favourite Meal
+                    <span>Is Waiting.</span>
+                </h2>
+
+                <p>
+                    Explore delicious meals, choose your favourites,
+                    and enjoy a tasty experience with Tasty Hub.
+                </p>
+
+                <a href="/Menu.html" class="primary-button">
+                    Order Your Favourite
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <footer id="contact">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="/Home.html" aria-label="Tasty Hub Home">
+                    <img
+                        src="images/Tasty Hub Identity 2.png"
+                        alt="Tasty Hub Logo"
+                    >
+                </a>
+
+                <p>
+                    Delicious meals, memorable moments.
+                    Discover great food and make every meal count.
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:tastymeals@tastyhub.com">
+                        tastymeals@tastyhub.com
+                    </a>
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+234800000000">
+                        +234 8000 0000
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>Company</h4>
+
+                <ul>
+                    <li><a href="/About.html">About Us</a></li>
+                    <li><a href="/Menu.html">Our Menu</a></li>
+                    <li><a href="/Offers.html">Special Offers</a></li>
+                    <li><a href="/Contact.html">Contact Us</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Locations</h4>
+
+                <ul>
+                    <li><a href="/Contact.html">Delivery Areas</a></li>
+                    <li><a href="/Contact.html">Find Us</a></li>
+                    <li><a href="/Contact.html">Get in Touch</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Customer Service</h4>
+
+                <ul>
+                    <li><a href="/Orders.html">My Orders</a></li>
+                    <li><a href="/Tracking.html">Track Order</a></li>
+                    <li><a href="/Login.html">My Account</a></li>
+                    <li><a href="/Contact.html">Help & Support</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="current-year"></span> Tasty Hub.
+                All rights reserved.
+            </p>
+
+            <a href="/Offers.html">Discover our special offers</a>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ==============================
+         TOAST NOTIFICATION
+    =============================== -->
+
+    <div
+        class="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+</body>
+</html>
