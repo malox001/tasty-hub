@@ -9,45 +9,93 @@
     <!-- Keep your existing Home.css for shared header/footer styling. -->
     <link rel="stylesheet" href="Home.css">
     <link rel="stylesheet" href="Menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <!-- Header: keep this consistent with the header on your other pages. -->
-    <header class="site-header">
-        <div class="header-container">
-            <a class="logo" href="/" aria-label="Tasty Hub home">
-                <img src="images/logo.png" alt="Tasty Hub logo">
-            </a>
+    <header class="site-header" id="menu-top">
+      <nav class="nav-bar" aria-label="Main navigation">
+        <a class="brand" href="/Home.html" aria-label="Tasty Hub home">
+          <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub logo">
+        </a>
 
-            <nav class="main-nav" aria-label="Main navigation">
-                <a href="/Home.html">Home</a>
-                <a class="active" href="/Menu.html" aria-current="page">Menu</a>
-                <a href="/categories">Categories</a>
-                <a href="/offers">Offers</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-            </nav>
+        <button class="mobile-cart icon-button" type="button" aria-label="Open cart" data-open-cart>
+          <i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span>
+        </button>
+        <button class="menu-toggle icon-button" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
 
-            <div class="header-actions">
-                <button class="desktop-search-toggle" type="button" aria-label="Open search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <form class="desktop-search" role="search">
-                    <input type="search" id="menuSearch" placeholder="Search meals..." aria-label="Search meals">
-                    <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-                <a class="cart-link" href="/cart" aria-label="Shopping cart">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-count">0</span>
-                </a>
-                <a class="account-link" href="/signin">Sign In</a>
+        <ul class="nav-links">
+          <li><a class="nav-link" href="/Home.html">Home</a></li>
+          <li><a class="nav-link active" href="/Menu.html" aria-current="page">Menu</a></li>
+          <li class="category-nav">
+            <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">Categories <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="category-dropdown">
+              <a href="/Menu.html?category=rice">Rice dishes</a>
+              <a href="/Menu.html?category=fast-food">Fast food</a>
+              <a href="/Menu.html?category=soups">Soups & swallows</a>
+              <a href="/Menu.html?category=snacks">Snacks</a>
+              <a href="/Menu.html?category=drinks">Drinks</a>
             </div>
+          </li>
+          <li><a class="nav-link" href="/Offers.html">Offers</a></li>
+          <li><a class="nav-link" href="/About.html">About Us</a></li>
+          <li><a class="nav-link" href="/Contact.html">Contact</a></li>
+        </ul>
 
-            <button class="mobile-menu-toggle" type="button" aria-label="Open navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+        <div class="nav-actions">
+          <button class="icon-button" type="button" aria-label="Search meals" data-focus-search><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="location-button" type="button" data-location><i class="fa-solid fa-location-dot"></i><span>Delivery location</span></button>
+          <a class="icon-button" href="/favorites" aria-label="Favorites"><i class="fa-regular fa-heart"></i></a>
+          <button class="icon-button cart-button" type="button" aria-label="Open cart" data-open-cart><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
+          <div class="account-nav">
+            <button class="icon-button account-toggle" type="button" aria-label="Account menu" aria-expanded="false"><i class="fa-regular fa-user"></i></button>
+            <div class="account-dropdown">
+              <a href="/login">Sign in</a><a href="/register">Create account</a><hr>
+              <a href="/profile">My Profile</a><a href="/orders">My Orders</a><a href="/tracking">Order Tracking</a><a href="/addresses">Saved Addresses</a><a href="/favorites">Favorites</a><a href="/settings">Settings</a><a href="/logout">Logout</a>
+            </div>
+          </div>
         </div>
+      </nav>
+
+      <div class="desktop-search">
+        <form id="search-form" role="search">
+          <input type="search" id="desktop-meal-search" placeholder="Search for meals..." aria-label="Search for meals">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+
+      <div class="mobile-search">
+        <label class="search-box">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="meal-search" type="search" placeholder="Search meals and dishes..." aria-label="Search meals">
+          <button type="button" id="search-submit">Search</button>
+        </label>
+      </div>
+
+      <div class="mobile-category-shortcuts" aria-label="Popular categories">
+        <a href="/Menu.html?category=rice">Rice</a><a href="/Menu.html?category=fast-food">Fast Food</a><a href="/Menu.html?category=soups">Soups</a><a href="/Menu.html?category=snacks">Snacks</a><a href="/Menu.html?category=drinks">Drinks</a><a href="/Offers.html">Deals</a>
+      </div>
     </header>
+
+    <div class="sidebar-backdrop" data-close-menu></div>
+    <aside class="mobile-sidebar" id="mobile-sidebar" aria-label="Mobile navigation" aria-hidden="true">
+      <div class="sidebar-heading">
+        <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub logo">
+        <button class="icon-button" type="button" aria-label="Close navigation menu" data-close-menu><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <a class="sidebar-link" href="/Home.html">Home</a>
+      <a class="sidebar-link active" href="/Menu.html" aria-current="page">Menu / Shop</a>
+      <details>
+        <summary>Categories</summary>
+        <a href="/Menu.html?category=rice">Rice dishes</a><a href="/Menu.html?category=fast-food">Fast food</a><a href="/Menu.html?category=soups">Soups & swallows</a><a href="/Menu.html?category=snacks">Snacks</a><a href="/Menu.html?category=drinks">Drinks</a>
+      </details>
+      <a class="sidebar-link" href="/Offers.html">Offers / Deals</a><a class="sidebar-link" href="/orders">My Orders</a><a class="sidebar-link" href="/About.html">About Us</a><a class="sidebar-link" href="/Contact.html">Contact Us</a><a class="sidebar-link" href="/login">Login / Profile</a><a class="sidebar-link" href="/favorites">Favorites</a>
+    </aside>
 
     <main>
         <section class="menu-hero">
@@ -81,7 +129,7 @@
                     <button class="filter-button" type="button" data-category="snacks">Snacks</button>
                     <button class="filter-button" type="button" data-category="drinks">Drinks</button>
                 </div>
-                <label class="mobile-search">
+                <label class="menu-mobile-search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="search" id="mobileMenuSearch" placeholder="Search meals..." aria-label="Search meals">
                 </label>
@@ -90,7 +138,7 @@
             <div class="meal-grid">
                 <article class="meal-card" data-category="rice" data-name="jollof rice chicken">
                     <div class="meal-image">
-                        <img src="images/jollof-rice.jpg" alt="Jollof rice with chicken" loading="lazy">
+                        <img src="images/Jollof Rice without Watermark.jpg" alt="Jollof rice with chicken" loading="lazy">
                         <span class="meal-badge">Popular</span>
                     </div>
                     <div class="meal-info">
@@ -101,7 +149,7 @@
                 </article>
 
                 <article class="meal-card" data-category="rice" data-name="fried rice chicken">
-                    <div class="meal-image"><img src="images/fried-rice.jpg" alt="Fried rice with chicken" loading="lazy"></div>
+                    <div class="meal-image"><img src="images/Fried Rice and Chicken.jpg" alt="Fried rice with chicken" loading="lazy"></div>
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>Fried Rice & Chicken</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.8</span></div>
                         <p>Colourful vegetable fried rice with tasty chicken.</p>
@@ -110,7 +158,7 @@
                 </article>
 
                 <article class="meal-card" data-category="swallow" data-name="eba egusi soup">
-                    <div class="meal-image"><img src="images/eba-egusi.jpg" alt="Eba with egusi soup" loading="lazy"></div>
+                    <div class="meal-image"><img src="images/Eba and Egusi.jpg" alt="Eba with egusi soup" loading="lazy"></div>
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>Eba & Egusi Soup</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.7</span></div>
                         <p>Classic Nigerian swallow with rich, savoury egusi.</p>
@@ -119,7 +167,7 @@
                 </article>
 
                 <article class="meal-card" data-category="rice" data-name="white rice stew beef">
-                    <div class="meal-image"><img src="images/white-rice-stew.jpg" alt="White rice with stew and beef" loading="lazy"></div>
+                    <div class="meal-image"><img src="images/Local Rice Dish.jpg" alt="White rice with stew and beef" loading="lazy"></div>
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>White Rice & Stew</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.6</span></div>
                         <p>Fluffy rice paired with rich tomato stew and beef.</p>
@@ -128,7 +176,7 @@
                 </article>
 
                 <article class="meal-card" data-category="snacks" data-name="meat pie">
-                    <div class="meal-image"><img src="images/meat-pie.jpg" alt="Golden meat pie" loading="lazy"></div>
+                    <div class="meal-image"><img src="images/photo-output-20.jpg" alt="Golden meat pie" loading="lazy"></div>
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>Meat Pie</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.8</span></div>
                         <p>A golden, flaky pastry with a savoury filling.</p>
@@ -137,7 +185,7 @@
                 </article>
 
                 <article class="meal-card" data-category="drinks" data-name="fresh orange juice">
-                    <div class="meal-image"><img src="images/orange-juice.jpg" alt="Fresh orange juice" loading="lazy"></div>
+                    <div class="meal-image"><img src="images/This_Image_should_have_condensation_202606290217.jpeg" alt="Fresh orange juice" loading="lazy"></div>
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>Fresh Orange Juice</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.7</span></div>
                         <p>A refreshing drink to complete your meal.</p>
@@ -161,12 +209,12 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <a class="logo" href="/" aria-label="Tasty Hub home"><img src="images/logo.png" alt="Tasty Hub logo"></a>
+                <a class="logo" href="/" aria-label="Tasty Hub home"><img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub logo"></a>
                 <p>Delicious meals, happy moments. Good food made easy with Tasty Hub.</p>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
-                <a href="/">Home</a><a href="/menu">Menu</a><a href="/offers">Offers</a><a href="/about">About Us</a>
+                <a href="/Home.html">Home</a><a href="/Menu.html">Menu</a><a href="/Offers.html">Offers</a><a href="/About.html">About Us</a>
             </div>
             <div class="footer-links">
                 <h3>Get in Touch</h3>
@@ -177,6 +225,7 @@
     </footer>
 
     <!-- If you already have a shared site-wide script, keep using it as well. -->
-    <script src="Menu.js"></script>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="Menu.js" defer></script>
 </body>
 </html>
