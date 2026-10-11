@@ -98,7 +98,7 @@ if ('IntersectionObserver' in window) {
 
     const slides = [
         {
-            src: "images/Jollof Rice.jpg",
+            src: "images/Yummy.jpg",
             alt: "A delicious plate of jollof rice"
         },
         {

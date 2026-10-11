@@ -1,15 +1,21 @@
-/* =========================================
+/* =====================================
    TASTY HUB ABOUT PAGE
-========================================= */
+===================================== */
 
 :root {
-    --about-orange: #ff4400;
-    --about-orange-dark: #e63e00;
-    --about-ink: #211b18;
-    --about-muted: #706963;
-    --about-cream: #fff7f2;
-    --about-line: #f0e5df;
-    --about-shadow: 0 18px 50px rgba(48, 27, 14, 0.09);
+    --orange: #ff4400;
+    --orange-dark: #e63e00;
+    --ink: #211b18;
+    --muted: #706963;
+    --cream: #fff7f2;
+    --line: #f0e5df;
+    --shadow: 0 14px 40px rgba(48, 27, 14, 0.09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -19,18 +25,24 @@ html {
 
 body {
     font-family: "Poppins", sans-serif;
-    color: var(--about-ink);
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-body,
-button,
-input {
-    font-family: "Poppins", sans-serif;
+body.menu-open {
+    overflow: hidden;
 }
 
 a {
+    color: inherit;
     text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
 }
 
 button {
@@ -38,1275 +50,1182 @@ button {
 }
 
 img {
+    display: block;
     max-width: 100%;
 }
 
-main {
-    overflow: hidden;
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(255, 68, 0, 0.35);
+    outline-offset: 4px;
 }
 
-.section-padding {
-    padding: 105px clamp(22px, 7vw, 110px);
+::selection {
+    color: #fff;
+    background: var(--orange);
 }
 
-.about-eyebrow,
-.section-eyebrow {
+
+/* =====================================
+   HEADER AND NAVIGATION
+===================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid var(--line);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+}
+
+.nav-bar {
+    max-width: 1440px;
+    min-height: 86px;
+    padding: 12px 4.5%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.brand {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.brand img {
+    width: 118px;
+    height: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+}
+
+.nav-link {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    color: var(--about-orange);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
+    gap: 7px;
+    padding: 12px 0;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.25s ease;
 }
 
-.about-eyebrow .eyebrow-line,
-.section-eyebrow > span {
-    display: inline-block;
-    width: 30px;
-    height: 2px;
-    background: var(--about-orange);
-}
-
-
-/* =========================================
-   NAVIGATION ENHANCEMENTS
-========================================= */
-
-.nav-links a.active {
-    color: var(--about-orange);
-}
-
-.nav-links a.active::after {
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 0;
     width: 100%;
+    height: 2px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
-.sidebar-links a.active {
-    color: var(--about-orange);
-    background: rgba(255, 68, 0, 0.07);
-    border-radius: 10px;
+.nav-link:hover,
+.nav-link.active {
+    color: var(--orange);
 }
 
-.about-hero,
-.about-story,
-.why-tasty,
-.mission-vision,
-.food-experience,
-.about-cta {
-    scroll-margin-top: 100px;
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-link i {
+    font-size: 10px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-button {
+    position: relative;
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--ink);
+    background: #fff;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.icon-button:hover {
+    color: #fff;
+    background: var(--orange);
+    border-color: var(--orange);
+    transform: translateY(-2px);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    color: #fff;
+    background: var(--orange);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.location-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 11px;
+    white-space: nowrap;
+    transition: 0.25s ease;
+}
+
+.location-button i {
+    color: var(--orange);
+}
+
+.location-button:hover {
+    border-color: var(--orange);
+}
+
+.category-nav,
+.account-nav {
+    position: relative;
+}
+
+.category-dropdown,
+.account-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 120;
+    min-width: 210px;
+    padding: 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: 0.25s ease;
+}
+
+.category-dropdown a,
+.account-dropdown a {
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--ink);
+    font-size: 12px;
+    transition: 0.2s ease;
+}
+
+.category-dropdown a:hover,
+.account-dropdown a:hover {
+    color: var(--orange);
+    background: var(--cream);
+}
+
+.category-nav:hover .category-dropdown,
+.category-nav.open .category-dropdown,
+.account-nav:hover .account-dropdown,
+.account-nav.open .account-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.account-dropdown {
+    right: 0;
+    left: auto;
+    min-width: 185px;
+}
+
+.account-dropdown i {
+    width: 19px;
+    color: var(--orange);
+}
+
+.desktop-search {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 5%;
+    z-index: 130;
+    width: min(460px, 90%);
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: 0.25s ease;
+}
+
+.desktop-search.search-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.desktop-search form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.desktop-search form > i {
+    padding-left: 6px;
+    color: var(--orange);
+}
+
+.desktop-search input {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 12px;
+}
+
+.desktop-search form button {
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    background: var(--orange);
+    font-size: 12px;
+    transition: background 0.2s ease;
+}
+
+.desktop-search form button:hover {
+    background: var(--orange-dark);
+}
+
+.mobile-search,
+.mobile-shortcuts,
+.menu-toggle,
+.cart-mobile,
+.mobile-sidebar,
+.menu-backdrop {
+    display: none;
 }
 
 
-/* =========================================
-   HERO SECTION
-========================================= */
+/* =====================================
+   GENERAL SECTION STYLING
+===================================== */
+
+.section-wrap {
+    width: min(1180px, 90%);
+    margin: 0 auto;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+
+.eyebrow i {
+    font-size: 13px;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 48px;
+}
+
+.section-heading.centered {
+    text-align: center;
+}
+
+.section-heading h2,
+.story-content h2,
+.chef-content h2 {
+    margin-top: 12px;
+    font-size: clamp(28px, 3.3vw, 43px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -1.3px;
+}
+
+.section-heading h2 span,
+.story-content h2 span,
+.chef-content h2 span {
+    color: var(--orange);
+}
+
+.section-heading > p {
+    max-width: 610px;
+    margin: 15px auto 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.btn-primary,
+.btn-secondary,
+.cta-button {
+    min-height: 49px;
+    padding: 13px 21px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 600;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.btn-primary {
+    color: #fff;
+    background: var(--orange);
+    box-shadow: 0 9px 22px rgba(255, 68, 0, 0.18);
+}
+
+.btn-primary:hover,
+.cta-button:hover {
+    background: var(--orange-dark);
+    box-shadow: 0 12px 25px rgba(255, 68, 0, 0.23);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: #fff;
+}
+
+.btn-secondary:hover {
+    color: var(--orange);
+    border-color: var(--orange);
+    transform: translateY(-3px);
+}
+
+
+/* =====================================
+   ABOUT HERO
+===================================== */
 
 .about-hero {
     position: relative;
-    isolation: isolate;
-    min-height: 650px;
-    background:
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(255, 112, 48, 0.10),
-            transparent 30%
-        ),
-        linear-gradient(135deg, #fffaf7 0%, #fff1e8 100%);
-    overflow: hidden;
-}
-
-.about-hero-inner {
-    position: relative;
-    z-index: 2;
-    width: min(1440px, 100%);
-    min-height: 650px;
-    margin: auto;
-    padding: 70px clamp(22px, 7vw, 110px);
+    min-height: 610px;
+    padding: 76px 7%;
     display: grid;
-    grid-template-columns: 1fr 0.95fr;
+    grid-template-columns: 1.03fr 0.97fr;
     align-items: center;
     gap: 65px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(255, 120, 65, 0.12), transparent 30%),
+        linear-gradient(115deg, #fffaf7 0%, #fff 60%, #fff5ee 100%);
 }
 
-.about-hero-copy {
-    animation: aboutHeroEnter 0.9s ease both;
+.about-hero::before {
+    content: "";
+    position: absolute;
+    top: -130px;
+    right: -90px;
+    width: 360px;
+    height: 360px;
+    border: 1px solid rgba(255, 68, 0, 0.12);
+    border-radius: 50%;
 }
 
-.about-hero-copy h1 {
-    margin: 23px 0;
-    font-size: clamp(43px, 5.1vw, 74px);
-    line-height: 1.12;
-    font-weight: 800;
-    letter-spacing: -3px;
-}
-
-.about-hero-copy h1 span {
-    display: inline-block;
-    color: var(--about-orange);
+.about-hero-content,
+.about-hero-visual {
     position: relative;
+    z-index: 1;
 }
 
-.about-hero-copy > p {
+.about-hero-content {
+    max-width: 600px;
+}
+
+.about-hero h1 {
+    margin: 20px 0;
+    font-size: clamp(39px, 5vw, 66px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -2.5px;
+}
+
+.about-hero h1 span {
+    color: var(--orange);
+}
+
+.about-hero-content > p {
     max-width: 520px;
-    margin-bottom: 29px;
-    color: var(--about-muted);
+    color: var(--muted);
     font-size: 14px;
     line-height: 2;
 }
 
-.hero-buttons,
-.cta-buttons {
+.hero-buttons {
+    margin-top: 28px;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 14px;
+    gap: 12px;
 }
 
-.about-primary-btn,
-.about-secondary-btn,
-.experience-button {
-    min-height: 52px;
-    padding: 0 23px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 13px;
-    border-radius: 9px;
-    font-size: 12px;
-    font-weight: 700;
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+.hero-highlights {
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
 }
 
-.about-primary-btn {
-    color: #fff;
-    background: var(--about-orange);
-    box-shadow: 0 10px 25px rgba(255, 68, 0, 0.19);
-}
-
-.about-primary-btn:hover,
-.experience-button:hover {
-    background: var(--about-orange-dark);
-    transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(255, 68, 0, 0.23);
-}
-
-.about-primary-btn i,
-.about-secondary-btn i,
-.experience-button i,
-.story-link i,
-.mission-link i {
-    transition: transform 0.3s ease;
-}
-
-.about-primary-btn:hover i,
-.experience-button:hover i,
-.story-link:hover i,
-.mission-link:hover i {
-    transform: translateX(5px);
-}
-
-.about-secondary-btn {
-    color: var(--about-ink);
-    border: 1px solid #e7d8ce;
-    background: rgba(255, 255, 255, 0.65);
-}
-
-.about-secondary-btn i {
-    font-size: 10px;
-    color: var(--about-orange);
-}
-
-.about-secondary-btn:hover {
-    background: #fff;
-    border-color: var(--about-orange);
-    transform: translateY(-3px);
-}
-
-.hero-note {
+.hero-highlights > div {
     display: flex;
     align-items: center;
-    gap: 13px;
-    margin-top: 34px;
-    color: var(--about-muted);
-    font-size: 11px;
-    line-height: 1.8;
+    gap: 7px;
+    color: #5e544e;
+    font-size: 10px;
+    font-weight: 500;
 }
 
-.hero-note strong {
-    color: var(--about-ink);
-    font-weight: 700;
+.hero-highlights i {
+    color: var(--orange);
+    font-size: 13px;
 }
-
-.note-icon {
-    width: 43px;
-    height: 43px;
-    display: grid;
-    place-items: center;
-    color: var(--about-orange);
-    background: #ffe4d7;
-    border-radius: 50%;
-    animation: aboutHeartBeat 2s ease-in-out infinite;
-}
-
-
-/* Hero Visual */
 
 .about-hero-visual {
-    min-width: 0;
-    min-height: 480px;
-    position: relative;
-    display: grid;
-    place-items: center;
-    animation: aboutVisualEnter 1s ease both;
-    animation-delay: 0.15s;
-}
-
-.visual-ring {
-    position: absolute;
-    width: 390px;
-    height: 390px;
-    border: 1px dashed rgba(255, 68, 0, 0.26);
-    border-radius: 50%;
-    animation: aboutRotate 35s linear infinite;
-}
-
-.visual-ring-two {
-    width: 320px;
-    height: 320px;
-    border-style: solid;
-    border-color: rgba(255, 68, 0, 0.10);
-    animation-direction: reverse;
-    animation-duration: 45s;
-}
-
-.hero-food-frame {
-    position: relative;
-    z-index: 2;
-    width: min(100%, 390px);
-    padding: 13px;
-    background: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 24px;
-    box-shadow: 0 30px 80px rgba(83, 43, 18, 0.17);
-    transform: rotate(-3deg);
-    animation: aboutFoodFloat 5s ease-in-out infinite;
-}
-
-.food-frame-top,
-.food-frame-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.food-frame-top {
-    min-height: 37px;
-    padding: 0 5px 10px;
-    font-size: 8px;
-    letter-spacing: 1.5px;
-    font-weight: 800;
-    color: var(--about-muted);
-}
-
-.food-live-dot {
-    width: 7px;
-    height: 7px;
-    flex-shrink: 0;
-    margin-right: -4px;
-    background: #43b76a;
-    border-radius: 50%;
-    box-shadow: 0 0 0 5px rgba(67, 183, 106, 0.13);
-    animation: aboutDotPulse 1.8s ease-in-out infinite;
-}
-
-.about-hero-image {
-    display: block;
     width: 100%;
-    height: 285px;
+    max-width: 500px;
+    margin: auto;
+    padding: 15px;
+}
+
+.hero-image-card {
+    position: relative;
+    padding: 10px;
+    border: 1px solid rgba(255, 68, 0, 0.1);
+    border-radius: 32px;
+    background: #fff;
+    box-shadow: 0 28px 70px rgba(70, 36, 17, 0.13);
+    transform: rotate(2deg);
+    transition: transform 0.4s ease;
+}
+
+.hero-image-card:hover {
+    transform: rotate(0) translateY(-5px);
+}
+
+.hero-image-card > img {
+    width: 100%;
+    height: 390px;
+    border-radius: 24px;
     object-fit: cover;
-    border-radius: 16px;
-    transition: transform 0.6s ease;
 }
 
-.hero-food-frame:hover .about-hero-image {
-    transform: scale(1.025);
-}
-
-.food-frame-bottom {
-    min-height: 53px;
-    padding: 10px 7px 0;
-    font-size: 11px;
-    color: var(--about-muted);
-}
-
-.food-frame-bottom strong {
-    color: var(--about-ink);
-}
-
-.food-frame-bottom i {
-    width: 31px;
-    height: 31px;
-    display: grid;
-    place-items: center;
-    color: var(--about-orange);
-    background: #fff0e9;
-    border-radius: 50%;
-}
-
-.floating-label {
+.image-label {
     position: absolute;
-    z-index: 4;
+    right: 22px;
+    bottom: 22px;
+    left: 22px;
+    padding: 15px;
     display: flex;
     align-items: center;
-    gap: 9px;
-    padding: 12px 15px;
-    background: #fff;
-    border: 1px solid #f6e8df;
-    border-radius: 11px;
-    box-shadow: var(--about-shadow);
-    color: var(--about-ink);
-    font-size: 10px;
-    font-weight: 700;
-    animation: aboutBadgeFloat 4s ease-in-out infinite;
+    gap: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.floating-label i {
-    color: var(--about-orange);
-    font-size: 14px;
-}
-
-.label-fresh {
-    top: 60px;
-    left: -8px;
-}
-
-.label-love {
-    right: -4px;
-    bottom: 72px;
-    animation-delay: -2s;
-}
-
-.floating-food {
-    position: absolute;
-    z-index: 3;
+.label-icon {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
     display: grid;
     place-items: center;
-    width: 49px;
-    height: 49px;
-    border-radius: 16px;
-    font-size: 20px;
-    animation: aboutBadgeFloat 4.5s ease-in-out infinite;
-}
-
-.floating-food-one {
-    top: 40px;
-    right: 52px;
+    border-radius: 12px;
     color: #fff;
-    background: var(--about-orange);
-    transform: rotate(12deg);
+    background: var(--orange);
 }
 
-.floating-food-two {
-    bottom: 45px;
-    left: 35px;
-    color: #5d8b2e;
-    background: #e9f4db;
-    animation-delay: -2.5s;
-    transform: rotate(-12deg);
+.image-label strong {
+    display: block;
+    font-size: 12px;
+}
+
+.image-label p {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 10px;
 }
 
 .hero-sticker {
     position: absolute;
-    z-index: 5;
-    bottom: 15px;
-    right: 25px;
-    width: 91px;
-    height: 91px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #ffd84d;
-    color: var(--about-ink);
-    border: 4px solid #fff;
-    border-radius: 50%;
-    outline: 1px dashed #d2a51b;
-    outline-offset: -10px;
-    transform: rotate(11deg);
-    animation: aboutStickerSpin 10s ease-in-out infinite;
-}
-
-.hero-sticker span {
-    font-size: 7px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.hero-sticker strong {
-    font-size: 18px;
-    line-height: 1.2;
-}
-
-.hero-orb {
-    position: absolute;
-    z-index: -1;
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.hero-orb-one {
-    width: 280px;
-    height: 280px;
-    top: -130px;
-    right: -65px;
-    background: rgba(255, 68, 0, 0.08);
-}
-
-.hero-orb-two {
-    width: 180px;
-    height: 180px;
-    bottom: 20px;
-    left: -90px;
-    background: rgba(255, 199, 89, 0.18);
-}
-
-.hero-spark {
-    position: absolute;
-    z-index: 1;
-    color: var(--about-orange);
-    animation: aboutSparkle 3s ease-in-out infinite;
-}
-
-.hero-spark-one {
-    top: 17%;
-    left: 45%;
-    font-size: 24px;
-}
-
-.hero-spark-two {
-    bottom: 20%;
-    right: 5%;
-    font-size: 35px;
-    animation-delay: -1.5s;
-}
-
-.hero-bottom-line {
-    min-height: 48px;
-    padding: 0 clamp(22px, 7vw, 110px);
+    z-index: 2;
+    padding: 11px 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    border-top: 1px solid rgba(100, 64, 42, 0.09);
-    color: #8d7a6e;
-    font-size: 8px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.hero-bottom-center {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: var(--about-orange);
-    font-size: 6px;
-}
-
-
-/* =========================================
-   OUR STORY
-========================================= */
-
-.about-story {
-    display: grid;
-    grid-template-columns: 0.95fr 1fr;
-    align-items: center;
-    gap: clamp(40px, 7vw, 100px);
+    gap: 8px;
+    border: 1px solid var(--line);
+    border-radius: 50px;
     background: #fff;
+    box-shadow: var(--shadow);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.hero-sticker i {
+    color: var(--orange);
+}
+
+.sticker-top {
+    top: 25px;
+    right: -7px;
+    animation: stickerFloat 4s ease-in-out infinite;
+}
+
+.sticker-bottom {
+    bottom: 27px;
+    left: -12px;
+    animation: stickerFloat 4.5s ease-in-out infinite reverse;
+}
+
+@keyframes stickerFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =====================================
+   OUR STORY
+===================================== */
+
+.story-section {
+    padding-top: 110px;
+    padding-bottom: 110px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 90px;
 }
 
 .story-visual {
-    min-height: 440px;
     position: relative;
-    display: grid;
-    place-items: center;
+    min-height: 435px;
 }
 
-.story-image-backdrop {
-    position: absolute;
-    inset: 25px 35px 20px 5px;
-    background: #ffe7d8;
-    border-radius: 30px;
-    transform: rotate(-5deg);
+.story-image-main {
+    width: 83%;
+    height: 365px;
+    overflow: hidden;
+    border-radius: 23px;
+    box-shadow: var(--shadow);
 }
 
-.story-image {
-    position: relative;
-    z-index: 1;
+.story-image-main img,
+.story-image-small img {
     width: 100%;
-    height: 380px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 24px;
-    box-shadow: var(--about-shadow);
-    transition: transform 0.5s ease;
+    transition: transform 0.6s ease;
 }
 
-.story-visual:hover .story-image {
-    transform: translateY(-6px) rotate(1deg);
+.story-image-main:hover img,
+.story-image-small:hover img {
+    transform: scale(1.05);
 }
 
-.story-image-label {
+.story-image-small {
     position: absolute;
-    z-index: 2;
-    left: -20px;
-    bottom: 28px;
+    right: 0;
+    bottom: 0;
+    width: 49%;
+    height: 210px;
+    padding: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: var(--shadow);
+}
+
+.story-image-small img {
+    border-radius: 13px;
+}
+
+.story-note {
+    position: absolute;
+    top: 22px;
+    right: 3px;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    background: #fff;
-    border: 1px solid var(--about-line);
-    border-radius: 13px;
-    box-shadow: var(--about-shadow);
-}
-
-.story-label-icon {
-    width: 43px;
-    height: 43px;
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    color: #fff;
-    background: var(--about-orange);
+    gap: 9px;
     border-radius: 12px;
+    color: var(--ink);
+    background: #fff;
+    box-shadow: var(--shadow);
+    font-size: 10px;
+    font-weight: 600;
 }
 
-.story-image-label strong,
-.story-image-label span:not(.story-label-icon) {
-    display: block;
+.story-note i {
+    color: var(--orange);
 }
 
-.story-image-label strong {
-    margin-bottom: 3px;
-    font-size: 11px;
+.story-content h2 {
+    margin-bottom: 20px;
 }
 
-.story-image-label div span {
-    color: var(--about-muted);
-    font-size: 9px;
-}
-
-.story-decor {
-    position: absolute;
-    z-index: 2;
-    color: var(--about-orange);
-}
-
-.story-decor-one {
-    top: 10px;
-    right: 4px;
-    font-size: 45px;
-    animation: aboutRotate 15s linear infinite;
-}
-
-.story-decor-two {
-    left: 10px;
-    bottom: 25px;
-    font-size: 27px;
-    animation: aboutSparkle 2.5s ease-in-out infinite;
-}
-
-.story-copy h2,
-.section-heading h2,
-.mission-copy h2,
-.vision-copy h2,
-.experience-copy h2,
-.cta-content h2 {
-    margin: 18px 0;
-    font-size: clamp(30px, 3.4vw, 46px);
-    line-height: 1.25;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-}
-
-.story-copy h2 span,
-.section-heading h2 span,
-.mission-copy h2 span,
-.vision-copy h2 span,
-.experience-copy h2 span,
-.cta-content h2 span {
-    color: var(--about-orange);
-}
-
-.story-copy > p {
+.story-content > p,
+.chef-content > p {
     margin-bottom: 16px;
-    color: var(--about-muted);
-    font-size: 12px;
-    line-height: 2.1;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
 }
 
-.story-link,
-.mission-link {
+.text-link {
+    margin-top: 8px;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 12px;
-    color: var(--about-orange);
+    gap: 9px;
+    color: var(--orange);
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 700;
+}
+
+.text-link i {
+    transition: transform 0.25s ease;
+}
+
+.text-link:hover i {
+    transform: translateX(5px);
 }
 
 
-/* =========================================
-   WHY CHOOSE TASTY HUB
-========================================= */
+/* =====================================
+   MISSION AND VISION
+===================================== */
 
-.why-tasty {
-    background: #fff8f4;
+.purpose-section {
+    padding: 100px 0;
+    background: var(--cream);
 }
 
-.section-heading {
-    max-width: 710px;
-    margin: 0 auto 55px;
-    text-align: center;
+.purpose-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
 }
 
-.section-heading h2 {
-    margin-bottom: 14px;
+.purpose-card {
+    position: relative;
+    padding: 35px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 68, 0, 0.09);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 8px 30px rgba(48, 27, 14, 0.035);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.section-heading > p {
-    max-width: 540px;
-    margin: auto;
-    color: var(--about-muted);
+.purpose-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow);
+}
+
+.purpose-card::after {
+    content: "";
+    position: absolute;
+    top: -45px;
+    right: -45px;
+    width: 130px;
+    height: 130px;
+    border: 20px solid rgba(255, 68, 0, 0.045);
+    border-radius: 50%;
+}
+
+.purpose-icon {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    color: #fff;
+    background: var(--orange);
+    font-size: 21px;
+}
+
+.vision-card .purpose-icon {
+    color: var(--orange);
+    background: #fff0e8;
+}
+
+.purpose-number {
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.purpose-card h3 {
+    margin: 10px 0;
+    font-size: 21px;
+    line-height: 1.45;
+}
+
+.purpose-card p {
+    max-width: 460px;
+    color: var(--muted);
     font-size: 12px;
     line-height: 2;
+}
+
+
+/* =====================================
+   WHY CHOOSE US
+===================================== */
+
+.why-section {
+    padding-top: 105px;
+    padding-bottom: 110px;
 }
 
 .why-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 19px;
+    gap: 20px;
 }
 
 .why-card {
-    position: relative;
-    min-height: 285px;
-    padding: 27px 22px;
-    background: #fff;
-    border: 1px solid #f1e7e0;
+    padding: 28px 21px;
+    border: 1px solid var(--line);
     border-radius: 17px;
-    overflow: hidden;
+    background: #fff;
     transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
-}
-
-.why-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: var(--about-orange);
-    transition: width 0.35s ease;
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .why-card:hover {
-    transform: translateY(-9px);
-    border-color: #ffd0bd;
-    box-shadow: var(--about-shadow);
-}
-
-.why-card:hover::before {
-    width: 100%;
+    transform: translateY(-7px);
+    border-color: rgba(255, 68, 0, 0.35);
+    box-shadow: var(--shadow);
 }
 
 .why-icon {
-    width: 54px;
-    height: 54px;
+    width: 53px;
+    height: 53px;
+    margin-bottom: 22px;
     display: grid;
     place-items: center;
-    margin-bottom: 25px;
-    border-radius: 16px;
+    border-radius: 14px;
     font-size: 21px;
-    transition: transform 0.35s ease;
 }
 
-.why-card:hover .why-icon {
-    transform: rotate(-9deg) scale(1.08);
+.orange-icon {
+    color: #fff;
+    background: var(--orange);
 }
 
-.icon-orange {
-    color: #ff4400;
-    background: #fff0e9;
+.cream-icon {
+    color: var(--orange);
+    background: #fff0e8;
 }
 
-.icon-yellow {
-    color: #c38b00;
-    background: #fff5cf;
+.green-icon {
+    color: #278253;
+    background: #eaf8ef;
 }
 
-.icon-green {
-    color: #3d9659;
-    background: #e6f7e9;
-}
-
-.icon-purple {
-    color: #8b5cc7;
-    background: #f2e9ff;
-}
-
-.why-number {
-    position: absolute;
-    top: 29px;
-    right: 22px;
-    color: #e9ded6;
-    font-size: 25px;
-    font-weight: 800;
+.yellow-icon {
+    color: #a66a00;
+    background: #fff4d9;
 }
 
 .why-card h3 {
-    margin-bottom: 12px;
-    font-size: 14px;
-    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
 .why-card p {
-    color: var(--about-muted);
-    font-size: 10px;
-    line-height: 2;
-}
-
-.why-card-arrow {
-    position: absolute;
-    right: 21px;
-    bottom: 19px;
-    color: #e7d5ca;
-    font-size: 12px;
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.why-card:hover .why-card-arrow {
-    color: var(--about-orange);
-    transform: translate(3px, -3px);
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.9;
 }
 
 
-/* =========================================
-   MISSION AND VISION
-========================================= */
+/* =====================================
+   CHEF FEATURE
+===================================== */
 
-.mission-vision {
+.chef-section {
+    padding: 95px 0;
+    background: #fff7f2;
+}
+
+.chef-layout {
     display: grid;
-    gap: 28px;
-    background: #fff;
-}
-
-.mission-card,
-.vision-card {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 0.7fr;
+    grid-template-columns: 0.9fr 1.1fr;
     align-items: center;
-    gap: 40px;
-    min-height: 350px;
-    padding: clamp(30px, 5vw, 65px);
+    gap: 85px;
+}
+
+.chef-image {
+    position: relative;
+    min-height: 440px;
+    padding: 10px;
+    border: 1px solid rgba(255, 68, 0, 0.12);
     border-radius: 25px;
-    overflow: hidden;
-}
-
-.mission-card {
-    background:
-        radial-gradient(
-            circle at 85% 45%,
-            rgba(255, 68, 0, 0.11),
-            transparent 28%
-        ),
-        #fff4ec;
-}
-
-.vision-card {
-    grid-template-columns: 0.7fr 1fr;
-    background:
-        radial-gradient(
-            circle at 12% 40%,
-            rgba(255, 199, 89, 0.16),
-            transparent 28%
-        ),
-        #f8f8f5;
-}
-
-.mission-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    color: var(--about-orange);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.mission-copy h2,
-.vision-copy h2 {
-    max-width: 560px;
-    font-size: clamp(27px, 3vw, 40px);
-}
-
-.mission-copy p,
-.vision-copy p {
-    max-width: 540px;
-    color: var(--about-muted);
-    font-size: 12px;
-    line-height: 2.1;
-}
-
-.mission-illustration,
-.vision-illustration {
-    position: relative;
-    min-height: 240px;
-    display: grid;
-    place-items: center;
-}
-
-.mission-circle {
-    position: absolute;
-    width: 220px;
-    height: 220px;
-    background: rgba(255, 68, 0, 0.09);
-    border: 1px dashed rgba(255, 68, 0, 0.4);
-    border-radius: 50%;
-    animation: aboutRotate 25s linear infinite;
-}
-
-.mission-plate {
-    position: relative;
-    z-index: 2;
-    width: 155px;
-    height: 155px;
-    display: grid;
-    place-items: center;
     background: #fff;
-    border: 13px solid #f6d4c3;
-    border-radius: 50%;
-    box-shadow: 0 20px 50px rgba(70, 37, 16, 0.10);
-    color: var(--about-orange);
-    font-size: 62px;
-    animation: aboutFoodFloat 4s ease-in-out infinite;
+    box-shadow: var(--shadow);
 }
 
-.mission-spark,
-.vision-star {
-    position: absolute;
-    color: var(--about-orange);
-    animation: aboutSparkle 3s ease-in-out infinite;
-}
-
-.spark-a {
-    top: 15px;
-    right: 20%;
-    font-size: 35px;
-}
-
-.spark-b {
-    left: 15%;
-    top: 25%;
-    font-size: 26px;
-    animation-delay: -1s;
-}
-
-.spark-c {
-    right: 20%;
-    bottom: 15px;
-    font-size: 28px;
-    animation-delay: -2s;
-}
-
-.vision-icon {
-    position: relative;
-    z-index: 2;
-    width: 125px;
-    height: 125px;
-    display: grid;
-    place-items: center;
-    color: #fff;
-    background: var(--about-orange);
-    border-radius: 40px;
-    font-size: 49px;
-    transform: rotate(-8deg);
-    box-shadow: 0 20px 45px rgba(255, 68, 0, 0.22);
-    animation: aboutFoodFloat 4.5s ease-in-out infinite;
-}
-
-.vision-orbit {
-    position: absolute;
-    width: 205px;
-    height: 205px;
-    border: 1px dashed #e2c8b7;
-    border-radius: 50%;
-    animation: aboutRotate 30s linear infinite;
-}
-
-.orbit-two {
-    width: 250px;
-    height: 150px;
-    transform: rotate(-35deg);
-    animation-direction: reverse;
-}
-
-.vision-star-one {
-    top: 8px;
-    right: 15%;
-    font-size: 35px;
-}
-
-.vision-star-two {
-    bottom: 18px;
-    left: 16%;
-    font-size: 30px;
-}
-
-
-/* =========================================
-   FOOD EXPERIENCE SHOWCASE
-========================================= */
-
-.food-experience {
-    position: relative;
-    isolation: isolate;
-    padding: 100px clamp(22px, 7vw, 110px) 0;
-    background: #241711;
-    color: #fff;
-    overflow: hidden;
-}
-
-.experience-inner {
-    position: relative;
-    z-index: 2;
-    width: min(1440px, 100%);
-    margin: auto;
-    display: grid;
-    grid-template-columns: 0.9fr 1fr;
-    align-items: center;
-    gap: 75px;
-    min-height: 460px;
-    padding-bottom: 65px;
-}
-
-.experience-eyebrow {
-    color: #ff9a73;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-}
-
-.experience-copy h2 {
-    margin: 20px 0;
-    font-size: clamp(35px, 4.3vw, 57px);
-    letter-spacing: -2px;
-}
-
-.experience-copy h2 span {
-    display: block;
-    color: #ff7040;
-}
-
-.experience-copy p {
-    max-width: 430px;
-    margin-bottom: 27px;
-    color: #c9bcb5;
-    font-size: 12px;
-    line-height: 2.1;
-}
-
-.experience-button {
-    color: #fff;
-    background: var(--about-orange);
-}
-
-.experience-gallery {
-    position: relative;
-    min-height: 420px;
-}
-
-.gallery-card {
-    position: absolute;
-    overflow: hidden;
-    background: #36251d;
-    border: 5px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-    transition: transform 0.4s ease;
-}
-
-.gallery-card:hover {
-    z-index: 5;
-    transform: translateY(-8px) rotate(0);
-}
-
-.gallery-card img {
-    display: block;
+.chef-image > img {
     width: 100%;
-    height: 100%;
+    height: 420px;
+    border-radius: 18px;
     object-fit: cover;
 }
 
-.gallery-card-main {
-    z-index: 2;
-    top: 30px;
-    left: 10%;
-    width: 65%;
-    height: 320px;
-    transform: rotate(-4deg);
-}
-
-.gallery-card-main > span,
-.gallery-card-bottom > span {
+.chef-image-caption {
     position: absolute;
-    left: 12px;
-    bottom: 12px;
-    padding: 9px 12px;
-    background: rgba(36, 23, 17, 0.85);
-    color: #fff;
-    border-radius: 7px;
-    font-size: 8px;
-    font-weight: 800;
-    letter-spacing: 1px;
+    right: 22px;
+    bottom: 24px;
+    left: 22px;
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.96);
+    font-size: 11px;
+    font-weight: 600;
 }
 
-.gallery-card-top {
-    z-index: 3;
-    top: 0;
-    right: 1%;
-    width: 37%;
-    height: 150px;
-    transform: rotate(7deg);
+.chef-image-caption i {
+    color: var(--orange);
 }
 
-.gallery-heart {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 32px;
-    height: 32px;
+.chef-content h2 {
+    margin-bottom: 21px;
+}
+
+.chef-signature {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.signature-line {
+    width: 38px;
+    height: 3px;
+    border-radius: 4px;
+    background: var(--orange);
+}
+
+.chef-signature strong,
+.chef-signature small {
+    display: block;
+}
+
+.chef-signature strong {
+    font-size: 13px;
+}
+
+.chef-signature small {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+
+/* =====================================
+   BRAND VALUES
+===================================== */
+
+.values-section {
+    padding-top: 105px;
+    padding-bottom: 110px;
+}
+
+.values-list {
+    max-width: 850px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.value-item {
+    padding: 23px;
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.value-item:hover {
+    border-color: rgba(255, 68, 0, 0.4);
+    transform: translateY(-4px);
+}
+
+.value-item > span {
+    min-width: 42px;
+    height: 42px;
     display: grid;
     place-items: center;
-    color: var(--about-orange);
-    background: #fff;
-    border-radius: 50%;
-    animation: aboutHeartBeat 2s ease-in-out infinite;
-}
-
-.gallery-card-bottom {
-    z-index: 3;
-    right: 0;
-    bottom: 10px;
-    width: 48%;
-    height: 165px;
-    transform: rotate(5deg);
-}
-
-.gallery-decoration {
-    position: absolute;
-    z-index: 4;
-    color: #ff9a73;
-}
-
-.gallery-decoration-one {
-    top: 15px;
-    left: 0;
-    font-size: 45px;
-    animation: aboutRotate 15s linear infinite;
-}
-
-.gallery-decoration-two {
-    right: 3%;
-    bottom: 20px;
-    font-size: 55px;
-    animation: aboutSparkle 3s ease-in-out infinite;
-}
-
-.experience-glow {
-    position: absolute;
-    z-index: -1;
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    filter: blur(5px);
-}
-
-.experience-glow-one {
-    top: -180px;
-    right: -100px;
-    background: rgba(255, 68, 0, 0.13);
-}
-
-.experience-glow-two {
-    bottom: 10px;
-    left: -230px;
-    background: rgba(255, 118, 47, 0.08);
-}
-
-.experience-footer {
-    position: relative;
-    z-index: 2;
-    margin: 0 calc(-1 * clamp(22px, 7vw, 110px));
-    padding: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
-    text-align: center;
-    color: #b7a49a;
-    font-size: 9px;
+    border-radius: 12px;
+    color: var(--orange);
+    background: #fff0e8;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 3px;
+}
+
+.value-item h3 {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.value-item p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.9;
 }
 
 
-/* =========================================
-   FINAL CALL TO ACTION
-========================================= */
+/* =====================================
+   CALL TO ACTION
+===================================== */
 
 .about-cta {
     position: relative;
-    isolation: isolate;
-    background:
-        radial-gradient(
-            circle at 10% 30%,
-            rgba(255, 68, 0, 0.06),
-            transparent 25%
-        ),
-        #fff8f4;
-    text-align: center;
+    min-height: 370px;
+    padding: 75px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    text-align: center;
+    color: #fff;
+    background: var(--orange);
 }
 
 .cta-content {
     position: relative;
     z-index: 2;
-    max-width: 760px;
-    margin: auto;
+    max-width: 680px;
 }
 
-.cta-content .section-eyebrow {
-    justify-content: center;
+.cta-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
 }
 
 .cta-content h2 {
-    margin-top: 23px;
-    font-size: clamp(38px, 5vw, 61px);
+    margin: 18px 0;
+    font-size: clamp(32px, 4.5vw, 49px);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -1.4px;
 }
 
-.cta-content > p {
-    max-width: 560px;
-    margin: 0 auto 28px;
-    color: var(--about-muted);
-    font-size: 12px;
-    line-height: 2;
+.cta-content h2 span {
+    color: #ffe3c9;
 }
 
-.cta-buttons {
-    justify-content: center;
+.cta-content p {
+    max-width: 500px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    line-height: 1.9;
 }
 
-.cta-contact-btn {
-    min-height: 52px;
-    padding: 0 25px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--about-ink);
+.cta-button {
+    margin-top: 27px;
+    color: var(--orange);
     background: #fff;
-    border: 1px solid #e9d8ce;
-    border-radius: 9px;
-    font-size: 12px;
-    font-weight: 700;
-    transition: 0.3s ease;
 }
 
-.cta-contact-btn:hover {
-    color: var(--about-orange);
-    border-color: var(--about-orange);
-    transform: translateY(-3px);
+.cta-button:hover {
+    color: #fff;
 }
 
 .cta-decoration {
     position: absolute;
-    z-index: 1;
-    color: rgba(255, 68, 0, 0.22);
-    animation: aboutSparkle 3s ease-in-out infinite;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
 }
 
 .cta-decoration-one {
-    top: 20%;
-    left: 10%;
-    font-size: 65px;
+    top: -120px;
+    left: -70px;
+    width: 350px;
+    height: 350px;
 }
 
 .cta-decoration-two {
-    right: 10%;
-    bottom: 20%;
-    font-size: 70px;
-    animation-delay: -1.5s;
+    right: -100px;
+    bottom: -210px;
+    width: 480px;
+    height: 480px;
+}
+
+.cta-icon {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.7);
+    animation: stickerFloat 5s ease-in-out infinite;
+}
+
+.cta-icon-one {
+    top: 55px;
+    left: 12%;
+    width: 60px;
+    height: 60px;
+    font-size: 25px;
+}
+
+.cta-icon-two {
+    right: 13%;
+    bottom: 50px;
+    width: 75px;
+    height: 75px;
+    font-size: 30px;
+    animation-delay: -2s;
 }
 
 
-/* =========================================
-   FOOTER CONSISTENCY
-========================================= */
+/* =====================================
+   FOOTER
+===================================== */
 
-footer {
-    background: #201713;
+.site-footer {
+    padding: 65px 6% 0;
+    background: #211b18;
     color: #fff;
-    padding: 60px clamp(20px, 7vw, 100px) 20px;
 }
 
 .footer-container {
+    max-width: 1300px;
+    margin: auto;
+    padding-bottom: 48px;
     display: grid;
-    grid-template-columns: 1.4fr repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: 1.5fr 0.8fr 0.9fr 1.3fr;
+    gap: 45px;
 }
 
-.footer-brand img {
-    width: 130px;
+.footer-logo {
+    display: inline-flex;
+    margin-bottom: 18px;
+}
+
+.footer-logo img {
+    width: 135px;
     height: auto;
     object-fit: contain;
 }
 
 .footer-brand > p {
-    max-width: 280px;
-    margin: 18px 0;
-    color: #c9bcb5;
-    font-size: 12px;
-    line-height: 2;
-}
-
-.footer-contact {
-    display: grid;
-    gap: 12px;
-}
-
-.footer-contact a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #c9bcb5;
+    max-width: 270px;
+    color: #c6bdb7;
     font-size: 11px;
-    transition: color 0.3s ease;
+    line-height: 1.9;
 }
 
-.footer-contact a i {
-    color: var(--about-orange);
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
 }
 
-.footer-contact a:hover {
-    color: var(--about-orange);
+.social-links a {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #50443d;
+    border-radius: 50%;
+    color: #fff;
+    transition: 0.25s ease;
+}
+
+.social-links a:hover {
+    color: #fff;
+    border-color: var(--orange);
+    background: var(--orange);
+    transform: translateY(-3px);
 }
 
 .footer-column {
@@ -1317,360 +1236,435 @@ footer {
 }
 
 .footer-column h3 {
-    margin-bottom: 9px;
-    color: #fff;
+    margin-bottom: 8px;
     font-size: 14px;
-    font-weight: 700;
 }
 
-.footer-column a {
-    color: #c9bcb5;
+.footer-column > a,
+.footer-contact p {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #c6bdb7;
     font-size: 11px;
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
+    transition: color 0.25s ease;
 }
 
-.footer-column a:hover {
-    color: var(--about-orange);
-    transform: translateX(4px);
+.footer-column > a:hover,
+.footer-bottom a:hover {
+    color: var(--orange);
+}
+
+.footer-contact i {
+    margin-top: 4px;
+    color: var(--orange);
 }
 
 .footer-bottom {
+    max-width: 1300px;
+    min-height: 65px;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    margin-top: 45px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.footer-bottom p,
-.footer-bottom a {
-    color: #b8a8a0;
+    gap: 15px;
+    border-top: 1px solid #413630;
+    color: #bfb4ae;
     font-size: 10px;
 }
 
-.footer-bottom a:hover {
-    color: var(--about-orange);
+.footer-bottom a {
+    transition: color 0.25s ease;
 }
 
 
-/* =========================================
-   TOAST NOTIFICATIONS
-========================================= */
+/* =====================================
+   TOAST NOTIFICATION
+===================================== */
 
 .toast {
     position: fixed;
-    z-index: 9999;
-    left: 50%;
-    bottom: 25px;
-    width: max-content;
-    max-width: calc(100% - 32px);
-    padding: 14px 20px;
+    right: 22px;
+    bottom: 22px;
+    z-index: 300;
+    max-width: min(360px, calc(100% - 40px));
+    padding: 14px 19px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     color: #fff;
-    background: #201713;
-    border-left: 4px solid var(--about-orange);
-    border-radius: 9px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    background: #211b18;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
     font-size: 12px;
     opacity: 0;
     visibility: hidden;
-    transform: translate(-50%, 20px);
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease,
-        transform 0.3s ease;
+    transform: translateY(12px);
+    transition: 0.25s ease;
 }
 
 .toast.show {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, 0);
-}
-
-
-/* =========================================
-   SCROLL REVEAL
-========================================= */
-
-.reveal-item {
-    opacity: 0;
-    transform: translateY(35px);
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.reveal-item.revealed {
-    opacity: 1;
     transform: translateY(0);
 }
 
-.why-card:nth-child(2) {
-    transition-delay: 0.08s;
-}
 
-.why-card:nth-child(3) {
-    transition-delay: 0.16s;
-}
+/* =====================================
+   MOBILE SIDEBAR
+===================================== */
 
-.why-card:nth-child(4) {
-    transition-delay: 0.24s;
-}
-
-
-/* =========================================
-   ANIMATIONS
-========================================= */
-
-@keyframes aboutHeroEnter {
-    from {
-        opacity: 0;
-        transform: translateX(-35px);
+@media (max-width: 1100px) {
+    .nav-bar {
+        gap: 15px;
+        padding-right: 3%;
+        padding-left: 3%;
     }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes aboutVisualEnter {
-    from {
-        opacity: 0;
-        transform: translateX(35px) scale(0.95);
+    .nav-links {
+        gap: 15px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-    }
-}
-
-@keyframes aboutFoodFloat {
-    0%,
-    100% {
-        transform: translateY(0) rotate(-3deg);
+    .nav-link {
+        font-size: 12px;
     }
 
-    50% {
-        transform: translateY(-12px) rotate(-1deg);
-    }
-}
-
-@keyframes aboutBadgeFloat {
-    0%,
-    100% {
-        translate: 0 0;
+    .nav-actions {
+        gap: 8px;
     }
 
-    50% {
-        translate: 0 -10px;
-    }
-}
-
-@keyframes aboutHeartBeat {
-    0%,
-    100% {
-        scale: 1;
+    .location-button {
+        padding: 9px;
+        font-size: 10px;
     }
 
-    15% {
-        scale: 1.12;
-    }
-
-    30% {
-        scale: 1;
-    }
-
-    45% {
-        scale: 1.08;
-    }
-}
-
-@keyframes aboutRotate {
-    from {
-        rotate: 0deg;
-    }
-
-    to {
-        rotate: 360deg;
-    }
-}
-
-@keyframes aboutStickerSpin {
-    0%,
-    100% {
-        rotate: 8deg;
-        translate: 0 0;
-    }
-
-    50% {
-        rotate: 14deg;
-        translate: 0 -7px;
-    }
-}
-
-@keyframes aboutSparkle {
-    0%,
-    100% {
-        opacity: 0.6;
-        scale: 0.85;
-    }
-
-    50% {
-        opacity: 1;
-        scale: 1.15;
-    }
-}
-
-@keyframes aboutDotPulse {
-    0%,
-    100% {
-        box-shadow: 0 0 0 4px rgba(67, 183, 106, 0.12);
-    }
-
-    50% {
-        box-shadow: 0 0 0 8px rgba(67, 183, 106, 0.02);
-    }
-}
-
-
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
-
-@media (max-width: 1180px) {
-
-    .about-hero-inner {
+    .about-hero {
         gap: 35px;
     }
 
-    .about-hero-copy h1 {
-        font-size: clamp(40px, 5vw, 62px);
+    .story-section,
+    .chef-layout {
+        gap: 55px;
     }
 
     .why-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    .why-card {
-        min-height: 245px;
-    }
-
-    .experience-inner {
-        gap: 35px;
-    }
-
-    .visual-ring {
-        width: 330px;
-        height: 330px;
-    }
-
-    .visual-ring-two {
-        width: 275px;
-        height: 275px;
-    }
-
-    .about-hero-image {
-        height: 250px;
-    }
-
-    .hero-food-frame {
-        width: min(100%, 345px);
-    }
-
-    .label-fresh {
-        left: -2px;
-    }
-
-    .label-love {
-        right: -2px;
-    }
-
-    .footer-container {
-        gap: 30px;
-    }
-
 }
 
-
 @media (max-width: 900px) {
-
-    .section-padding {
-        padding: 80px 30px;
+    .nav-bar {
+        min-height: 75px;
+        padding: 10px 5%;
+        justify-content: space-between;
     }
 
-    .about-hero-inner {
-        grid-template-columns: 1fr 0.9fr;
-        gap: 20px;
-        padding: 65px 30px;
+    .brand img {
+        width: 105px;
     }
 
-    .about-hero-copy h1 {
-        font-size: clamp(36px, 5vw, 48px);
-        letter-spacing: -2px;
+    .nav-links,
+    .nav-actions {
+        display: none;
     }
 
-    .about-hero-copy > p {
+    .menu-toggle,
+    .cart-mobile {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: var(--ink);
+        background: #fff;
+    }
+
+    .menu-toggle {
+        order: 3;
+    }
+
+    .cart-mobile {
+        position: relative;
+        order: 2;
+        margin-left: auto;
+        margin-right: 12px;
+    }
+
+    .mobile-search {
+        margin: 0 5% 12px;
+        padding: 8px 9px 8px 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+    }
+
+    .mobile-search > i {
+        color: var(--orange);
+        font-size: 14px;
+    }
+
+    .mobile-search input {
+        width: 100%;
+        min-width: 0;
+        padding: 8px 0;
+        border: 0;
+        outline: 0;
+        background: transparent;
         font-size: 12px;
     }
 
-    .about-hero-visual {
-        min-height: 390px;
+    .mobile-search button {
+        width: 35px;
+        height: 35px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        border: 0;
+        border-radius: 9px;
+        color: #fff;
+        background: var(--orange);
     }
 
-    .hero-food-frame {
-        width: min(100%, 300px);
-        padding: 10px;
+    .mobile-shortcuts {
+        padding: 0 5% 12px;
+        display: flex;
+        gap: 9px;
+        overflow-x: auto;
+        scrollbar-width: none;
     }
 
-    .about-hero-image {
-        height: 220px;
+    .mobile-shortcuts::-webkit-scrollbar {
+        display: none;
     }
 
-    .visual-ring {
-        width: 290px;
-        height: 290px;
+    .mobile-shortcuts a {
+        padding: 7px 13px;
+        flex-shrink: 0;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        color: #5e544e;
+        background: #fff;
+        font-size: 10px;
+        white-space: nowrap;
     }
 
-    .visual-ring-two {
-        width: 240px;
-        height: 240px;
+    .mobile-shortcuts a:hover {
+        color: #fff;
+        border-color: var(--orange);
+        background: var(--orange);
     }
 
-    .floating-label {
-        padding: 9px 11px;
+    .desktop-search {
+        display: none !important;
+    }
+
+    .menu-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 150;
+        display: block;
+        background: rgba(26, 18, 13, 0.48);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease;
+    }
+
+    body.menu-open .menu-backdrop {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 160;
+        width: min(360px, 88%);
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        background: #fff;
+        box-shadow: -15px 0 45px rgba(0, 0, 0, 0.12);
+        transform: translateX(105%);
+        transition: transform 0.35s ease;
+    }
+
+    body.menu-open .mobile-sidebar {
+        transform: translateX(0);
+    }
+
+    .sidebar-header {
+        padding-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .sidebar-brand img {
+        width: 115px;
+    }
+
+    .sidebar-close {
+        width: 37px;
+        height: 37px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: var(--ink);
+        background: #fff;
+    }
+
+    .sidebar-label {
+        margin: 23px 0 10px;
+        color: #9a8d85;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+    }
+
+    .mobile-sidebar > a {
+        padding: 12px 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-radius: 9px;
+        color: var(--ink);
+        font-size: 12px;
+        transition: 0.2s ease;
+    }
+
+    .mobile-sidebar > a > i {
+        width: 18px;
+        color: var(--orange);
+    }
+
+    .mobile-sidebar > a:hover,
+    .mobile-sidebar > a.active {
+        color: var(--orange);
+        background: var(--cream);
+    }
+
+    .sidebar-categories {
+        font-size: 12px;
+    }
+
+    .sidebar-categories summary {
+        padding: 12px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 9px;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .sidebar-categories summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .sidebar-categories summary span {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .sidebar-categories summary span i {
+        width: 18px;
+        color: var(--orange);
+    }
+
+    .sidebar-categories summary > i {
+        color: var(--muted);
+        font-size: 10px;
+    }
+
+    .sidebar-categories[open] summary {
+        color: var(--orange);
+        background: var(--cream);
+    }
+
+    .sidebar-categories > a {
+        padding: 9px 12px 9px 40px;
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    .sidebar-categories > a:hover {
+        color: var(--orange);
+    }
+
+    .sidebar-divider {
+        height: 1px;
+        margin-top: 15px;
+        background: var(--line);
+    }
+
+    .sidebar-promo {
+        margin-top: 25px;
+        padding: 20px;
+        border-radius: 15px;
+        color: #fff;
+        background: var(--orange);
+    }
+
+    .sidebar-promo > span {
         font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 1px;
     }
 
-    .floating-food {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
+    .sidebar-promo h3 {
+        margin: 10px 0 15px;
+        font-size: 17px;
+        line-height: 1.5;
     }
 
-    .hero-sticker {
-        width: 75px;
-        height: 75px;
+    .sidebar-promo > a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 600;
     }
 
-    .hero-sticker strong {
-        font-size: 15px;
+    .about-hero {
+        min-height: auto;
+        padding: 60px 6%;
+        grid-template-columns: 1fr 0.85fr;
+        gap: 25px;
     }
 
-    .hero-sticker span {
-        font-size: 6px;
+    .about-hero h1 {
+        font-size: clamp(37px, 6vw, 54px);
     }
 
-    .hero-bottom-line {
-        padding: 0 30px;
+    .hero-highlights {
+        gap: 12px;
     }
 
-    .about-story {
-        grid-template-columns: 1fr 1fr;
+    .hero-highlights > div {
+        font-size: 9px;
+    }
+
+    .hero-image-card > img {
+        height: 320px;
+    }
+
+    .sticker-top {
+        right: -3px;
+    }
+
+    .story-section {
+        padding-top: 75px;
+        padding-bottom: 75px;
         gap: 40px;
     }
 
@@ -1678,107 +1672,68 @@ footer {
         min-height: 360px;
     }
 
-    .story-image {
-        height: 320px;
+    .story-image-main {
+        height: 310px;
     }
 
-    .story-image-label {
-        left: -8px;
-        padding: 12px;
+    .story-image-small {
+        height: 165px;
     }
 
-    .story-image-label strong {
-        font-size: 9px;
+    .chef-layout {
+        gap: 40px;
     }
 
-    .story-image-label div span {
-        font-size: 8px;
+    .chef-image {
+        min-height: 360px;
     }
 
-    .story-copy h2,
-    .section-heading h2,
-    .mission-copy h2,
-    .vision-copy h2 {
-        font-size: 32px;
-    }
-
-    .mission-card,
-    .vision-card {
-        gap: 20px;
-        padding: 35px;
-    }
-
-    .experience-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .experience-copy h2 {
-        font-size: 38px;
-    }
-
-    .experience-gallery {
-        min-height: 350px;
-    }
-
-    .gallery-card-main {
-        height: 260px;
-    }
-
-    .gallery-card-top {
-        height: 125px;
-    }
-
-    .gallery-card-bottom {
-        height: 140px;
+    .chef-image > img {
+        height: 340px;
     }
 
     .footer-container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 40px;
+        gap: 35px;
     }
-
 }
 
 
+/* =====================================
+   MOBILE LAYOUT
+===================================== */
+
 @media (max-width: 600px) {
-
-    .section-padding {
-        padding: 65px 22px;
+    .section-wrap {
+        width: 89%;
     }
 
-    .about-eyebrow,
-    .section-eyebrow {
-        font-size: 9px;
-        letter-spacing: 1.8px;
-    }
-
-    .about-eyebrow .eyebrow-line,
-    .section-eyebrow > span {
-        width: 20px;
-    }
-
-    .about-hero-inner {
+    .about-hero {
+        padding: 45px 6% 65px;
         grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 48px 22px 40px;
+        gap: 42px;
     }
 
-    .about-hero-copy {
+    .about-hero-content {
         text-align: center;
     }
 
-    .about-hero-copy h1 {
-        margin: 20px 0 16px;
-        font-size: clamp(37px, 10vw, 52px);
+    .about-hero .eyebrow {
+        justify-content: center;
+        font-size: 9px;
+        letter-spacing: 1.3px;
+    }
+
+    .about-hero h1 {
+        margin: 18px 0;
+        font-size: clamp(38px, 10vw, 52px);
         letter-spacing: -1.7px;
     }
 
-    .about-hero-copy > p {
-        max-width: 430px;
-        margin: 0 auto 23px;
-        font-size: 11px;
-        line-height: 1.95;
+    .about-hero-content > p {
+        margin: auto;
+        font-size: 12px;
+        line-height: 1.9;
     }
 
     .hero-buttons {
@@ -1786,174 +1741,162 @@ footer {
         gap: 10px;
     }
 
-    .about-primary-btn,
-    .about-secondary-btn {
-        min-height: 47px;
-        padding: 0 15px;
+    .btn-primary,
+    .btn-secondary {
+        min-height: 45px;
+        padding: 12px 14px;
         font-size: 10px;
     }
 
-    .hero-note {
+    .hero-highlights {
         justify-content: center;
-        margin-top: 24px;
-        text-align: left;
+        gap: 11px 15px;
     }
 
-    .about-hero-visual {
-        min-height: 365px;
-        margin-top: 8px;
-    }
-
-    .hero-food-frame {
-        width: min(80%, 310px);
-        padding: 10px;
-    }
-
-    .about-hero-image {
-        height: 220px;
-    }
-
-    .food-frame-top {
-        font-size: 7px;
-    }
-
-    .visual-ring {
-        width: 280px;
-        height: 280px;
-    }
-
-    .visual-ring-two {
-        width: 230px;
-        height: 230px;
-    }
-
-    .label-fresh {
-        top: 40px;
-        left: 0;
-    }
-
-    .label-love {
-        right: 0;
-        bottom: 45px;
-    }
-
-    .floating-food-one {
-        top: 18px;
-        right: 28px;
-    }
-
-    .floating-food-two {
-        bottom: 22px;
-        left: 17px;
-    }
-
-    .hero-sticker {
-        right: 10px;
-        bottom: 4px;
-        width: 69px;
-        height: 69px;
-    }
-
-    .hero-spark-one {
-        top: 5%;
-        left: 10%;
-    }
-
-    .hero-spark-two {
-        right: 5%;
-        bottom: 12%;
-    }
-
-    .hero-bottom-line {
-        min-height: 45px;
-        padding: 0 18px;
-        font-size: 6px;
-        letter-spacing: 1px;
-    }
-
-    .hero-bottom-center {
-        gap: 4px;
-    }
-
-    .about-story {
-        grid-template-columns: 1fr;
-        gap: 38px;
-    }
-
-    .story-visual {
-        min-height: 330px;
-        margin: 0 8px;
-    }
-
-    .story-image {
-        height: 300px;
-        border-radius: 19px;
-    }
-
-    .story-image-backdrop {
-        inset: 18px 15px 12px 0;
-    }
-
-    .story-image-label {
-        left: -5px;
-        bottom: 15px;
-        padding: 11px;
-    }
-
-    .story-label-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 12px;
-    }
-
-    .story-image-label strong {
+    .hero-highlights > div {
         font-size: 9px;
     }
 
-    .story-image-label div span {
+    .about-hero-visual {
+        width: 94%;
+        max-width: 400px;
+        padding: 10px;
+    }
+
+    .hero-image-card {
+        border-radius: 23px;
+    }
+
+    .hero-image-card > img {
+        height: 300px;
+        border-radius: 17px;
+    }
+
+    .image-label {
+        right: 15px;
+        bottom: 15px;
+        left: 15px;
+        padding: 11px;
+    }
+
+    .image-label strong {
+        font-size: 10px;
+    }
+
+    .image-label p {
+        font-size: 9px;
+    }
+
+    .label-icon {
+        width: 37px;
+        height: 37px;
+    }
+
+    .hero-sticker {
+        padding: 9px 11px;
         font-size: 8px;
     }
 
-    .story-copy h2,
-    .section-heading h2,
-    .mission-copy h2,
-    .vision-copy h2,
-    .experience-copy h2 {
+    .sticker-top {
+        top: 5px;
+        right: -10px;
+    }
+
+    .sticker-bottom {
+        bottom: 5px;
+        left: -12px;
+    }
+
+    .story-section {
+        padding-top: 70px;
+        padding-bottom: 75px;
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .story-visual {
+        min-height: 340px;
+    }
+
+    .story-image-main {
+        width: 85%;
+        height: 300px;
+    }
+
+    .story-image-small {
+        width: 48%;
+        height: 165px;
+    }
+
+    .story-note {
+        top: 15px;
+        right: 0;
+        padding: 10px;
+        font-size: 9px;
+    }
+
+    .story-content h2,
+    .chef-content h2 {
         font-size: 32px;
-        letter-spacing: -1px;
     }
 
-    .story-copy > p {
-        font-size: 11px;
-    }
-
-    .why-tasty {
-        padding-top: 65px;
-        padding-bottom: 65px;
+    .story-content > p,
+    .chef-content > p {
+        font-size: 12px;
     }
 
     .section-heading {
-        margin-bottom: 35px;
+        margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+        letter-spacing: -0.8px;
     }
 
     .section-heading > p {
         font-size: 11px;
     }
 
-    .why-grid {
+    .purpose-section {
+        padding: 70px 0;
+    }
+
+    .purpose-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 16px;
+    }
+
+    .purpose-card {
+        padding: 26px;
+    }
+
+    .purpose-card h3 {
+        font-size: 19px;
+    }
+
+    .purpose-card p {
+        font-size: 11px;
+    }
+
+    .why-section {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+    .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
     }
 
     .why-card {
-        min-height: 225px;
-        padding: 23px;
+        padding: 20px 15px;
     }
 
     .why-icon {
-        width: 47px;
-        height: 47px;
-        margin-bottom: 20px;
+        width: 45px;
+        height: 45px;
+        margin-bottom: 17px;
         font-size: 18px;
     }
 
@@ -1962,272 +1905,1019 @@ footer {
     }
 
     .why-card p {
-        max-width: 330px;
         font-size: 10px;
     }
 
-    .mission-vision {
-        gap: 20px;
+    .chef-section {
+        padding: 70px 0;
     }
 
-    .mission-card,
-    .vision-card {
+    .chef-layout {
         grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 28px 23px;
-        border-radius: 19px;
+        gap: 40px;
     }
 
-    .mission-copy h2,
-    .vision-copy h2 {
+    .chef-image {
+        min-height: 340px;
+    }
+
+    .chef-image > img {
+        height: 320px;
+    }
+
+    .chef-content h2 {
         font-size: 30px;
     }
 
-    .mission-copy p,
-    .vision-copy p {
-        font-size: 11px;
+    .values-section {
+        padding-top: 75px;
+        padding-bottom: 75px;
     }
 
-    .mission-illustration,
-    .vision-illustration {
-        min-height: 230px;
-    }
-
-    .vision-illustration {
-        grid-row: 2;
-    }
-
-    .vision-copy {
-        grid-row: 1;
-    }
-
-    .mission-circle {
-        width: 190px;
-        height: 190px;
-    }
-
-    .mission-plate {
-        width: 135px;
-        height: 135px;
-        font-size: 52px;
-    }
-
-    .vision-orbit {
-        width: 190px;
-        height: 190px;
-    }
-
-    .orbit-two {
-        width: 225px;
-        height: 130px;
-    }
-
-    .vision-icon {
-        width: 110px;
-        height: 110px;
-        font-size: 40px;
-    }
-
-    .food-experience {
-        padding: 65px 22px 0;
-    }
-
-    .experience-inner {
+    .values-list {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding-bottom: 40px;
+        gap: 13px;
     }
 
-    .experience-copy {
-        text-align: center;
+    .value-item {
+        padding: 19px;
+        gap: 13px;
     }
 
-    .experience-copy h2 {
-        margin: 17px 0;
-    }
-
-    .experience-copy p {
-        margin: 0 auto 23px;
-        font-size: 11px;
-    }
-
-    .experience-button {
-        min-height: 48px;
-        padding: 0 15px;
+    .value-item p {
         font-size: 10px;
-    }
-
-    .experience-gallery {
-        min-height: 340px;
-        margin: 10px 0 0;
-    }
-
-    .gallery-card-main {
-        top: 35px;
-        left: 5%;
-        width: 69%;
-        height: 245px;
-    }
-
-    .gallery-card-top {
-        top: 5px;
-        right: 1%;
-        width: 39%;
-        height: 115px;
-    }
-
-    .gallery-card-bottom {
-        right: 1%;
-        bottom: 5px;
-        width: 49%;
-        height: 135px;
-    }
-
-    .gallery-card-main > span,
-    .gallery-card-bottom > span {
-        font-size: 7px;
-        padding: 7px 9px;
-    }
-
-    .experience-footer {
-        margin: 0 -22px;
-        padding: 18px 10px;
-        font-size: 7px;
-        letter-spacing: 1.8px;
     }
 
     .about-cta {
-        padding-top: 70px;
-        padding-bottom: 70px;
+        min-height: 340px;
+        padding: 65px 7%;
+    }
+
+    .cta-eyebrow {
+        font-size: 8px;
+        letter-spacing: 1.1px;
     }
 
     .cta-content h2 {
-        font-size: 38px;
-        letter-spacing: -1.5px;
+        font-size: 33px;
+        letter-spacing: -0.8px;
     }
 
-    .cta-content > p {
+    .cta-content p {
         font-size: 11px;
     }
 
-    .cta-content .section-eyebrow {
-        font-size: 8px;
-        gap: 6px;
+    .cta-icon-one {
+        top: 20px;
+        left: 5%;
+        width: 43px;
+        height: 43px;
+        font-size: 18px;
     }
 
-    .cta-content .section-eyebrow > span {
-        width: 13px;
+    .cta-icon-two {
+        right: 5%;
+        bottom: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
     }
 
-    .cta-buttons {
-        gap: 10px;
-    }
-
-    .cta-contact-btn {
-        min-height: 47px;
-        padding: 0 18px;
-        font-size: 10px;
-    }
-
-    .cta-decoration-one {
-        top: 7%;
-        left: -10px;
-        font-size: 43px;
-    }
-
-    .cta-decoration-two {
-        right: -10px;
-        bottom: 7%;
-        font-size: 45px;
-    }
-
-    footer {
-        padding: 45px 22px 20px;
+    .site-footer {
+        padding: 45px 6% 0;
     }
 
     .footer-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 35px 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px 20px;
+        padding-bottom: 35px;
     }
 
     .footer-brand {
         grid-column: 1 / -1;
     }
 
-    .footer-brand img {
-        width: 115px;
+    .footer-logo img {
+        width: 125px;
     }
 
     .footer-brand > p {
-        font-size: 11px;
-    }
-
-    .footer-contact a {
+        max-width: 310px;
         font-size: 10px;
-        overflow-wrap: anywhere;
     }
 
     .footer-column h3 {
         font-size: 12px;
     }
 
-    .footer-column a {
+    .footer-column > a,
+    .footer-contact p {
         font-size: 10px;
+        overflow-wrap: anywhere;
     }
 
     .footer-bottom {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 32px;
+        min-height: 65px;
+        padding: 15px 0;
+        flex-wrap: wrap;
+        font-size: 9px;
     }
 
-    .footer-bottom p,
-    .footer-bottom a {
-        font-size: 9px;
+    .toast {
+        right: 15px;
+        bottom: 15px;
+        font-size: 11px;
+    }
+}
+
+
+/* =====================================
+   SMALL PHONES
+===================================== */
+
+@media (max-width: 360px) {
+    .about-hero h1 {
+        font-size: 35px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image-card > img {
+        height: 250px;
+    }
+
+    .footer-container {
+        gap: 28px 14px;
+    }
+}
+
+
+/* =====================================
+   ACCESSIBILITY
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =====================================================
+   TASTY HUB — ADVANCED ANIMATION EXPERIENCE
+   Add this code at the VERY BOTTOM of About.css
+===================================================== */
+
+
+/* =====================================================
+   1. CINEMATIC HERO ENTRANCE
+===================================================== */
+
+@keyframes cinematicReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(55px) scale(0.94);
+        filter: blur(12px);
+    }
+
+    70% {
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.about-hero-content > .eyebrow {
+    animation: cinematicReveal 0.9s ease-out both;
+    animation-delay: 0.1s;
+}
+
+.about-hero h1 {
+    animation: cinematicReveal 1.1s cubic-bezier(.16, 1, .3, 1) both;
+    animation-delay: 0.2s;
+}
+
+.about-hero-content > p {
+    animation: cinematicReveal 1s ease-out both;
+    animation-delay: 0.4s;
+}
+
+.about-hero .hero-buttons {
+    animation: cinematicReveal 1s ease-out both;
+    animation-delay: 0.6s;
+}
+
+.about-hero .hero-highlights {
+    animation: cinematicReveal 1s ease-out both;
+    animation-delay: 0.8s;
+}
+
+.about-hero-visual {
+    animation: heroVisualEntrance 1.3s cubic-bezier(.16, 1, .3, 1) both;
+    animation-delay: 0.25s;
+}
+
+@keyframes heroVisualEntrance {
+    from {
+        opacity: 0;
+        transform: translateX(65px) rotate(5deg) scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0) scale(1);
+    }
+}
+
+
+/* =====================================================
+   2. ANIMATED ORANGE HEADLINES
+===================================================== */
+
+.about-hero h1 span,
+.story-content h2 span,
+.section-heading h2 span,
+.chef-content h2 span {
+    background: linear-gradient(
+        110deg,
+        #ff4400 0%,
+        #ff9a56 25%,
+        #ff4400 50%,
+        #ffb17a 75%,
+        #ff4400 100%
+    );
+
+    background-size: 250% auto;
+
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    animation: orangeTextFlow 5s linear infinite;
+}
+
+@keyframes orangeTextFlow {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 250% center;
+    }
+}
+
+
+/* =====================================================
+   3. HERO IMAGE — FLOAT, GLOW AND ZOOM
+===================================================== */
+
+.hero-image-card {
+    animation: heroCardFloat 5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.hero-image-card > img {
+    transition:
+        transform 0.8s cubic-bezier(.2, .8, .2, 1),
+        filter 0.8s ease;
+}
+
+.hero-image-card:hover > img {
+    transform: scale(1.07);
+    filter: saturate(1.15) contrast(1.04);
+}
+
+@keyframes heroCardFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(1.5deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(-1deg);
+    }
+}
+
+.hero-image-card::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    z-index: -1;
+    border-radius: 34px;
+
+    background: linear-gradient(
+        130deg,
+        #ff4400,
+        transparent 35%,
+        #ffb58c 65%,
+        #ff4400
+    );
+
+    background-size: 300% 300%;
+
+    opacity: 0.5;
+    filter: blur(12px);
+
+    animation: glowingBorder 6s linear infinite;
+}
+
+@keyframes glowingBorder {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.25;
+    }
+
+    50% {
+        background-position: 100% 50%;
+        opacity: 0.7;
+    }
+
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.25;
+    }
+}
+
+
+/* =====================================================
+   4. FLOATING HERO STICKERS
+===================================================== */
+
+.hero-sticker {
+    animation: stickerBounce 3.5s ease-in-out infinite;
+}
+
+.sticker-top {
+    animation-delay: -1s;
+}
+
+.sticker-bottom {
+    animation-delay: -2s;
+}
+
+@keyframes stickerBounce {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-13px) rotate(-3deg);
+    }
+}
+
+.hero-sticker i {
+    animation: stickerIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes stickerIconPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+/* =====================================================
+   5. HERO HIGHLIGHTS — ICON MOVEMENT
+===================================================== */
+
+.hero-highlights i {
+    animation: highlightIconBounce 2.5s ease-in-out infinite;
+}
+
+.hero-highlights > div:nth-child(2) i {
+    animation-delay: 0.3s;
+}
+
+.hero-highlights > div:nth-child(3) i {
+    animation-delay: 0.6s;
+}
+
+@keyframes highlightIconBounce {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(-10deg);
+    }
+}
+
+
+/* =====================================================
+   6. SECTION HEADINGS — ENERGETIC ENTRANCE
+===================================================== */
+
+@keyframes headingImpact {
+    0% {
+        opacity: 0;
+        transform: translateY(35px) scale(0.94);
+        filter: blur(8px);
+    }
+
+    65% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.01);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.section-heading h2,
+.story-content h2,
+.chef-content h2 {
+    animation: headingImpact 1s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+
+/* =====================================================
+   7. SCROLL REVEAL — SECTIONS
+===================================================== */
+
+.story-section,
+.purpose-section,
+.why-section,
+.chef-section,
+.values-section,
+.about-cta {
+    animation: sectionEntrance 1s ease-out both;
+}
+
+@keyframes sectionEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   8. STORY IMAGES — PARALLAX-LIKE HOVER
+===================================================== */
+
+.story-image-main,
+.story-image-small {
+    transition:
+        transform 0.5s cubic-bezier(.2, .8, .2, 1),
+        box-shadow 0.5s ease;
+}
+
+.story-image-main:hover {
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow: 0 25px 55px rgba(255, 68, 0, 0.14);
+}
+
+.story-image-small:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 25px 55px rgba(255, 68, 0, 0.18);
+}
+
+
+/* =====================================================
+   9. MISSION AND VISION CARDS — 3D LIFT
+===================================================== */
+
+.purpose-card {
+    transform-style: preserve-3d;
+    transition:
+        transform 0.45s cubic-bezier(.2, .8, .2, 1),
+        box-shadow 0.45s ease,
+        border-color 0.35s ease;
+}
+
+.purpose-card:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
+    border-color: rgba(255, 68, 0, 0.35);
+    box-shadow: 0 25px 55px rgba(48, 27, 14, 0.12);
+}
+
+.purpose-icon {
+    transition:
+        transform 0.45s ease,
+        border-radius 0.45s ease;
+}
+
+.purpose-card:hover .purpose-icon {
+    transform: rotate(-8deg) scale(1.1);
+    border-radius: 20px;
+}
+
+
+/* =====================================================
+   10. WHY CHOOSE US — STAGGERED CARD EFFECTS
+===================================================== */
+
+.why-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+        transform 0.4s cubic-bezier(.2, .8, .2, 1),
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.why-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 68, 0, 0.09),
+        transparent 70%
+    );
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-11px) scale(1.025);
+    border-color: rgba(255, 68, 0, 0.4);
+    box-shadow: 0 22px 45px rgba(48, 27, 14, 0.11);
+}
+
+.why-card:hover::before {
+    opacity: 1;
+}
+
+.why-icon {
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+.why-card:hover .why-icon {
+    transform: rotate(-8deg) scale(1.12);
+    box-shadow: 0 10px 22px rgba(255, 68, 0, 0.13);
+}
+
+.why-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.why-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.why-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.why-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+
+/* =====================================================
+   11. CHEF IMAGE — CINEMATIC ZOOM
+===================================================== */
+
+.chef-image {
+    overflow: hidden;
+}
+
+.chef-image > img {
+    transition:
+        transform 1s cubic-bezier(.2, .8, .2, 1),
+        filter 0.8s ease;
+}
+
+.chef-image:hover > img {
+    transform: scale(1.06);
+    filter: saturate(1.15);
+}
+
+.chef-image-caption {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.chef-image:hover .chef-image-caption {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =====================================================
+   12. BRAND VALUES — NUMBER PULSE
+===================================================== */
+
+.value-item {
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.value-item::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    bottom: -40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 68, 0, 0.05);
+    transform: scale(0);
+    transition: transform 0.45s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 68, 0, 0.35);
+    box-shadow: 0 15px 35px rgba(48, 27, 14, 0.07);
+}
+
+.value-item:hover::after {
+    transform: scale(2.5);
+}
+
+.value-item > span {
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease,
+        background 0.35s ease;
+}
+
+.value-item:hover > span {
+    transform: rotate(-8deg) scale(1.1);
+    color: #fff;
+    background: var(--orange);
+}
+
+
+/* =====================================================
+   13. CALL TO ACTION — ATTENTION-GRABBING EFFECT
+===================================================== */
+
+.about-cta {
+    isolation: isolate;
+}
+
+.about-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+        110deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.15) 45%,
+        transparent 70%
+    );
+
+    background-size: 220% 100%;
+    animation: ctaLightSweep 6s ease-in-out infinite;
+}
+
+@keyframes ctaLightSweep {
+    0% {
+        background-position: 150% 0;
+    }
+
+    60%,
+    100% {
+        background-position: -150% 0;
+    }
+}
+
+.cta-button {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(100, 25, 0, 0.15);
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.cta-button::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -50%;
+    width: 30%;
+    height: 300%;
+    background: rgba(255, 68, 0, 0.12);
+    transform: rotate(25deg);
+    transition: left 0.6s ease;
+}
+
+.cta-button:hover::before {
+    left: 130%;
+}
+
+.cta-button i {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+    transform: translateX(6px);
+}
+
+.cta-icon {
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+}
+
+.cta-icon:hover {
+    transform: scale(1.15) rotate(12deg);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =====================================================
+   14. NAVIGATION — SMOOTH HOVER
+===================================================== */
+
+.nav-link {
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+}
+
+.icon-button {
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.icon-button:hover {
+    box-shadow: 0 7px 18px rgba(255, 68, 0, 0.2);
+    transform: translateY(-3px) scale(1.04);
+}
+
+
+/* =====================================================
+   15. FOOTER — ORANGE GLOW ON HOVER
+===================================================== */
+
+.footer-column > a {
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.footer-column > a:hover {
+    color: #ff7040;
+    transform: translateX(5px);
+}
+
+.social-links a {
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.social-links a:hover {
+    color: #fff;
+    background: var(--orange);
+    box-shadow: 0 0 22px rgba(255, 68, 0, 0.3);
+    transform: translateY(-4px) rotate(-6deg);
+}
+
+
+/* =====================================================
+   16. TEXT LINK ARROW — SLIDE
+===================================================== */
+
+.text-link {
+    transition:
+        gap 0.3s ease,
+        color 0.3s ease;
+}
+
+.text-link:hover {
+    gap: 15px;
+    color: var(--orange-dark);
+}
+
+.text-link i {
+    transition: transform 0.3s ease;
+}
+
+.text-link:hover i {
+    transform: translateX(4px);
+}
+
+
+/* =====================================================
+   17. MOBILE PERFORMANCE ADJUSTMENTS
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .about-hero-visual {
+        animation-name: heroVisualEntrance;
+    }
+
+    .hero-image-card {
+        animation-duration: 6s;
+    }
+
+    .hero-image-card::before {
+        filter: blur(8px);
+    }
+
+    .why-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .purpose-card:hover {
+        transform: translateY(-5px);
     }
 
 }
 
 
-/* =========================================
-   ACCESSIBILITY
-========================================= */
+/* =====================================================
+   18. RESPECT REDUCED MOTION PREFERENCES
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .about-hero-copy,
+    .about-hero-content > .eyebrow,
+    .about-hero h1,
+    .about-hero-content > p,
+    .about-hero .hero-buttons,
+    .about-hero .hero-highlights,
     .about-hero-visual,
-    .hero-food-frame,
-    .visual-ring,
-    .floating-label,
-    .floating-food,
+    .hero-image-card,
     .hero-sticker,
-    .note-icon,
-    .story-decor,
-    .mission-circle,
-    .mission-plate,
-    .mission-spark,
-    .vision-orbit,
-    .vision-icon,
-    .vision-star,
-    .gallery-decoration,
-    .gallery-heart,
-    .cta-decoration {
+    .hero-sticker i,
+    .hero-highlights i,
+    .about-hero h1 span,
+    .story-content h2 span,
+    .section-heading h2 span,
+    .chef-content h2 span,
+    .section-heading h2,
+    .story-content h2,
+    .chef-content h2,
+    .story-section,
+    .purpose-section,
+    .why-section,
+    .chef-section,
+    .values-section,
+    .about-cta,
+    .about-cta::before,
+    .cta-icon {
         animation: none !important;
     }
 
-    .reveal-item {
+    .hero-image-card,
+    .hero-image-card > img,
+    .story-image-main,
+    .story-image-small,
+    .purpose-card,
+    .why-card,
+    .chef-image > img,
+    .value-item,
+    .cta-button,
+    .icon-button {
+        transition: none !important;
+    }
+}
+
+
+
+
+/* Scroll-triggered entrance animations */
+
+.about-reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    filter: blur(5px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(.16, 1, .3, 1),
+        filter 0.8s ease;
+}
+
+.about-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+.about-reveal-left {
+    opacity: 0;
+    transform: translateX(-45px);
+
+    transition:
+        opacity 0.85s ease,
+        transform 0.85s cubic-bezier(.16, 1, .3, 1);
+}
+
+.about-reveal-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.about-reveal-right {
+    opacity: 0;
+    transform: translateX(45px);
+
+    transition:
+        opacity 0.85s ease,
+        transform 0.85s cubic-bezier(.16, 1, .3, 1);
+}
+
+.about-reveal-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.about-reveal-scale {
+    opacity: 0;
+    transform: scale(0.88);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(.16, 1, .3, 1);
+}
+
+.about-reveal-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered card reveals */
+
+.why-card:nth-child(2),
+.purpose-card:nth-child(2),
+.value-item:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.why-card:nth-child(3),
+.value-item:nth-child(3) {
+    transition-delay: 0.24s;
+}
+
+.why-card:nth-child(4),
+.value-item:nth-child(4) {
+    transition-delay: 0.36s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-reveal,
+    .about-reveal-left,
+    .about-reveal-right,
+    .about-reveal-scale {
         opacity: 1;
         transform: none;
+        filter: none;
         transition: none;
     }
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-    }
-
 }

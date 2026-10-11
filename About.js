@@ -1,176 +1,464 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // ========================================
-    // 1. ABOUT PAGE SCROLL REVEAL
+    // 1. TOAST NOTIFICATIONS
     // ========================================
 
-    const revealItems = document.querySelectorAll(".reveal-item");
+    const toast = document.querySelector(".toast");
+    let toastTimer;
 
-    if ("IntersectionObserver" in window) {
+    function showToast(message) {
+        if (!toast) return;
 
-        const revealObserver = new IntersectionObserver(
-            (entries, observer) => {
+        toast.textContent = message;
+        toast.classList.add("show");
 
-                entries.forEach((entry) => {
+        clearTimeout(toastTimer);
 
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("revealed");
-
-                        observer.unobserve(entry.target);
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12,
-                rootMargin: "0px 0px -35px 0px"
-            }
-        );
-
-        revealItems.forEach((item) => {
-            revealObserver.observe(item);
-        });
-
-    } else {
-
-        revealItems.forEach((item) => {
-            item.classList.add("revealed");
-        });
-
+        toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2600);
     }
 
 
     // ========================================
-    // 2. SMOOTH SCROLL FOR STORY BUTTON
+    // 2. DESKTOP SEARCH TOGGLE
     // ========================================
 
-    document.querySelectorAll(
-        'a[href="#our-story"]'
-    ).forEach((link) => {
+    const searchToggle = document.querySelector(
+        ".search-toggle, [data-search-toggle], [data-focus-search], #search-icon"
+    );
 
-        link.addEventListener("click", (event) => {
+    const searchBar = document.querySelector(
+        ".desktop-search, .search-container, [data-search-bar]"
+    );
 
-            const target = document.querySelector("#our-story");
+    if (searchToggle && searchBar) {
 
-            if (!target) {
-                return;
-            }
-
+        searchToggle.addEventListener("click", (event) => {
             event.preventDefault();
+            event.stopPropagation();
 
-            target.scrollIntoView({
-                behavior: window.matchMedia(
-                    "(prefers-reduced-motion: reduce)"
-                ).matches ? "auto" : "smooth",
-                block: "start"
-            });
+            searchBar.classList.toggle("search-open");
 
+            if (searchBar.classList.contains("search-open")) {
+                const input = searchBar.querySelector("input");
+
+                if (input) {
+                    setTimeout(() => input.focus(), 100);
+                }
+            }
         });
 
+        document.addEventListener("click", (event) => {
+            if (
+                !searchBar.contains(event.target) &&
+                !searchToggle.contains(event.target)
+            ) {
+                searchBar.classList.remove("search-open");
+            }
+        });
+    }
+
+
+    // ========================================
+    // 3. MOBILE SIDEBAR
+    // ========================================
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".mobile-sidebar");
+
+    function closeMenu() {
+        document.body.classList.remove("menu-open");
+
+        menuToggle?.setAttribute("aria-expanded", "false");
+        sidebar?.setAttribute("aria-hidden", "true");
+    }
+
+    menuToggle?.addEventListener("click", () => {
+        const isOpen = document.body.classList.toggle("menu-open");
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        sidebar?.setAttribute("aria-hidden", String(!isOpen));
+    });
+
+    document.querySelectorAll(
+        "[data-close-menu], .mobile-sidebar a"
+    ).forEach((element) => {
+        element.addEventListener("click", closeMenu);
     });
 
 
     // ========================================
-    // 3. HERO FOOD IMAGE FALLBACK
+    // 4. CATEGORY DROPDOWN
     // ========================================
 
-    const heroImage = document.querySelector(
-        ".about-hero-image"
-    );
+    const categoryToggle = document.querySelector(".dropdown-toggle");
 
-    if (heroImage) {
+    categoryToggle?.addEventListener("click", (event) => {
+        event.stopPropagation();
 
-        heroImage.addEventListener("error", () => {
+        const parent = event.currentTarget.closest(".category-nav");
 
-            heroImage.classList.add("image-unavailable");
+        if (!parent) return;
 
-            heroImage.alt = "Tasty Hub food image unavailable";
+        const isOpen = parent.classList.toggle("open");
 
-        });
-
-    }
+        event.currentTarget.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+    });
 
 
     // ========================================
-    // 4. FOOD IMAGE ENTRANCE EFFECT
+    // 5. ACCOUNT DROPDOWN
     // ========================================
 
-    const foodImages = document.querySelectorAll(
-        ".story-image, .gallery-card img"
-    );
+    const accountToggle = document.querySelector(".account-toggle");
 
-    foodImages.forEach((image) => {
+    accountToggle?.addEventListener("click", (event) => {
+        event.stopPropagation();
 
-        image.addEventListener("load", () => {
+        const parent = event.currentTarget.closest(".account-nav");
 
-            image.classList.add("image-loaded");
+        if (!parent) return;
 
-        });
+        const isOpen = parent.classList.toggle("open");
 
-        if (image.complete && image.naturalWidth > 0) {
-            image.classList.add("image-loaded");
+        event.currentTarget.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+    });
+
+
+    // Close dropdowns and menus with Escape.
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeMenu();
+
+            searchBar?.classList.remove("search-open");
+
+            document.querySelectorAll(
+                ".account-nav.open, .category-nav.open"
+            ).forEach((element) => {
+                element.classList.remove("open");
+            });
+
+            document.querySelector(".account-toggle")
+                ?.setAttribute("aria-expanded", "false");
+
+            document.querySelector(".dropdown-toggle")
+                ?.setAttribute("aria-expanded", "false");
+        }
+    });
+
+
+    // Close desktop dropdowns when clicking outside.
+    document.addEventListener("click", (event) => {
+
+        if (!event.target.closest(".account-nav")) {
+            document.querySelector(".account-nav")
+                ?.classList.remove("open");
+
+            document.querySelector(".account-toggle")
+                ?.setAttribute("aria-expanded", "false");
+        }
+
+        if (!event.target.closest(".category-nav")) {
+            document.querySelector(".category-nav")
+                ?.classList.remove("open");
+
+            document.querySelector(".dropdown-toggle")
+                ?.setAttribute("aria-expanded", "false");
         }
 
     });
 
 
     // ========================================
-    // 5. CURRENT FOOTER YEAR
+    // 6. SEARCH FUNCTIONALITY
     // ========================================
 
-    const currentYear = document.querySelector("#current-year");
+    function runSearch(input) {
+        const query = input?.value.trim();
 
-    if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
+        if (!query) {
+            input?.focus();
+            showToast("Enter a meal or dish to search for.");
+            return;
+        }
+
+        window.location.href =
+            `Menu.html?search=${encodeURIComponent(query)}`;
+    }
+
+    const desktopSearchForm = document.querySelector("#search-form");
+
+    desktopSearchForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        runSearch(
+            document.querySelector("#desktop-meal-search")
+        );
+    });
+
+    const mobileSearchInput = document.querySelector("#meal-search");
+    const mobileSearchButton = document.querySelector("#search-submit");
+
+    mobileSearchButton?.addEventListener("click", () => {
+        runSearch(mobileSearchInput);
+    });
+
+    mobileSearchInput?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            runSearch(mobileSearchInput);
+        }
+    });
+
+
+    // ========================================
+    // 7. DELIVERY LOCATION
+    // ========================================
+
+    document.querySelector("[data-location]")
+        ?.addEventListener("click", () => {
+
+            const location = window.prompt(
+                "Enter your delivery area (for example, Lekki or Ikeja):"
+            );
+
+            if (!location?.trim()) return;
+
+            const locationLabel = document.querySelector(
+                "[data-location] span"
+            );
+
+            if (locationLabel) {
+                locationLabel.textContent = location.trim();
+            }
+
+            showToast(`Delivery area set to ${location.trim()}.`);
+        });
+
+
+    // ========================================
+    // 8. SHOPPING CART
+    // ========================================
+
+    let cart = [];
+
+    try {
+        cart = JSON.parse(
+            localStorage.getItem("tastyHubCart") || "[]"
+        );
+
+        if (!Array.isArray(cart)) {
+            cart = [];
+        }
+    } catch (error) {
+        cart = [];
+    }
+
+    function updateCartCount() {
+
+        const count = cart.reduce((total, item) => {
+            return total + (Number(item.quantity) || 0);
+        }, 0);
+
+        document.querySelectorAll(".cart-count").forEach((badge) => {
+            badge.textContent = count;
+        });
+
+        localStorage.setItem(
+            "tastyHubCart",
+            JSON.stringify(cart)
+        );
     }
 
 
     // ========================================
-    // 6. OPTIONAL HERO IMAGE TILT
+    // 9. ADD-TO-CART SUPPORT
     // ========================================
 
-    const heroFrame = document.querySelector(".hero-food-frame");
+    document.querySelectorAll(".add-cart").forEach((button) => {
 
-    const reducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
+        button.addEventListener("click", () => {
 
-    if (
-        heroFrame &&
-        window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
-        !reducedMotion
-    ) {
+            const name = button.dataset.name;
+            const price = Number(button.dataset.price);
 
-        heroFrame.addEventListener("mousemove", (event) => {
+            if (!name || !Number.isFinite(price)) {
+                showToast("This meal could not be added to your cart.");
+                return;
+            }
 
-            const bounds = heroFrame.getBoundingClientRect();
+            const existing = cart.find((item) => item.name === name);
 
-            const x = event.clientX - bounds.left;
-            const y = event.clientY - bounds.top;
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({
+                    name,
+                    price,
+                    quantity: 1
+                });
+            }
 
-            const centerX = bounds.width / 2;
-            const centerY = bounds.height / 2;
+            updateCartCount();
 
-            const rotateY = ((x - centerX) / centerX) * 3;
-            const rotateX = ((centerY - y) / centerY) * 3;
+            showToast(`${name} added to your cart.`);
+        });
 
-            heroFrame.style.animation = "none";
+    });
 
-            heroFrame.style.transform =
-                `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(-3deg)`;
+
+    // ========================================
+    // 10. OPEN CART
+    // ========================================
+
+    document.querySelectorAll("[data-open-cart]").forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            if (!cart.length) {
+                showToast(
+                    "Your cart is empty. Add a meal to get started."
+                );
+                return;
+            }
+
+            const summary = cart.map((item) => {
+                const subtotal = item.price * item.quantity;
+
+                return (
+                    `${item.quantity} × ${item.name} — ₦` +
+                    subtotal.toLocaleString("en-NG")
+                );
+            }).join("\n");
+
+            const total = cart.reduce((sum, item) => {
+                return sum + item.price * item.quantity;
+            }, 0);
+
+            showToast(
+                `Cart total: ₦${total.toLocaleString("en-NG")}.`
+            );
+
+            setTimeout(() => {
+                const proceed = window.confirm(
+                    `${summary}\n\n` +
+                    `Total: ₦${total.toLocaleString("en-NG")}\n\n` +
+                    `Go to checkout?`
+                );
+
+                if (proceed) {
+                    window.location.href = "/cart";
+                }
+            }, 250);
 
         });
 
-        heroFrame.addEventListener("mouseleave", () => {
+    });
 
-            heroFrame.style.transform = "";
-            heroFrame.style.animation = "";
 
-        });
+    // Initialize cart indicators.
+    updateCartCount();
 
+
+    // ========================================
+    // 11. AUTOMATIC FOOTER YEAR
+    // ========================================
+
+    const year = document.getElementById("current-year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
     }
 
 });
+
+
+
+
+// ========================================
+// 12. SCROLL-TRIGGERED ANIMATIONS
+// ========================================
+
+const revealGroups = [
+    {
+        selector: ".story-visual",
+        className: "about-reveal-left"
+    },
+    {
+        selector: ".story-content",
+        className: "about-reveal-right"
+    },
+    {
+        selector: ".purpose-card",
+        className: "about-reveal"
+    },
+    {
+        selector: ".why-card",
+        className: "about-reveal-scale"
+    },
+    {
+        selector: ".chef-image",
+        className: "about-reveal-left"
+    },
+    {
+        selector: ".chef-content",
+        className: "about-reveal-right"
+    },
+    {
+        selector: ".value-item",
+        className: "about-reveal"
+    },
+    {
+        selector: ".about-cta .cta-content",
+        className: "about-reveal"
+    }
+];
+
+const revealElements = [];
+
+revealGroups.forEach(({ selector, className }) => {
+    document.querySelectorAll(selector).forEach((element) => {
+        element.classList.add(className);
+        revealElements.push(element);
+    });
+});
+
+if ("IntersectionObserver" in window) {
+
+    const aboutRevealObserver = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    revealElements.forEach((element) => {
+        aboutRevealObserver.observe(element);
+    });
+
+} else {
+
+    revealElements.forEach((element) => {
+        element.classList.add("is-visible");
+    });
+
+}

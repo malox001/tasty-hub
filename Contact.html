@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Contact Tasty Hub for food orders, catering enquiries, partnerships, and customer support."
+    >
+
+    <title>Contact Us | Tasty Hub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Contact Page Styles -->
+    <link rel="stylesheet" href="Contact.css">
+</head>
+
+<body>
+
+    <!-- =====================================
+         NAVIGATION BAR
+    ====================================== -->
+
+    <header class="site-header">
+
+        <nav class="nav-bar" aria-label="Main navigation">
+
+            <a href="/Home.html" class="brand" aria-label="Tasty Hub home">
+                <img
+                    src="images/Tasty Hub Identity 2.png"
+                    alt="Tasty Hub logo"
+                >
+            </a>
+
+            <div class="nav-links">
+
+                <a href="/Home.html" class="nav-link">
+                    Home
+                </a>
+
+                <a href="/Menu.html" class="nav-link">
+                    Menu
+                </a>
+
+                <div class="category-nav">
+
+                    <button
+                        type="button"
+                        class="nav-link dropdown-toggle"
+                        aria-expanded="false"
+                    >
+                        Categories
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+
+                    <div class="category-dropdown">
+
+                        <a href="/Menu.html?category=rice">
+                            Rice Dishes
+                        </a>
+
+                        <a href="/Menu.html?category=swallow">
+                            Swallow & Soups
+                        </a>
+
+                        <a href="/Menu.html?category=proteins">
+                            Proteins
+                        </a>
+
+                        <a href="/Menu.html?category=drinks">
+                            Drinks
+                        </a>
+
+                        <a href="/Menu.html?category=snacks">
+                            Snacks
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <a href="/Offers.html" class="nav-link">
+                    Offers
+                </a>
+
+                <a href="/About.html" class="nav-link">
+                    About
+                </a>
+
+                <a
+                    href="/Contact.html"
+                    class="nav-link active"
+                    aria-current="page"
+                >
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- Navigation Actions -->
+
+            <div class="nav-actions">
+
+                <button
+                    type="button"
+                    class="icon-button search-toggle"
+                    data-focus-search
+                    aria-label="Open search"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button
+                    type="button"
+                    class="location-button"
+                    data-location
+                >
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Set Location</span>
+                </button>
+
+                <a
+                    href="/favorites"
+                    class="icon-button"
+                    aria-label="Favorites"
+                >
+                    <i class="fa-regular fa-heart"></i>
+                </a>
+
+                <button
+                    type="button"
+                    class="icon-button cart-button"
+                    data-open-cart
+                    aria-label="Shopping cart"
+                >
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <div class="account-nav">
+
+                    <button
+                        type="button"
+                        class="icon-button account-toggle"
+                        aria-label="Account menu"
+                        aria-expanded="false"
+                    >
+                        <i class="fa-regular fa-user"></i>
+                    </button>
+
+                    <div class="account-dropdown">
+
+                        <a href="/Login.html">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            Sign In
+                        </a>
+
+                        <a href="/Register.html">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Sign Up
+                        </a>
+
+                        <a href="/Orders.html">
+                            <i class="fa-solid fa-box"></i>
+                            My Orders
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mobile Cart -->
+
+            <button
+                type="button"
+                class="icon-button mobile-cart"
+                data-open-cart
+                aria-label="Shopping cart"
+            >
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count">0</span>
+            </button>
+
+
+            <!-- Mobile Menu Toggle -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobile-sidebar"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </nav>
+
+
+        <!-- Desktop Search -->
+
+        <div class="desktop-search">
+
+            <form id="search-form" role="search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="search"
+                    id="desktop-meal-search"
+                    placeholder="Search your favourite meals..."
+                    aria-label="Search meals"
+                >
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Mobile Search -->
+
+        <div class="mobile-search">
+
+            <input
+                type="search"
+                id="meal-search"
+                placeholder="Search delicious meals..."
+                aria-label="Search meals"
+            >
+
+            <button
+                type="button"
+                id="search-submit"
+                aria-label="Search"
+            >
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </div>
+
+
+        <!-- Mobile Category Shortcuts -->
+
+        <div class="mobile-category-shortcuts">
+
+            <a href="/Menu.html">All Meals</a>
+            <a href="/Menu.html?category=rice">Rice</a>
+            <a href="/Menu.html?category=swallow">Swallow</a>
+            <a href="/Menu.html?category=proteins">Proteins</a>
+            <a href="/Menu.html?category=drinks">Drinks</a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         MOBILE SIDEBAR
+    ====================================== -->
+
+    <div
+        class="sidebar-backdrop"
+        data-close-menu
+    ></div>
+
+    <aside
+        class="mobile-sidebar"
+        id="mobile-sidebar"
+        aria-label="Mobile navigation"
+        aria-hidden="true"
+    >
+
+        <div class="sidebar-header">
+
+            <a href="/Home.html" class="sidebar-logo">
+                <img
+                    src="images/Tasty Hub Identity 2.png"
+                    alt="Tasty Hub logo"
+                >
+            </a>
+
+            <button
+                type="button"
+                class="sidebar-close"
+                data-close-menu
+                aria-label="Close navigation menu"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <p class="sidebar-caption">
+            EXPLORE TASTY HUB
+        </p>
+
+
+        <a href="/Home.html" class="sidebar-link">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+
+        <a href="/Menu.html" class="sidebar-link">
+            <i class="fa-solid fa-utensils"></i>
+            Menu
+        </a>
+
+
+        <details>
+
+            <summary>
+                <i class="fa-solid fa-layer-group"></i>
+                Categories
+                <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </summary>
+
+            <a href="/Menu.html?category=rice">Rice Dishes</a>
+            <a href="/Menu.html?category=swallow">Swallow & Soups</a>
+            <a href="/Menu.html?category=proteins">Proteins</a>
+            <a href="/Menu.html?category=drinks">Drinks</a>
+            <a href="/Menu.html?category=snacks">Snacks</a>
+
+        </details>
+
+
+        <a href="/Offers.html" class="sidebar-link">
+            <i class="fa-solid fa-tag"></i>
+            Offers
+        </a>
+
+        <a href="/About.html" class="sidebar-link">
+            <i class="fa-solid fa-circle-info"></i>
+            About Us
+        </a>
+
+        <a
+            href="/Contact.html"
+            class="sidebar-link active"
+            aria-current="page"
+        >
+            <i class="fa-solid fa-envelope"></i>
+            Contact Us
+        </a>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <p class="sidebar-caption">
+            YOUR ACCOUNT
+        </p>
+
+        <a href="/Login.html" class="sidebar-link">
+            <i class="fa-regular fa-user"></i>
+            Sign In
+        </a>
+
+        <a href="/Register.html" class="sidebar-link">
+            <i class="fa-solid fa-user-plus"></i>
+            Create Account
+        </a>
+
+        <a href="/Orders.html" class="sidebar-link">
+            <i class="fa-solid fa-box"></i>
+            My Orders
+        </a>
+
+
+        <div class="sidebar-help">
+
+            <div class="sidebar-help-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+
+            <h3>Need a little help?</h3>
+
+            <p>
+                Have a question about your next delicious meal?
+                We would love to hear from you.
+            </p>
+
+            <a href="/Contact.html">
+                Contact Us
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         CONTACT HERO
+    ====================================== -->
+
+    <main>
+
+        <section class="contact-hero">
+
+            <div class="contact-hero-decoration decoration-one"></div>
+            <div class="contact-hero-decoration decoration-two"></div>
+
+            <div class="contact-hero-content animate-on-scroll">
+
+                <span class="contact-eyebrow">
+                    <i class="fa-solid fa-comments"></i>
+                    WE'RE HERE FOR YOU
+                </span>
+
+                <h1>
+                    Let's Start a
+                    <span>Conversation.</span>
+                </h1>
+
+                <p>
+                    Questions, feedback, or a special food request?
+                    We're always happy to hear from you.
+                    Tell us what's on your mind, and let's make
+                    your Tasty Hub experience even better.
+                </p>
+
+                <div class="contact-hero-actions">
+
+                    <a href="#contact-form-section" class="contact-primary-button">
+                        Send Us a Message
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="#contact-information" class="contact-secondary-button">
+                        Explore Contact Details
+                    </a>
+
+                </div>
+
+                <div class="contact-hero-trust">
+
+                    <span>
+                        <i class="fa-solid fa-check-circle"></i>
+                        Customer Support
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-check-circle"></i>
+                        Order Enquiries
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-hero-visual animate-on-scroll">
+
+                <div class="contact-visual-card">
+
+                    <div class="contact-visual-top">
+
+                        <span class="visual-status">
+                            <span class="status-dot"></span>
+                            HERE TO HELP
+                        </span>
+
+                        <i class="fa-solid fa-headset"></i>
+
+                    </div>
+
+                    <div class="contact-illustration">
+
+                        <div class="illustration-circle">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+
+                        <div class="illustration-decoration illustration-decoration-one">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+
+                        <div class="illustration-decoration illustration-decoration-two">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <div class="illustration-decoration illustration-decoration-three">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-visual-message">
+
+                        <span>GOOD FOOD. GOOD PEOPLE.</span>
+
+                        <h3>
+                            Your voice matters to us.
+                        </h3>
+
+                        <p>
+                            Every message helps us serve you better.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating-contact-card floating-contact-one">
+
+                    <div class="floating-contact-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
+                    <div>
+                        <strong>Let's talk</strong>
+                        <span>We're listening</span>
+                    </div>
+
+                </div>
+
+
+                <div class="floating-contact-card floating-contact-two">
+
+                    <div class="floating-contact-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div>
+                        <strong>Made with care</strong>
+                        <span>Just for you</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTACT INFORMATION
+        ====================================== -->
+
+        <section
+            class="contact-information section-wrap"
+            id="contact-information"
+        >
+
+            <div class="section-heading animate-on-scroll">
+
+                <span class="contact-eyebrow">
+                    GET IN TOUCH
+                </span>
+
+                <h2>
+                    We'd Love to <span>Hear From You.</span>
+                </h2>
+
+                <p>
+                    Reach out to us using the contact details below,
+                    or send a message through our contact form.
+                </p>
+
+            </div>
+
+
+            <div class="contact-info-grid">
+
+                <article class="contact-info-card animate-on-scroll">
+
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
+                    <span class="contact-info-label">
+                        EMAIL US
+                    </span>
+
+                    <h3>Email Enquiries</h3>
+
+                    <p>
+                        For questions, feedback, and general enquiries.
+                    </p>
+
+                    <a href="mailto:tastymeals@tastyhub.com">
+                        tastymeals@tastyhub.com
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </article>
+
+
+                <article class="contact-info-card animate-on-scroll">
+
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+
+                    <span class="contact-info-label">
+                        CALL US
+                    </span>
+
+                    <h3>Phone Enquiries</h3>
+
+                    <p>
+                        Have a question about an order or our services?
+                    </p>
+
+                    <a href="tel:+234800000000">
+                        +234 8000 0000
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </article>
+
+
+                <article class="contact-info-card animate-on-scroll">
+
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <span class="contact-info-label">
+                        OUR LOCATION
+                    </span>
+
+                    <h3>Serving Your Cravings</h3>
+
+                    <p>
+                        We are working to make delicious meals easier
+                        to enjoy wherever you are.
+                    </p>
+
+                    <a href="#contact-form-section">
+                        Ask About Delivery
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTACT FORM
+        ====================================== -->
+
+        <section
+            class="contact-form-section"
+            id="contact-form-section"
+        >
+
+            <div class="contact-form-layout">
+
+                <div class="contact-form-intro animate-on-scroll">
+
+                    <span class="contact-eyebrow">
+                        SEND A MESSAGE
+                    </span>
+
+                    <h2>
+                        Tell Us What's <span>On Your Mind.</span>
+                    </h2>
+
+                    <p>
+                        Whether you need help with an order, want to share
+                        feedback, or have an idea for working together,
+                        fill out the form. We're ready to listen.
+                    </p>
+
+
+                    <div class="contact-reasons">
+
+                        <div class="contact-reason">
+
+                            <div class="reason-icon">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+
+                            <div>
+                                <h3>Order Enquiries</h3>
+
+                                <p>
+                                    Questions about meals, delivery,
+                                    or an existing order.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-reason">
+
+                            <div class="reason-icon">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+
+                            <div>
+                                <h3>Special Requests</h3>
+
+                                <p>
+                                    Tell us about catering, group orders,
+                                    or a special occasion.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-reason">
+
+                            <div class="reason-icon">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+
+                            <div>
+                                <h3>Partnerships</h3>
+
+                                <p>
+                                    Interested in collaborating with
+                                    Tasty Hub? Let's connect.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-note">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                        <p>
+                            Please avoid including passwords or sensitive
+                            payment information in your message.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-form-card animate-on-scroll">
+
+                    <div class="form-card-heading">
+
+                        <div>
+                            <span>CONTACT FORM</span>
+                            <h3>Send us a message</h3>
+                        </div>
+
+                        <div class="form-heading-icon">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </div>
+
+                    </div>
+
+
+                    <form id="contact-form" novalidate>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="contact-name">
+                                    Full Name <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contact-name"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                    minlength="2"
+                                >
+
+                                <small class="field-error" id="name-error"></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="contact-email">
+                                    Email Address <span>*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="contact-email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                                <small class="field-error" id="email-error"></small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="contact-subject">
+                                What is your enquiry about? <span>*</span>
+                            </label>
+
+                            <select
+                                id="contact-subject"
+                                name="subject"
+                                required
+                            >
+
+                                <option value="" disabled selected>
+                                    Select an enquiry type
+                                </option>
+
+                                <option value="General Enquiry">
+                                    General Enquiry
+                                </option>
+
+                                <option value="Order Support">
+                                    Order Support
+                                </option>
+
+                                <option value="Delivery Enquiry">
+                                    Delivery Enquiry
+                                </option>
+
+                                <option value="Catering and Special Orders">
+                                    Catering and Special Orders
+                                </option>
+
+                                <option value="Feedback or Suggestion">
+                                    Feedback or Suggestion
+                                </option>
+
+                                <option value="Business Partnership">
+                                    Business Partnership
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                            <small class="field-error" id="subject-error"></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="contact-order">
+                                Order Number
+                                <span class="optional-label">OPTIONAL</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contact-order"
+                                name="orderNumber"
+                                placeholder="e.g. TH-1024"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="contact-message">
+                                Your Message <span>*</span>
+                            </label>
+
+                            <textarea
+                                id="contact-message"
+                                name="message"
+                                rows="5"
+                                maxlength="1500"
+                                placeholder="Tell us how we can help..."
+                                required
+                                minlength="10"
+                            ></textarea>
+
+                            <div class="message-meta">
+
+                                <small class="field-error" id="message-error"></small>
+
+                                <span id="message-counter">
+                                    0 / 1500
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <label class="form-consent">
+
+                            <input
+                                type="checkbox"
+                                id="contact-consent"
+                                required
+                            >
+
+                            <span>
+                                I confirm that the information provided
+                                is accurate and can be used to respond
+                                to my enquiry.
+                            </span>
+
+                        </label>
+
+                        <small class="field-error" id="consent-error"></small>
+
+
+                        <button
+                            type="submit"
+                            class="contact-submit-button"
+                            id="contact-submit"
+                        >
+
+                            <span>Send Message</span>
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                        </button>
+
+
+                        <p class="form-disclaimer">
+                            <i class="fa-solid fa-lock"></i>
+                            Your information should only be used to handle
+                            your enquiry.
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FINAL CALL TO ACTION
+        ====================================== -->
+
+        <section class="contact-bottom-cta">
+
+            <div class="contact-cta-decoration"></div>
+
+            <div class="contact-cta-content animate-on-scroll">
+
+                <span class="contact-cta-eyebrow">
+                    SOMETHING DELICIOUS STARTS HERE
+                </span>
+
+                <h2>
+                    Hungry for Something <span>Good?</span>
+                </h2>
+
+                <p>
+                    While we're here to answer your questions,
+                    there's always time to discover your next favourite meal.
+                </p>
+
+                <a href="/Menu.html" class="contact-cta-button">
+                    Explore Our Menu
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="/Home.html" aria-label="Tasty Hub home">
+                    <img
+                        src="images/Tasty Hub Identity 2.png"
+                        alt="Tasty Hub logo"
+                    >
+                </a>
+
+                <p>
+                    Bringing happiness to your table, one delicious
+                    meal at a time. Discover flavours you'll love
+                    and food worth coming back for.
+                </p>
+
+                <div class="footer-socials">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Company</h4>
+
+                <ul>
+                    <li><a href="/About.html">About Us</a></li>
+                    <li><a href="/Contact.html">Contact Us</a></li>
+                    <li><a href="/Offers.html">Special Offers</a></li>
+                    <li><a href="/Menu.html">Our Menu</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Explore</h4>
+
+                <ul>
+                    <li><a href="/Menu.html">All Meals</a></li>
+                    <li><a href="/Menu.html?category=rice">Rice Dishes</a></li>
+                    <li><a href="/Menu.html?category=swallow">Swallow & Soups</a></li>
+                    <li><a href="/Menu.html?category=drinks">Drinks</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Get in Touch</h4>
+
+                <ul>
+                    <li>
+                        <a href="mailto:tastymeals@tastyhub.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            tastymeals@tastyhub.com
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="tel:+234800000000">
+                            <i class="fa-solid fa-phone"></i>
+                            +234 8000 0000
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Contact.html#contact-form-section">
+                            <i class="fa-solid fa-message"></i>
+                            Send an Enquiry
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="current-year"></span> Tasty Hub.
+                All rights reserved.
+            </p>
+
+            <a href="/Privacy.html">
+                Privacy Policy
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Toast Notification -->
+
+    <div
+        class="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- Contact Page JavaScript -->
+
+    <script src="Contact.js" defer></script>
+
+</body>
+</html>
