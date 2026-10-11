@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Tasty Hub</title>
+
+    <meta
+        name="description"
+        content="Discover Tasty Hub, where delicious meals, memorable moments, and a better food experience come together."
+    >
+
+    <link rel="stylesheet" href="About.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER / NAVIGATION
+    ========================== -->
+
+    <header class="site-header" id="home">
+
+        <nav class="nav-bar">
+
+            <a href="/Home.html" class="brand" aria-label="Tasty Hub Home">
+                <img
+                    src="images/Tasty Hub Identity 2.png"
+                    alt="Tasty Hub logo"
+                >
+            </a>
+
+            <button
+                class="mobile-cart icon-button"
+                type="button"
+                data-open-cart
+                aria-label="Open shopping cart"
+            >
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count">0</span>
+            </button>
+
+            <button
+                class="menu-toggle icon-button"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-controls="mobile-sidebar"
+                aria-expanded="false"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+
+                <a href="/Home.html">Home</a>
+                <a href="/Menu.html">Menu</a>
+
+                <div class="category-nav">
+
+                    <button
+                        class="dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                    >
+                        Categories
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+
+                    <div class="category-dropdown">
+
+                        <a href="/Menu.html?category=rice">Rice Dishes</a>
+                        <a href="/Menu.html?category=fast-food">Fast Food</a>
+                        <a href="/Menu.html?category=soups">Soups</a>
+                        <a href="/Menu.html?category=snacks">Snacks</a>
+                        <a href="/Menu.html?category=drinks">Drinks</a>
+
+                    </div>
+
+                </div>
+
+                <a href="/Offers.html">Offers</a>
+                <a href="/About.html" class="active" aria-current="page">About Us</a>
+                <a href="/Contact.html">Contact</a>
+
+            </div>
+
+            <div class="nav-actions">
+
+                <button
+                    class="icon-button search-toggle"
+                    type="button"
+                    data-focus-search
+                    aria-label="Open search"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button
+                    class="location-button"
+                    type="button"
+                    data-location
+                >
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Set Location</span>
+                </button>
+
+                <a
+                    class="icon-button"
+                    href="/Favourites.html"
+                    aria-label="Favourites"
+                >
+                    <i class="fa-regular fa-heart"></i>
+                </a>
+
+                <button
+                    class="icon-button cart-button"
+                    type="button"
+                    data-open-cart
+                    aria-label="Open shopping cart"
+                >
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <div class="account-nav">
+
+                    <button
+                        class="icon-button account-toggle"
+                        type="button"
+                        aria-label="Account menu"
+                        aria-expanded="false"
+                    >
+                        <i class="fa-regular fa-user"></i>
+                    </button>
+
+                    <div class="account-dropdown">
+
+                        <a href="/Login.html">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            Sign In
+                        </a>
+
+                        <a href="/Register.html">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Create Account
+                        </a>
+
+                        <a href="/Profile.html">
+                            <i class="fa-regular fa-user"></i>
+                            My Profile
+                        </a>
+
+                        <a href="/Orders.html">
+                            <i class="fa-solid fa-box"></i>
+                            My Orders
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        <!-- Desktop Search -->
+
+        <form class="desktop-search" id="search-form">
+
+            <input
+                type="search"
+                id="desktop-meal-search"
+                placeholder="Search for your favourite meal..."
+                aria-label="Search for meals"
+            >
+
+            <button type="submit">
+                Search
+            </button>
+
+        </form>
+
+        <!-- Mobile Search -->
+
+        <div class="mobile-search">
+
+            <input
+                type="search"
+                id="meal-search"
+                placeholder="Search delicious meals..."
+                aria-label="Search for meals"
+            >
+
+            <button
+                type="button"
+                id="search-submit"
+                aria-label="Search"
+            >
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </div>
+
+        <!-- Mobile Category Shortcuts -->
+
+        <div class="mobile-category-shortcuts">
+
+            <a href="/Menu.html?category=rice">Rice</a>
+            <a href="/Menu.html?category=fast-food">Fast Food</a>
+            <a href="/Menu.html?category=soups">Soups</a>
+            <a href="/Menu.html?category=snacks">Snacks</a>
+            <a href="/Menu.html?category=drinks">Drinks</a>
+            <a href="/Offers.html">Deals</a>
+
+        </div>
+
+    </header>
+
+
+    <!-- Mobile Sidebar -->
+
+    <div class="sidebar-backdrop" data-close-menu></div>
+
+    <aside
+        class="mobile-sidebar"
+        id="mobile-sidebar"
+        aria-hidden="true"
+    >
+
+        <div class="sidebar-top">
+
+            <a href="/Home.html" class="sidebar-logo">
+                <img
+                    src="images/Tasty Hub Identity 2.png"
+                    alt="Tasty Hub logo"
+                >
+            </a>
+
+            <button
+                class="sidebar-close"
+                type="button"
+                data-close-menu
+                aria-label="Close navigation menu"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+        <div class="sidebar-links">
+
+            <a href="/Home.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+
+            <a href="/Menu.html">
+                <i class="fa-solid fa-utensils"></i>
+                Menu / Shop
+            </a>
+
+            <div class="sidebar-category-title">
+                <i class="fa-solid fa-layer-group"></i>
+                Categories
+            </div>
+
+            <a class="sidebar-sub-link" href="/Menu.html?category=rice">
+                Rice Dishes
+            </a>
+
+            <a class="sidebar-sub-link" href="/Menu.html?category=fast-food">
+                Fast Food
+            </a>
+
+            <a class="sidebar-sub-link" href="/Menu.html?category=soups">
+                Soups
+            </a>
+
+            <a class="sidebar-sub-link" href="/Menu.html?category=snacks">
+                Snacks
+            </a>
+
+            <a href="/Offers.html">
+                <i class="fa-solid fa-tag"></i>
+                Offers
+            </a>
+
+            <a class="active" href="/About.html" aria-current="page">
+                <i class="fa-solid fa-circle-info"></i>
+                About Us
+            </a>
+
+            <a href="/Contact.html">
+                <i class="fa-solid fa-envelope"></i>
+                Contact
+            </a>
+
+            <a href="/Orders.html">
+                <i class="fa-solid fa-box"></i>
+                My Orders
+            </a>
+
+            <a href="/Login.html">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </a>
+
+            <a href="/Favourites.html">
+                <i class="fa-regular fa-heart"></i>
+                Favourites
+            </a>
+
+        </div>
+
+        <div class="sidebar-bottom">
+            <p>Good food. Great moments.</p>
+            <span>Welcome to Tasty Hub.</span>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         ABOUT HERO
+    ========================== -->
+
+    <main>
+
+        <section class="about-hero">
+
+            <div class="hero-orb hero-orb-one"></div>
+            <div class="hero-orb hero-orb-two"></div>
+
+            <div class="hero-spark hero-spark-one">✦</div>
+            <div class="hero-spark hero-spark-two">✧</div>
+
+            <div class="about-hero-inner">
+
+                <div class="about-hero-copy">
+
+                    <span class="about-eyebrow">
+                        <span class="eyebrow-line"></span>
+                        GET TO KNOW US
+                    </span>
+
+                    <h1>
+                        Good Food.<br>
+                        Great Moments.<br>
+                        <span>Better Living.</span>
+                    </h1>
+
+                    <p>
+                        At Tasty Hub, we believe great food does more
+                        than satisfy hunger. It brings people together,
+                        creates memories, and makes every day a little
+                        more delicious.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="/Menu.html" class="about-primary-btn">
+                            Explore Our Menu
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                        <a href="#our-story" class="about-secondary-btn">
+                            Discover Our Story
+                            <i class="fa-solid fa-play"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="hero-note">
+                        <span class="note-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </span>
+
+                        <span>
+                            Made for food lovers.<br>
+                            <strong>Created for memorable moments.</strong>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="about-hero-visual">
+
+                    <div class="visual-ring"></div>
+                    <div class="visual-ring visual-ring-two"></div>
+
+                    <div class="floating-label label-fresh">
+                        <i class="fa-solid fa-leaf"></i>
+                        Freshly prepared
+                    </div>
+
+                    <div class="floating-label label-love">
+                        <i class="fa-solid fa-heart"></i>
+                        Made with love
+                    </div>
+
+                    <div class="hero-food-frame">
+
+                        <div class="food-frame-top">
+                            <span class="food-live-dot"></span>
+                            A LITTLE TASTE OF HAPPINESS
+                        </div>
+
+                        <img
+                            src="images/Jollof Rice.jpg"
+                            alt="A delicious serving of jollof rice"
+                            class="about-hero-image"
+                        >
+
+                        <div class="food-frame-bottom">
+                            <span>
+                                <strong>Delicious.</strong>
+                                Always.
+                            </span>
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="floating-food floating-food-one">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+
+                    <div class="floating-food floating-food-two">
+                        <i class="fa-solid fa-pepper-hot"></i>
+                    </div>
+
+                    <div class="hero-sticker">
+                        <span>GOOD</span>
+                        <strong>FOOD</strong>
+                        <span>GOOD MOOD</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hero-bottom-line">
+                <span>GOOD FOOD, GOOD PEOPLE</span>
+
+                <span class="hero-bottom-center">
+                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid fa-circle"></i>
+                </span>
+
+                <span>WELCOME TO TASTY HUB</span>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OUR STORY
+        ========================== -->
+
+        <section class="about-story section-padding" id="our-story">
+
+            <div class="story-visual reveal-item">
+
+                <div class="story-image-backdrop"></div>
+
+                <img
+                    src="images/Fried Rice and Chicken.jpg"
+                    alt="Freshly prepared fried rice with chicken"
+                    class="story-image"
+                    loading="lazy"
+                >
+
+                <div class="story-image-label">
+                    <span class="story-label-icon">
+                        <i class="fa-solid fa-utensils"></i>
+                    </span>
+
+                    <div>
+                        <strong>A Taste Worth Sharing</strong>
+                        <span>Food brings us together.</span>
+                    </div>
+                </div>
+
+                <div class="story-decor story-decor-one">✳</div>
+                <div class="story-decor story-decor-two">✦</div>
+
+            </div>
+
+
+            <div class="story-copy reveal-item">
+
+                <span class="section-eyebrow">
+                    <span></span>
+                    OUR STORY
+                </span>
+
+                <h2>
+                    More Than Food.<br>
+                    <span>It's an Experience.</span>
+                </h2>
+
+                <p>
+                    Food has a special way of bringing people closer.
+                    A shared meal can turn an ordinary afternoon into
+                    a cherished memory, and a favourite dish can make
+                    a busy day feel a little brighter.
+                </p>
+
+                <p>
+                    That's the spirit behind Tasty Hub. We want food
+                    lovers to discover delicious options, explore
+                    satisfying meals, and enjoy a convenient journey
+                    from finding something they love to placing an order.
+                </p>
+
+                <p>
+                    Whether you're craving a familiar favourite or
+                    looking for something new, Tasty Hub is here to make
+                    your food experience enjoyable, simple, and memorable.
+                </p>
+
+                <a href="/Menu.html" class="story-link">
+                    Find Your Next Favourite
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WHY CHOOSE US
+        ========================== -->
+
+        <section class="why-tasty section-padding">
+
+            <div class="section-heading reveal-item">
+
+                <span class="section-eyebrow">
+                    <span></span>
+                    THE TASTY HUB DIFFERENCE
+                </span>
+
+                <h2>
+                    Why Food Lovers Choose <span>Us.</span>
+                </h2>
+
+                <p>
+                    It's not just about what is on the plate.
+                    It's about the experience that comes with every order.
+                </p>
+
+            </div>
+
+
+            <div class="why-grid">
+
+                <article class="why-card reveal-item">
+
+                    <div class="why-icon icon-orange">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+
+                    <span class="why-number">01</span>
+
+                    <h3>Delicious Choices</h3>
+
+                    <p>
+                        Discover a variety of meals and flavours
+                        to match your cravings and keep your taste
+                        buds excited.
+                    </p>
+
+                    <span class="why-card-arrow">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </span>
+
+                </article>
+
+
+                <article class="why-card reveal-item">
+
+                    <div class="why-icon icon-yellow">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <span class="why-number">02</span>
+
+                    <h3>Easy Ordering</h3>
+
+                    <p>
+                        Explore the menu, find the meals you want,
+                        and enjoy a straightforward journey towards
+                        placing your order.
+                    </p>
+
+                    <span class="why-card-arrow">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </span>
+
+                </article>
+
+
+                <article class="why-card reveal-item">
+
+                    <div class="why-icon icon-green">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <span class="why-number">03</span>
+
+                    <h3>Made for Food Lovers</h3>
+
+                    <p>
+                        From familiar favourites to new discoveries,
+                        there's always something exciting to explore.
+                    </p>
+
+                    <span class="why-card-arrow">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </span>
+
+                </article>
+
+
+                <article class="why-card reveal-item">
+
+                    <div class="why-icon icon-purple">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+
+                    <span class="why-number">04</span>
+
+                    <h3>A Better Experience</h3>
+
+                    <p>
+                        We aim to make discovering food enjoyable,
+                        convenient, and worth coming back for.
+                    </p>
+
+                    <span class="why-card-arrow">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MISSION AND VISION
+        ========================== -->
+
+        <section class="mission-vision section-padding">
+
+            <div class="mission-card reveal-item">
+
+                <div class="mission-copy">
+
+                    <span class="mission-tag">
+                        <i class="fa-solid fa-bullseye"></i>
+                        OUR MISSION
+                    </span>
+
+                    <h2>
+                        Making Every Food Experience
+                        <span>Worth Remembering.</span>
+                    </h2>
+
+                    <p>
+                        Our mission is to help people discover enjoyable
+                        food options through a convenient, engaging,
+                        and customer-focused experience.
+                    </p>
+
+                    <a href="/Menu.html" class="mission-link">
+                        Explore Our Menu
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+                <div class="mission-illustration mission-illustration-one">
+
+                    <div class="mission-circle"></div>
+
+                    <div class="mission-plate">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+
+                    <span class="mission-spark spark-a">✦</span>
+                    <span class="mission-spark spark-b">✧</span>
+                    <span class="mission-spark spark-c">✳</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="vision-card reveal-item">
+
+                <div class="vision-illustration">
+
+                    <div class="vision-orbit orbit-one"></div>
+                    <div class="vision-orbit orbit-two"></div>
+
+                    <div class="vision-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+
+                    <span class="vision-star vision-star-one">✦</span>
+                    <span class="vision-star vision-star-two">✧</span>
+
+                </div>
+
+                <div class="vision-copy">
+
+                    <span class="mission-tag">
+                        <i class="fa-solid fa-binoculars"></i>
+                        OUR VISION
+                    </span>
+
+                    <h2>
+                        Becoming a Favourite
+                        <span>Food Destination.</span>
+                    </h2>
+
+                    <p>
+                        We envision a food experience where discovering
+                        meals, connecting over food, and satisfying
+                        cravings feel easier and more enjoyable.
+                    </p>
+
+                    <a href="/Contact.html" class="mission-link">
+                        Get in Touch
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOOD EXPERIENCE SHOWCASE
+        ========================== -->
+
+        <section class="food-experience">
+
+            <div class="experience-glow experience-glow-one"></div>
+            <div class="experience-glow experience-glow-two"></div>
+
+            <div class="experience-inner">
+
+                <div class="experience-copy reveal-item">
+
+                    <span class="experience-eyebrow">
+                        YOUR CRAVINGS, YOUR WAY
+                    </span>
+
+                    <h2>
+                        Life Is Too Short
+                        <span>For Boring Meals.</span>
+                    </h2>
+
+                    <p>
+                        Explore satisfying dishes, rediscover your
+                        favourites, and find something delicious
+                        to brighten your day.
+                    </p>
+
+                    <a href="/Menu.html" class="experience-button">
+                        Let's Find Something Delicious
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="experience-gallery reveal-item">
+
+                    <div class="gallery-card gallery-card-main">
+
+                        <img
+                            src="images/Jollof Rice.jpg"
+                            alt="A plate of jollof rice"
+                            loading="lazy"
+                        >
+
+                        <span>THE CLASSIC FAVOURITE</span>
+
+                    </div>
+
+                    <div class="gallery-card gallery-card-top">
+
+                        <img
+                            src="images/Fried Rice and Chicken.jpg"
+                            alt="Fried rice with chicken"
+                            loading="lazy"
+                        >
+
+                        <i class="fa-solid fa-heart gallery-heart"></i>
+
+                    </div>
+
+                    <div class="gallery-card gallery-card-bottom">
+
+                        <img
+                            src="images/Eba and Egusi.jpg"
+                            alt="Eba and egusi soup"
+                            loading="lazy"
+                        >
+
+                        <span>COMFORT ON A PLATE</span>
+
+                    </div>
+
+                    <div class="gallery-decoration gallery-decoration-one">
+                        ✳
+                    </div>
+
+                    <div class="gallery-decoration gallery-decoration-two">
+                        +
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="experience-footer">
+                GOOD FOOD IS ALWAYS A GOOD IDEA.
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL CALL TO ACTION
+        ========================== -->
+
+        <section class="about-cta section-padding">
+
+            <div class="cta-decoration cta-decoration-one">✦</div>
+            <div class="cta-decoration cta-decoration-two">✳</div>
+
+            <div class="cta-content reveal-item">
+
+                <span class="section-eyebrow">
+                    <span></span>
+                    YOUR NEXT FAVOURITE AWAITS
+                    <span></span>
+                </span>
+
+                <h2>
+                    Ready to Find Your<br>
+                    <span>Next Favourite?</span>
+                </h2>
+
+                <p>
+                    Your next delicious discovery is only a few clicks away.
+                    Let's make your next meal a memorable one.
+                </p>
+
+                <div class="cta-buttons">
+
+                    <a href="/Menu.html" class="about-primary-btn">
+                        Explore Our Menu
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="/Contact.html" class="cta-contact-btn">
+                        Talk to Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer id="contact">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="/Home.html" aria-label="Tasty Hub Home">
+                    <img
+                        src="images/Tasty Hub Identity 2.png"
+                        alt="Tasty Hub logo"
+                        loading="lazy"
+                    >
+                </a>
+
+                <p>
+                    Bringing delicious food and memorable moments
+                    closer to you.
+                </p>
+
+                <div class="footer-contact">
+
+                    <a href="mailto:tastymeals@tastyhub.com">
+                        <i class="fa-solid fa-envelope"></i>
+                        tastymeals@tastyhub.com
+                    </a>
+
+                    <a href="tel:+2348000000000">
+                        <i class="fa-solid fa-phone"></i>
+                        +234 8000 0000
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Company</h3>
+
+                <a href="/Home.html">Home</a>
+                <a href="/About.html">About Us</a>
+                <a href="/Contact.html">Contact</a>
+                <a href="/Careers.html">Careers</a>
+                <a href="/Faq.html">FAQs</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Locations</h3>
+
+                <a href="/Contact.html">Lekki</a>
+                <a href="/Contact.html">Victoria Island</a>
+                <a href="/Contact.html">Banana Island</a>
+                <a href="/Contact.html">Ikeja</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Departments</h3>
+
+                <a href="/Contact.html">Administration</a>
+                <a href="/Contact.html">Logistics</a>
+                <a href="/Contact.html">Finance</a>
+                <a href="/Contact.html">Food Operations</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="current-year"></span> Tasty Hub.
+                All rights reserved.
+            </p>
+
+            <a href="/privacy">Privacy Policy</a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Toast Notification -->
+
+    <div
+        class="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- JavaScript -->
+
+<!-- <script src="Home.js" defer></script>-->
+    <script src="About.js" defer></script>
+
+</body>
+</html>
