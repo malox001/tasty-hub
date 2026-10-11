@@ -266,70 +266,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ========================================
-    // 7. SEARCH FUNCTIONALITY
-    // ========================================
+// 7. SEARCH FUNCTIONALITY
+// ========================================
 
-    const searchInputs = document.querySelectorAll(
-        "#meal-search, #desktop-meal-search"
-    );
+const desktopSearchInput = document.querySelector(
+    "#desktop-meal-search"
+);
 
+const mobileSearchInput = document.querySelector(
+    "#meal-search"
+);
 
-    function runSearch(input) {
+function runSearch(input) {
+    const query = input?.value.trim();
 
-        const query = input?.value.trim();
+    if (!query) {
+        input?.focus();
 
-        if (!query) {
+        showToast("Enter a meal or dish to search for.");
 
-            input?.focus();
-
-            showToast("Enter a meal or dish to search for.");
-
-            return;
-
-        }
-
-        /*
-           Keep the same search route used in Home.js.
-           Confirm that this route is handled by your Menu page.
-        */
-
-        window.location.href =
-            `/menu?search=${encodeURIComponent(query)}`;
-
+        return;
     }
 
+    window.location.href =
+        `/Menu.html?search=${encodeURIComponent(query)}`;
+}
 
-    searchInputs.forEach((input) => {
+// Desktop search form
+const desktopSearchForm = document.querySelector(
+    "#desktop-search-form"
+);
 
-        const form = input.closest("form");
+desktopSearchForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-        if (form) {
+    runSearch(desktopSearchInput);
+});
 
-            form.addEventListener("submit", (event) => {
+// Mobile search form
+const mobileSearchForm = document.querySelector(
+    "#mobile-search-form"
+);
 
-                event.preventDefault();
+mobileSearchForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-                runSearch(input);
+    runSearch(mobileSearchInput);
+});
 
-            });
-
+// Allow Enter to trigger a search from either input
+[desktopSearchInput, mobileSearchInput].forEach((input) => {
+    input?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            runSearch(input);
         }
-
-
-        input.addEventListener("keydown", (event) => {
-
-            if (event.key === "Enter" && !form) {
-
-                event.preventDefault();
-
-                runSearch(input);
-
-            }
-
-        });
-
     });
-
+});
 
     // ========================================
     // 8. DELIVERY LOCATION

@@ -287,12 +287,12 @@ if ('IntersectionObserver' in window) {
 
 
 
-// ===============================
+// ========================================
 // SEARCH FUNCTIONALITY
-// ===============================
+// ========================================
 
 const searchInputs = document.querySelectorAll(
-    '#meal-search, #desktop-meal-search'
+    "#meal-search, #desktop-meal-search"
 );
 
 function runSearch(input) {
@@ -305,25 +305,36 @@ function runSearch(input) {
     }
 
     window.location.href =
-        `/menu?search=${encodeURIComponent(query)}`;
+        `/Menu.html?search=${encodeURIComponent(query)}`;
 }
 
-searchInputs.forEach((input) => {
-    const form = input.closest("form");
+// Desktop search form
+const desktopSearchForm = document.querySelector("#search-form");
 
-    if (form) {
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            runSearch(input);
-        });
+desktopSearchForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const desktopInput = document.querySelector(
+        "#desktop-meal-search"
+    );
+
+    runSearch(desktopInput);
+});
+
+// Mobile search button
+const mobileSearchInput = document.querySelector("#meal-search");
+const mobileSearchButton = document.querySelector("#search-submit");
+
+mobileSearchButton?.addEventListener("click", () => {
+    runSearch(mobileSearchInput);
+});
+
+// Allow Enter to trigger a search from the mobile input
+mobileSearchInput?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        runSearch(mobileSearchInput);
     }
-
-    input.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" && !form) {
-            event.preventDefault();
-            runSearch(input);
-        }
-    });
 });
 
 
