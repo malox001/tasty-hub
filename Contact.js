@@ -704,42 +704,85 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Handle submission.
-    // This is frontend-only; no email is sent at this stage.
 
-    contactForm?.addEventListener("submit", (event) => {
 
-        event.preventDefault();
+    // Contact form submission to PHP and MySQL.
+let isSubmittingContactForm = false;
 
-        if (!validateContactForm()) {
+contactForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-            showToast(
-                "Please review the highlighted fields.",
-                "error"
+    // Run the existing frontend validation first.
+    if (!validateContactForm()) {
+        showToast("Please review the highlighted fields.", "error");
+        return;
+    }
+
+    // Prevent duplicate submissions.
+    if (isSubmittingContactForm) {
+        return;
+    }
+
+    isSubmittingContactForm = true;
+
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.setAttribute("aria-busy", "true");
+    }
+
+    try {
+        const response = await fetch("backend/contact.php", {
+            method: "POST",
+            body: new FormData(contactForm),
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(
+                result.message || "We could not send your message."
             );
-
-            return;
-
         }
 
+        showToast(result.message, "success");
 
-        const formData = {
+        contactForm.reset();
 
-            name: nameInput.value.trim(),
+        if (messageCounter) {
+            messageCounter.textContent = "0 / 1500";
+        }
 
-            email: emailInput.value.trim(),
+        // Clear previous validation errors.
+        clearFieldError(nameInput, nameError);
+        clearFieldError(emailInput, emailError);
+        clearFieldError(subjectInput, subjectError);
+        clearFieldError(messageInput, messageError);
 
-            subject: subjectInput.value,
+        if (consentError) {
+            consentError.textContent = "";
+        }
 
-            orderNumber: orderInput?.value.trim() || "",
+    } catch (error) {
+        console.error("Contact form submission failed:", error);
 
-            message: messageInput.value.trim(),
+        showToast(
+            error.message ||
+            "Unable to connect to the server. Please try again.",
+            "error"
+        );
 
-            submittedAt: new Date().toISOString()
+    } finally {
+        isSubmittingContactForm = false;
 
-        };
-
-
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.removeAttribute("aria-busy");
+        }
+    }
+});
         /*
          * FRONTEND DEMONSTRATION ONLY.
          *
@@ -764,7 +807,4 @@ document.addEventListener("DOMContentLoaded", () => {
          * This allows the user to retain their message until
          * backend submission has been implemented.
          */
-
-    });
-
 });
