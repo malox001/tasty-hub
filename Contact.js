@@ -7,6 +7,72 @@ document.addEventListener("DOMContentLoaded", () => {
     const toast = document.querySelector(".toast");
     let toastTimer;
 
+    // =========================================
+// TASTY HUB LOADER CONTROLLER
+// =========================================
+
+const loadingOverlay = document.querySelector("#loading-overlay");
+const loaderTitle = document.querySelector(".loader-title");
+const loaderDescription = document.querySelector(".loader-description");
+
+let activeRequests = 0;
+
+function showLoader(
+    title = "Preparing Your Request",
+    description = "Good things are worth the wait!"
+) {
+    if (!loadingOverlay) return;
+
+    activeRequests++;
+
+    // Update the loader text.
+    if (loaderTitle) {
+        loaderTitle.textContent = title;
+
+        const dots = document.createElement("span");
+        dots.className = "loader-dots";
+        dots.setAttribute("aria-hidden", "true");
+
+        loaderTitle.appendChild(dots);
+    }
+
+    if (loaderDescription) {
+        loaderDescription.textContent = description;
+    }
+
+    // Reveal the overlay.
+    loadingOverlay.inert = false;
+    loadingOverlay.setAttribute("aria-hidden", "false");
+    loadingOverlay.classList.add("is-active");
+
+    // Prevent the page from scrolling behind the overlay.
+    if (activeRequests === 1) {
+        document.body.dataset.previousOverflow =
+            document.body.style.overflow;
+
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function hideLoader() {
+    if (!loadingOverlay) return;
+
+    activeRequests = Math.max(0, activeRequests - 1);
+
+    // Keep the loader visible if another tracked request is running.
+    if (activeRequests > 0) return;
+
+    loadingOverlay.classList.remove("is-active");
+    loadingOverlay.setAttribute("aria-hidden", "true");
+    loadingOverlay.inert = true;
+
+    // Restore the previous scrolling setting.
+    document.body.style.overflow =
+        document.body.dataset.previousOverflow || "";
+
+    delete document.body.dataset.previousOverflow;
+}
+
     function showToast(message, type = "success") {
         if (!toast) return;
 
@@ -730,6 +796,11 @@ contactForm?.addEventListener("submit", async (event) => {
         submitButton.setAttribute("aria-busy", "true");
     }
 
+    showLoader(
+        "Sending Your Message",
+        "Please wait while we send your enquiry to Tasty Hub."
+    );
+
     try {
         const response = await fetch("backend/contact.php", {
             method: "POST",
@@ -775,13 +846,15 @@ contactForm?.addEventListener("submit", async (event) => {
         );
 
     } finally {
-        isSubmittingContactForm = false;
+    hideLoader();
 
-        if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.removeAttribute("aria-busy");
-        }
+    isSubmittingContactForm = false;
+
+    if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.removeAttribute("aria-busy");
     }
+}
 });
         /*
          * FRONTEND DEMONSTRATION ONLY.
