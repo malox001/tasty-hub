@@ -796,10 +796,12 @@ contactForm?.addEventListener("submit", async (event) => {
         submitButton.setAttribute("aria-busy", "true");
     }
 
-    showLoader(
-        "Sending Your Message",
-        "Please wait while we send your enquiry to Tasty Hub."
-    );
+    const loaderStartTime = Date.now();
+
+showLoader(
+    "Sending Your Message",
+    "Please wait while we send your enquiry to Tasty Hub."
+);
 
     try {
         const response = await fetch("backend/contact.php", {
@@ -810,13 +812,21 @@ contactForm?.addEventListener("submit", async (event) => {
             }
         });
 
-        const result = await response.json();
-
+       const result = await response.json();
         if (!response.ok || !result.success) {
             throw new Error(
                 result.message || "We could not send your message."
             );
         }
+
+        const elapsedTime = Date.now() - loaderStartTime;
+        const minimumLoaderTime = 1500;
+
+if (elapsedTime < minimumLoaderTime) {
+    await new Promise(resolve =>
+        setTimeout(resolve, minimumLoaderTime - elapsedTime)
+    );
+}
 
         showToast(result.message, "success");
 

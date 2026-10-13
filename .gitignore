@@ -1,0 +1,14 @@
+#Private environment variables
+.env
+.env.*
+
+#Allow an example configurationtemplate
+!.env.example
+
+# Composer dependencies
+/vendor/
+
+#Temporary and local files
+*.log
+.DS_store
+Thumbs.db
