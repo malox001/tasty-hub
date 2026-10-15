@@ -7,11 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
-// Load environment variables once.
-if (!isset($_ENV['MAIL_HOST'])) {
-    $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
-    $dotenv->safeLoad();
-}
+// Load environment variables from the project root.
+$dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
+$dotenv->safeLoad();
 
 // Create and configure PHPMailer.
 function createMailer(): PHPMailer
@@ -20,7 +18,7 @@ function createMailer(): PHPMailer
 
     $mail->isSMTP();
 
-    $mail->Host = $_ENV['MAIL_HOST'] ?? 'smtp-relay.brevo.com';
+    $mail->Host = $_ENV['MAIL_HOST'] ?? '';
     $mail->SMTPAuth = true;
 
     $mail->Username = $_ENV['MAIL_USERNAME'] ?? '';
