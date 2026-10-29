@@ -295,8 +295,13 @@ $emailSent = sendTastyHubEmail(
 
 if (!$emailSent) {
     error_log(
-        'Tasty Hub: Contact confirmation email could not be sent to ' .
-        $email
+        'Tasty Hub: Contact confirmation email failed for enquiry ID' .
+        $conn->insert_id
+    );
+} else {
+    error_log(
+        'Tasty Hub: Confirmation email accepted by SMTP for enquiry ID' .
+        $conn->insert_id
     );
 }
 

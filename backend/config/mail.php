@@ -15,6 +15,8 @@ $dotenv->safeLoad();
 function createMailer(): PHPMailer
 {
     $mail = new PHPMailer(true);
+    //$mail->SMTPDebug = 2;
+    //$mail->Debugoutput = 'error_log';
 
     $mail->isSMTP();
 
@@ -25,7 +27,7 @@ function createMailer(): PHPMailer
     $mail->Password = $_ENV['MAIL_PASSWORD'] ?? '';
 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = (int) ($_ENV['MAIL_PORT'] ?? 587);
+    $mail->Port = (int) ($_ENV['MAIL_PORT'] ?? 2525);
 
     $mail->CharSet = PHPMailer::CHARSET_UTF8;
 
