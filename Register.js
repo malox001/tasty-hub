@@ -417,7 +417,7 @@ registerForm?.addEventListener("submit", async event => {
         );
 
         // Send information to PHP
-        const response = await fetch("api/register.php", {
+        const response = await fetch("backend/api/register.php", {
             method: "POST",
 
             headers: {
