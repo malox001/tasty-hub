@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Create your Tasty Hub account and enjoy a deliciously convenient food ordering experience.">
+
+    <title>Create Account | Tasty Hub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="Register.css">
+</head>
+
+<body>
+
+    <!-- =====================================
+         LOADING OVERLAY
+    ====================================== -->
+
+    <div class="loading-overlay" id="loading-overlay" aria-hidden="true" inert>
+
+        <div class="loader-content" role="status" aria-live="polite" aria-atomic="true">
+
+            <div class="loader-orbit">
+                <div class="loader-ring"></div>
+
+                <div class="loader-cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+
+            <h3 class="loader-title">
+                Creating Your Account
+                <span class="loader-dots"></span>
+            </h3>
+
+            <p class="loader-description">
+                Getting everything ready for you!
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <header class="site-header">
+
+        <nav class="nav-bar">
+
+            <a href="/Home.html" class="brand">
+                <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub logo">
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <div class="nav-links">
+
+                <a href="/Home.html" class="nav-link">Home</a>
+
+                <a href="/Menu.html" class="nav-link">Menu</a>
+
+                <div class="category-nav">
+
+                    <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">
+                        Categories
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+
+                    <div class="category-dropdown">
+
+                        <a href="/Menu.html?category=rice">Rice Dishes</a>
+                        <a href="/Menu.html?category=swallow">Swallow</a>
+                        <a href="/Menu.html?category=proteins">Proteins</a>
+                        <a href="/Menu.html?category=drinks">Drinks</a>
+                        <a href="/Menu.html?category=snacks">Snacks</a>
+
+                    </div>
+
+                </div>
+
+                <a href="/Offers.html" class="nav-link">Offers</a>
+                <a href="/About.html" class="nav-link">About</a>
+                <a href="/Contact.html" class="nav-link">Contact</a>
+
+            </div>
+
+
+            <!-- Desktop Actions -->
+
+            <div class="nav-actions">
+
+                <button class="icon-button search-toggle" type="button" aria-label="Search meals" data-focus-search>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button class="location-button" type="button" data-location>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Set Location</span>
+                </button>
+
+                <a href="/favorites" class="icon-button" aria-label="Favorites">
+                    <i class="fa-regular fa-heart"></i>
+                </a>
+
+                <button class="icon-button cart-button" type="button" data-open-cart aria-label="Open cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </button>
+
+
+                <div class="account-nav">
+
+                    <button class="icon-button account-toggle" type="button" aria-label="Account menu" aria-expanded="false">
+                        <i class="fa-regular fa-user"></i>
+                    </button>
+
+                    <div class="account-dropdown">
+
+                        <a href="/Login.html">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            Sign In
+                        </a>
+
+                        <a href="/Register.html">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Create Account
+                        </a>
+
+                        <a href="/Orders.html">
+                            <i class="fa-solid fa-box"></i>
+                            My Orders
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mobile Actions -->
+
+            <button class="icon-button mobile-cart" type="button" data-open-cart aria-label="Open cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count">0</span>
+            </button>
+
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </nav>
+
+
+        <!-- Desktop Search -->
+
+        <div class="desktop-search">
+
+            <form id="search-form">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="search"
+                    id="desktop-meal-search"
+                    placeholder="Search for your favourite meal..."
+                    autocomplete="off"
+                >
+
+                <button type="submit">Search</button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Mobile Search -->
+
+        <div class="mobile-search">
+
+            <input
+                type="search"
+                id="meal-search"
+                placeholder="Search meals..."
+                autocomplete="off"
+            >
+
+            <button type="button" id="search-submit" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </div>
+
+
+        <!-- Mobile Category Shortcuts -->
+
+        <div class="mobile-category-shortcuts">
+
+            <a href="/Menu.html?category=rice">Rice Dishes</a>
+            <a href="/Menu.html?category=swallow">Swallow</a>
+            <a href="/Menu.html?category=proteins">Proteins</a>
+            <a href="/Menu.html?category=drinks">Drinks</a>
+            <a href="/Menu.html?category=snacks">Snacks</a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         MOBILE SIDEBAR
+    ====================================== -->
+
+    <div class="sidebar-backdrop" data-close-menu></div>
+
+    <aside class="mobile-sidebar" id="mobile-sidebar" aria-hidden="true">
+
+        <div class="sidebar-heading">
+
+            <a href="/Home.html" class="sidebar-brand">
+                <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub">
+            </a>
+
+            <button class="sidebar-close" type="button" data-close-menu aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div class="sidebar-links">
+
+            <a href="/Home.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+
+            <a href="/Menu.html">
+                <i class="fa-solid fa-utensils"></i>
+                Menu
+            </a>
+
+            <details class="sidebar-category">
+
+                <summary>
+                    <span>
+                        <i class="fa-solid fa-layer-group"></i>
+                        Categories
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+                </summary>
+
+                <div class="sidebar-submenu">
+
+                    <a href="/Menu.html?category=rice">Rice Dishes</a>
+                    <a href="/Menu.html?category=swallow">Swallow</a>
+                    <a href="/Menu.html?category=proteins">Proteins</a>
+                    <a href="/Menu.html?category=drinks">Drinks</a>
+                    <a href="/Menu.html?category=snacks">Snacks</a>
+
+                </div>
+
+            </details>
+
+            <a href="/Offers.html">
+                <i class="fa-solid fa-tags"></i>
+                Offers
+            </a>
+
+            <a href="/About.html">
+                <i class="fa-solid fa-circle-info"></i>
+                About
+            </a>
+
+            <a href="/Contact.html">
+                <i class="fa-solid fa-envelope"></i>
+                Contact
+            </a>
+
+            <a href="/Login.html">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Sign In
+            </a>
+
+            <a href="/Register.html" class="active">
+                <i class="fa-solid fa-user-plus"></i>
+                Create Account
+            </a>
+
+            <a href="/Orders.html">
+                <i class="fa-solid fa-box"></i>
+                My Orders
+            </a>
+
+        </div>
+
+
+        <div class="sidebar-help">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h4>Need Assistance?</h4>
+
+            <p>We're always happy to help.</p>
+
+            <a href="/Contact.html">Contact Us</a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         REGISTRATION MAIN
+    ====================================== -->
+
+    <main class="register-main">
+
+        <div class="register-background-orb register-orb-one"></div>
+        <div class="register-background-orb register-orb-two"></div>
+
+
+        <section class="register-section">
+
+            <!-- Intro -->
+
+            <div class="register-intro animate-on-scroll">
+
+                <span class="register-eyebrow">
+                    <i class="fa-solid fa-utensils"></i>
+                    WELCOME TO TASTY HUB
+                </span>
+
+                <h1>
+                    Good Food.
+                    <span>Great Experiences.</span>
+                </h1>
+
+                <p>
+                    Create your account and make your next delicious
+                    experience just a few clicks away.
+                </p>
+
+            </div>
+
+
+            <!-- Registration Card -->
+
+            <div class="register-card animate-on-scroll">
+
+                <div class="register-card-heading">
+
+                    <div class="register-heading-icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+
+                    <div>
+                        <h2>Create Your Account</h2>
+
+                        <p>
+                            Join Tasty Hub and enjoy convenient food ordering.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Google Signup -->
+
+                <button type="button" class="google-signup-button" id="google-signup">
+
+                    <img
+                        src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                        alt=""
+                    >
+
+                    <span>Continue with Google</span>
+
+                </button>
+
+
+                <div class="register-divider">
+                    <span>OR REGISTER WITH EMAIL</span>
+                </div>
+
+
+                <!-- Registration Form -->
+
+                <form id="register-form" novalidate>
+
+                    <!-- Full Name -->
+
+                    <div class="form-group">
+
+                        <label for="full-name">Full Name</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user input-icon"></i>
+
+                            <input
+                                type="text"
+                                id="full-name"
+                                name="full_name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                        <small class="field-error" id="name-error"></small>
+
+                    </div>
+
+
+                    <!-- Email and Phone -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="email">Email Address</label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-regular fa-envelope input-icon"></i>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                            <small class="field-error" id="email-error"></small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">Phone Number</label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-solid fa-phone input-icon"></i>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="Enter phone number"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+                            <small class="field-error" id="phone-error"></small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="password">Password</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock input-icon"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-toggle-password="password"
+                                aria-label="Show password"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="password-strength">
+
+                            <div class="strength-bars">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <small id="strength-text">
+                                Password strength
+                            </small>
+
+                        </div>
+
+                        <small class="field-error" id="password-error"></small>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+
+                    <div class="form-group">
+
+                        <label for="confirm-password">Confirm Password</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-shield-halved input-icon"></i>
+
+                            <input
+                                type="password"
+                                id="confirm-password"
+                                name="confirm_password"
+                                placeholder="Enter your password again"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-toggle-password="confirm-password"
+                                aria-label="Show password"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <small class="field-error" id="confirm-error"></small>
+
+                    </div>
+
+
+                    <!-- Terms -->
+
+                    <div class="register-consent">
+
+                        <label class="consent-label" for="terms">
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required
+                            >
+
+                            <span>
+                                I agree to Tasty Hub's
+                                <a href="/Terms.html" target="_blank">Terms & Conditions</a>
+                                and
+                                <a href="/Privacy.html" target="_blank">Privacy Policy</a>.
+                            </span>
+
+                        </label>
+
+                        <small class="field-error" id="terms-error"></small>
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        class="register-submit-button"
+                        id="register-submit"
+                    >
+
+                        <span>Create Account</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+
+                <!-- Login Link -->
+
+                <div class="register-login-link">
+
+                    <p>
+                        Already have an account?
+                        <a href="/Login.html">Sign In</a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Trust Note -->
+
+            <div class="register-trust-note animate-on-scroll">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span>
+                    Your information is protected and handled securely.
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="/Home.html">
+                    <img src="images/Tasty Hub Identity 2.png" alt="Tasty Hub logo">
+                </a>
+
+                <p>
+                    Bringing delicious meals closer to you.
+                    Fresh flavours, convenient ordering, and
+                    experiences worth coming back for.
+                </p>
+
+                <div class="footer-socials">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="X">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h4>Company</h4>
+
+                <ul>
+                    <li><a href="/About.html">About Us</a></li>
+                    <li><a href="/Contact.html">Contact Us</a></li>
+                    <li><a href="/Offers.html">Special Offers</a></li>
+                    <li><a href="/Menu.html">Explore Menu</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Explore</h4>
+
+                <ul>
+                    <li><a href="/Menu.html?category=rice">Rice Dishes</a></li>
+                    <li><a href="/Menu.html?category=swallow">Swallow</a></li>
+                    <li><a href="/Menu.html?category=proteins">Proteins</a></li>
+                    <li><a href="/Menu.html?category=drinks">Drinks</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Get in Touch</h4>
+
+                <ul>
+
+                    <li>
+                        <a href="mailto:tastymeals@tastyhub.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            tastymeals@tastyhub.com
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Contact.html">
+                            <i class="fa-solid fa-headset"></i>
+                            Customer Support
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Login.html">
+                            <i class="fa-solid fa-user"></i>
+                            Your Account
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="current-year"></span> Tasty Hub.
+                All rights reserved.
+            </p>
+
+            <a href="/Privacy.html">Privacy Policy</a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================
+         TOAST
+    ====================================== -->
+
+    <div class="toast" role="status" aria-live="polite"></div>
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script src="Contact.js" defer></script>
+    <script src="Register.js" defer></script>
+
+</body>
+</html>

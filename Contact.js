@@ -874,7 +874,7 @@ if (elapsedTime < minimumLoaderTime) {
          * before using it for real customer enquiries.
          */
 
-        console.log(
+        /*console.log(
             "Contact form submission preview:",
             formData
         );
