@@ -1011,3 +1011,37 @@ nav a.active::after,
 }
 
 
+/* =========================================
+   ACCOUNT LOGOUT BUTTON
+========================================= */
+
+.account-logout {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 15px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.account-logout i {
+    color: var(--orange);
+}
+
+.account-logout:hover {
+    background: var(--cream);
+    color: var(--orange);
+}
+
+.account-dropdown [hidden] {
+    display: none !important;
+}
+
+

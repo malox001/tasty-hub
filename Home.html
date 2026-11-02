@@ -49,20 +49,57 @@
         <a class="icon-button" href="/favorites" aria-label="Favorites"><i class="fa-regular fa-heart"></i></a>
         <button class="icon-button cart-button" type="button" aria-label="Open cart" data-open-cart><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
         <div class="account-nav">
-          <button class="icon-button account-toggle" type="button" aria-label="Account menu" aria-expanded="false"><i class="fa-regular fa-user"></i></button>
-          <div class="account-dropdown">
-            <a href="/Login.html">Sign in</a>
-            <a href="/Register.html">Create account</a>
-            <hr>
-            <a href="/profile">My Profile</a>
-            <a href="/orders">My Orders</a>
-            <a href="/tracking">Order Tracking</a>
-            <a href="/addresses">Saved Addresses</a>
-            <a href="/favorites">Favorites</a>
-            <a href="/settings">Settings</a>
-            <a href="/logout">Logout</a>
-          </div>
-        </div>
+
+    <button
+        type="button"
+        class="icon-button account-toggle"
+        aria-label="Account menu"
+        aria-expanded="false"
+    >
+        <i class="fa-regular fa-user"></i>
+    </button>
+
+    <div class="account-dropdown">
+
+        <!-- GUEST LINKS -->
+
+        <a href="/Login.html" data-guest-link>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Sign In
+        </a>
+
+        <a href="/Register.html" data-guest-link>
+            <i class="fa-solid fa-user-plus"></i>
+            Sign Up
+        </a>
+
+
+        <!-- AUTHENTICATED USER LINKS -->
+
+        <a href="/Profile.html" data-auth-link hidden>
+            <i class="fa-regular fa-user"></i>
+            My Profile
+        </a>
+
+        <a href="/Orders.html" data-auth-link hidden>
+            <i class="fa-solid fa-box"></i>
+            My Orders
+        </a>
+
+        <button
+            type="button"
+            class="account-logout"
+            data-logout
+            data-auth-link
+            hidden
+        >
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </button>
+
+    </div>
+
+</div>
       </div>
     </nav>
 
@@ -235,5 +272,6 @@
 
   <div class="toast" role="status" aria-live="polite"></div>
   <script src="Home.js" defer></script>
+  <script src="Auth.js" defer></script>
 </body>
 </html>

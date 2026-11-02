@@ -128,37 +128,56 @@
 
                 <div class="account-nav">
 
-                    <button
-                        type="button"
-                        class="icon-button account-toggle"
-                        aria-label="Account menu"
-                        aria-expanded="false"
-                    >
-                        <i class="fa-regular fa-user"></i>
-                    </button>
+    <button
+        type="button"
+        class="icon-button account-toggle"
+        aria-label="Account menu"
+        aria-expanded="false"
+    >
+        <i class="fa-regular fa-user"></i>
+    </button>
 
-                    <div class="account-dropdown">
+    <div class="account-dropdown">
 
-                        <a href="/Login.html">Sign In</a>
-                        <a href="/Register.html">Create Account</a>
+        <!-- GUEST LINKS -->
 
-                        <hr>
+        <a href="/Login.html" data-guest-link>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Sign In
+        </a>
 
-                        <a href="/Profile.html">My Profile</a>
-                        <a href="/Orders.html">My Orders</a>
-                        <a href="/Tracking.html">Track Order</a>
-                        <a href="/Addresses.html">Delivery Addresses</a>
-                        <a href="/Favourites.html">Favourites</a>
-                        <a href="/Settings.html">Settings</a>
+        <a href="/Register.html" data-guest-link>
+            <i class="fa-solid fa-user-plus"></i>
+            Sign Up
+        </a>
 
-                        <hr>
 
-                        <a href="/Logout.html">Log Out</a>
+        <!-- AUTHENTICATED USER LINKS -->
 
-                    </div>
+        <a href="/Profile.html" data-auth-link hidden>
+            <i class="fa-regular fa-user"></i>
+            My Profile
+        </a>
 
-                </div>
+        <a href="/Orders.html" data-auth-link hidden>
+            <i class="fa-solid fa-box"></i>
+            My Orders
+        </a>
 
+        <button
+            type="button"
+            class="account-logout"
+            data-logout
+            data-auth-link
+            hidden
+        >
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </button>
+
+    </div>
+
+</div>
             </div>
 
 
@@ -1125,6 +1144,8 @@
         role="status"
         aria-live="polite"
     ></div>
+
+    <script src="Auth.js" defer></script>
 
 
 </body>
