@@ -189,7 +189,7 @@
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>Jollof Rice & Chicken</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.9</span></div>
                         <p>Smoky party jollof served with juicy chicken.</p>
-                        <div class="meal-bottom"><strong>₦3,500</strong><button class="add-to-cart" type="button" data-name="Jollof Rice & Chicken" data-price="3500" aria-label="Add Jollof Rice and Chicken to cart"><i class="fa-solid fa-plus"></i></button></div>
+                        <div class="meal-bottom"><strong>₦3,000</strong><button class="add-to-cart" type="button" data-name="Jollof Rice & Chicken" data-price="3500" aria-label="Add Jollof Rice and Chicken to cart"><i class="fa-solid fa-plus"></i></button></div>
                     </div>
                 </article>
 
@@ -198,7 +198,7 @@
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>Fried Rice & Chicken</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.8</span></div>
                         <p>Colourful vegetable fried rice with tasty chicken.</p>
-                        <div class="meal-bottom"><strong>₦3,800</strong><button class="add-to-cart" type="button" data-name="Fried Rice & Chicken" data-price="3800" aria-label="Add Fried Rice and Chicken to cart"><i class="fa-solid fa-plus"></i></button></div>
+                        <div class="meal-bottom"><strong>₦3,300</strong><button class="add-to-cart" type="button" data-name="Fried Rice & Chicken" data-price="3800" aria-label="Add Fried Rice and Chicken to cart"><i class="fa-solid fa-plus"></i></button></div>
                     </div>
                 </article>
 
@@ -207,7 +207,7 @@
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>Eba & Egusi Soup</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.7</span></div>
                         <p>Classic Nigerian swallow with rich, savoury egusi.</p>
-                        <div class="meal-bottom"><strong>₦3,000</strong><button class="add-to-cart" type="button" data-name="Eba & Egusi Soup" data-price="3000" aria-label="Add Eba and Egusi Soup to cart"><i class="fa-solid fa-plus"></i></button></div>
+                        <div class="meal-bottom"><strong>₦2,800</strong><button class="add-to-cart" type="button" data-name="Eba & Egusi Soup" data-price="3000" aria-label="Add Eba and Egusi Soup to cart"><i class="fa-solid fa-plus"></i></button></div>
                     </div>
                 </article>
 
@@ -216,7 +216,7 @@
                     <div class="meal-info">
                         <div class="meal-title-row"><h3>White Rice & Stew</h3><span class="rating"><i class="fa-solid fa-star"></i> 4.6</span></div>
                         <p>Fluffy rice paired with rich tomato stew and beef.</p>
-                        <div class="meal-bottom"><strong>₦3,200</strong><button class="add-to-cart" type="button" data-name="White Rice & Stew" data-price="3200" aria-label="Add White Rice and Stew to cart"><i class="fa-solid fa-plus"></i></button></div>
+                        <div class="meal-bottom"><strong>₦2,500</strong><button class="add-to-cart" type="button" data-name="White Rice & Stew" data-price="3200" aria-label="Add White Rice and Stew to cart"><i class="fa-solid fa-plus"></i></button></div>
                     </div>
                 </article>
 
@@ -273,5 +273,79 @@
     <div class="toast" role="status" aria-live="polite"></div>
     <script src="Menu.js" defer></script>
     <script src="Auth.js" defer></script>
+    <script src="Cart.js" defer></script>
+
+
+
+
+<!-- =====================================
+     TASTY HUB CART DRAWER
+====================================== -->
+
+<div class="cart-overlay" data-cart-overlay></div>
+
+<aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+
+    <div class="cart-header">
+
+        <div>
+            <span class="cart-eyebrow">YOUR SELECTION</span>
+            <h2>Your Cart</h2>
+        </div>
+
+        <button
+            type="button"
+            class="cart-close"
+            data-close-cart
+            aria-label="Close cart"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+    <div class="cart-items" data-cart-items>
+
+        <!-- Cart items will be rendered here -->
+
+    </div>
+
+    <div class="cart-empty" data-cart-empty hidden>
+
+        <i class="fa-solid fa-basket-shopping"></i>
+
+        <h3>Your cart is empty</h3>
+
+        <p>Looks like you haven't added any delicious meals yet.</p>
+
+        <button type="button" data-close-cart>
+            Explore Menu
+        </button>
+
+    </div>
+
+    <div class="cart-footer" data-cart-footer>
+
+        <div class="cart-total-row">
+            <span>Subtotal</span>
+            <strong data-cart-subtotal>₦0</strong>
+        </div>
+
+        <p class="cart-note">
+            Delivery fees, if applicable, will be calculated at checkout.
+        </p>
+
+        <button type="button" class="cart-checkout" data-cart-checkout>
+            Proceed to Checkout
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <button type="button" class="cart-continue" data-close-cart>
+            Continue Shopping
+        </button>
+
+    </div>
+
+</aside>
 </body>
 </html>

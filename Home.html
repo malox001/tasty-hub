@@ -195,7 +195,7 @@
       <div class="cards">
         <article class="food-card">
           <img src="images/Fried Rice and Chicken.jpg" alt="Fried rice and chicken" loading="lazy">
-          <div class="food-card-content"><h3>Fried Rice and Chicken</h3><p>Colourful fried rice served with tasty chicken.</p><div class="food-card-bottom"><strong class="price">₦3,500</strong><button class="add-cart" type="button" data-name="Fried Rice and Chicken" data-price="3500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+          <div class="food-card-content"><h3>Fried Rice and Chicken</h3><p>Colourful fried rice served with tasty chicken.</p><div class="food-card-bottom"><strong class="price">₦3,300</strong><button class="add-cart" type="button" data-name="Fried Rice and Chicken" data-price="3300"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
         </article>
         <article class="food-card">
           <img src="images/Jollof Rice without Watermark.jpg" alt="Jollof rice and chicken" loading="lazy">
@@ -207,7 +207,7 @@
         </article>
         <article class="food-card">
           <img src="images/Eba and Ogbono.jpg" alt="Eba and ogbono soup" loading="lazy">
-          <div class="food-card-content"><h3>Eba and Ogbono Soup</h3><p>Soft eba paired with flavourful ogbono soup.</p><div class="food-card-bottom"><strong class="price">₦2,800</strong><button class="add-cart" type="button" data-name="Eba and Ogbono Soup" data-price="2800"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+          <div class="food-card-content"><h3>Eba and Ogbono Soup</h3><p>Soft eba paired with flavourful ogbono soup.</p><div class="food-card-bottom"><strong class="price">₦3,700</strong><button class="add-cart" type="button" data-name="Eba and Ogbono Soup" data-price="2800"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
         </article>
         <article class="food-card">
           <img src="images/Local Rice Dish.jpg" alt="Local white rice dish" loading="lazy">
@@ -215,7 +215,7 @@
         </article>
         <article class="food-card">
           <img src="images/Okro Soup.jpg" alt="Okro soup" loading="lazy">
-          <div class="food-card-content"><h3>Okro Soup</h3><p>Fresh, delicious okro soup full of flavour.</p><div class="food-card-bottom"><strong class="price">₦2,500</strong><button class="add-cart" type="button" data-name="Okro Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+          <div class="food-card-content"><h3>Okro Soup</h3><p>Fresh, delicious okro soup full of flavour.</p><div class="food-card-bottom"><strong class="price">₦3,100</strong><button class="add-cart" type="button" data-name="Okro Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
         </article>
         <article class="food-card">
           <img src="images/Semo and Egusi.jpg" alt="Semo and egusi soup" loading="lazy">
@@ -223,11 +223,11 @@
         </article>
         <article class="food-card">
           <img src="images/Pepper Soup.jpg" alt="Pepper soup" loading="lazy">
-          <div class="food-card-content"><h3>Pepper Soup</h3><p>A warming, peppery soup for a satisfying treat.</p><div class="food-card-bottom"><strong class="price">₦2,500</strong><button class="add-cart" type="button" data-name="Pepper Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+          <div class="food-card-content"><h3>Pepper Soup</h3><p>A warming, peppery soup for a satisfying treat.</p><div class="food-card-bottom"><strong class="price">₦5,000</strong><button class="add-cart" type="button" data-name="Pepper Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
         </article>
         <article class="food-card">
           <img src="images/Soup.jpg" alt="Locally made soup" loading="lazy">
-          <div class="food-card-content"><h3>Locally Made Soup</h3><p>Traditional flavours made for a comforting meal.</p><div class="food-card-bottom"><strong class="price">₦2,500</strong><button class="add-cart" type="button" data-name="Locally Made Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
+          <div class="food-card-content"><h3>Locally Made Soup</h3><p>Traditional flavours made for a comforting meal.</p><div class="food-card-bottom"><strong class="price">₦2,700</strong><button class="add-cart" type="button" data-name="Locally Made Soup" data-price="2500"><i class="fa-solid fa-cart-plus"></i> Add to cart</button></div></div>
         </article>
       </div>
       <div class="center-action"><a href="/Menu.html" class="secondary-button">View full menu <i class="fa-solid fa-arrow-right"></i></a></div>
@@ -273,5 +273,79 @@
   <div class="toast" role="status" aria-live="polite"></div>
   <script src="Home.js" defer></script>
   <script src="Auth.js" defer></script>
+  <script src="Cart.js" defer></script>
+
+
+
+
+  <!-- =====================================
+     TASTY HUB CART DRAWER
+====================================== -->
+
+<div class="cart-overlay" data-cart-overlay></div>
+
+<aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+
+    <div class="cart-header">
+
+        <div>
+            <span class="cart-eyebrow">YOUR SELECTION</span>
+            <h2>Your Cart</h2>
+        </div>
+
+        <button
+            type="button"
+            class="cart-close"
+            data-close-cart
+            aria-label="Close cart"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+    <div class="cart-items" data-cart-items>
+
+        <!-- Cart items will be rendered here -->
+
+    </div>
+
+    <div class="cart-empty" data-cart-empty hidden>
+
+        <i class="fa-solid fa-basket-shopping"></i>
+
+        <h3>Your cart is empty</h3>
+
+        <p>Looks like you haven't added any delicious meals yet.</p>
+
+        <button type="button" data-close-cart>
+            Explore Menu
+        </button>
+
+    </div>
+
+    <div class="cart-footer" data-cart-footer>
+
+        <div class="cart-total-row">
+            <span>Subtotal</span>
+            <strong data-cart-subtotal>₦0</strong>
+        </div>
+
+        <p class="cart-note">
+            Delivery fees, if applicable, will be calculated at checkout.
+        </p>
+
+        <button type="button" class="cart-checkout" data-cart-checkout>
+            Proceed to Checkout
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <button type="button" class="cart-continue" data-close-cart>
+            Continue Shopping
+        </button>
+
+    </div>
+
+</aside>
 </body>
 </html>
